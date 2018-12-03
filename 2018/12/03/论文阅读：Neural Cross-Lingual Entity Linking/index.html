@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="自然语言处理 实体链接 知识图谱,">
+  <meta name="keywords" content="自然语言处理,实体链接,知识图谱,">
 
 
 
@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="[TOC] 1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在C">
-<meta name="keywords" content="自然语言处理 实体链接 知识图谱">
+<meta name="description" content="1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在CoNLL上与">
+<meta name="keywords" content="自然语言处理,实体链接,知识图谱">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文阅读：Neural Cross-Lingual Entity Linking">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/论文阅读：Neural Cross-Lingual Entity Linking/index.html">
 <meta property="og:site_name" content="hellojet">
-<meta property="og:description" content="[TOC] 1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在C">
+<meta property="og:description" content="1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在CoNLL上与">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543489755502.png">
 <meta property="og:image" content="http://chart.googleapis.com/chart?cht=tx&chl= e_w">
@@ -101,10 +101,10 @@
 <meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543559723954.png">
 <meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543565503898.png">
 <meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543565543687.png">
-<meta property="og:updated_time" content="2018-12-03T03:24:53.693Z">
+<meta property="og:updated_time" content="2018-12-03T04:29:11.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读：Neural Cross-Lingual Entity Linking">
-<meta name="twitter:description" content="[TOC] 1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在C">
+<meta name="twitter:description" content="1. 阅读文献来源 Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017. Avirup Sil : Research Scientist &amp;amp; NLP Chair at IBM Research AI 这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在CoNLL上与">
 <meta name="twitter:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543489755502.png">
 
 
@@ -338,6 +338,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/nlp/" itemprop="url" rel="index">
+                    <span itemprop="name">nlp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -365,8 +387,7 @@
       
 
       
-        <p>[TOC]</p>
-<h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p> Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017.</p>
+        <h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p> Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017.</p>
 <p>Avirup Sil : Research Scientist &amp; NLP Chair at IBM Research AI</p>
 <p>这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在CoNLL上与deeptype不相上下，在TAC2010上结果稍差。</p>
 <h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><p><strong>本文的introduction主要讨论了细粒度的相似度的问题并给出解决方案</strong>：</p>
@@ -509,7 +530,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/自然语言处理-实体链接-知识图谱/" rel="tag"># 自然语言处理 实体链接 知识图谱</a>
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+            <a href="/tags/实体链接/" rel="tag"># 实体链接</a>
+          
+            <a href="/tags/知识图谱/" rel="tag"># 知识图谱</a>
           
         </div>
       
@@ -616,13 +641,22 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
