@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="自然语言处理,">
+  <meta name="keywords" content="自然语言处理,实体链接,知识图谱,论文阅读,">
 
 
 
@@ -81,18 +81,54 @@
 
 
 
-<meta name="description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
-<meta name="keywords" content="自然语言处理">
+<meta name="description" content="1. 阅读文献来源Yamada I, Shindo H, Takeda H, et al. Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation[J]. 2016:250-259. 2. 论文解决的科学问题及研究动机在NED（Named Entity Disambiguation）">
+<meta name="keywords" content="自然语言处理,实体链接,知识图谱,论文阅读">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[转载]自然语言处理如何入门？————周明博士">
-<meta property="og:url" content="http://yoursite.com/2018/11/30/转载-自然语言处理如何入门？——周明博士/index.html">
+<meta property="og:title" content="论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation">
+<meta property="og:url" content="http://yoursite.com/2018/12/11/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/index.html">
 <meta property="og:site_name" content="hellojet">
-<meta property="og:description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
+<meta property="og:description" content="1. 阅读文献来源Yamada I, Shindo H, Takeda H, et al. Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation[J]. 2016:250-259. 2. 论文解决的科学问题及研究动机在NED（Named Entity Disambiguation）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T06:55:50.276Z">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image002.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image004.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image006-1544533695373.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image008.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image010.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image012.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image014.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image016.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image018.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image020.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image022.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image024.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image026.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image028.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image030.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image032.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image034.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image036.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image038.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image040.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image042.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image044.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image046.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image048.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image050.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image052.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image056.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image058.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image060.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image062.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image064.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image066.jpg">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image068.jpg">
+<meta property="og:updated_time" content="2018-12-11T13:20:15.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[转载]自然语言处理如何入门？————周明博士">
-<meta name="twitter:description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
+<meta name="twitter:title" content="论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation">
+<meta name="twitter:description" content="1. 阅读文献来源Yamada I, Shindo H, Takeda H, et al. Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation[J]. 2016:250-259. 2. 论文解决的科学问题及研究动机在NED（Named Entity Disambiguation）">
+<meta name="twitter:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image002.gif">
 
 
 
@@ -122,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/30/转载-自然语言处理如何入门？——周明博士/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/11/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/">
 
 
 
 
 
-  <title>[转载]自然语言处理如何入门？————周明博士 | hellojet</title>
+  <title>论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation | hellojet</title>
   
 
 
@@ -317,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/30/转载-自然语言处理如何入门？——周明博士/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李洁厅">
@@ -334,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[转载]自然语言处理如何入门？————周明博士</h1>
+          <h1 class="post-title" itemprop="name headline">论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation</h1>
         
 
         <div class="post-meta">
@@ -346,8 +382,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-30T14:43:05+08:00">
-                2018-11-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-11T21:03:28+08:00">
+                2018-12-11
               </time>
             
 
@@ -356,6 +392,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/nlp/" itemprop="url" rel="index">
+                    <span itemprop="name">nlp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -384,42 +442,107 @@
       
 
       
-        <p>作者：微软亚洲研究院<br>链接：<a href="https://www.zhihu.com/question/19895141/answer/149475410" target="_blank" rel="noopener">https://www.zhihu.com/question/19895141/answer/149475410</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<p><strong>自然语言处理</strong>（简称NLP），是研究计算机处理人类语言的一门技术，包括：<br><strong>1.句法语义分析</strong>：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。</p>
-<p><strong>2.信息抽取</strong>：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技术。</p>
-<p><strong>3.文本挖掘（或者文本数据挖掘）</strong>：包括文本聚类、分类、信息抽取、摘要、情感分析以及对挖掘的信息和知识的可视化、交互式的表达界面。目前主流的技术都是基于统计机器学习的。</p>
-<p><strong>4.机器翻译</strong>：把输入的源语言文本通过自动翻译获得另外一种语言的文本。根据输入媒介不同，可以细分为文本翻译、语音翻译、手语翻译、图形翻译等。机器翻译从最早的基于规则的方法到二十年前的基于统计的方法，再到今天的基于神经网络（编码-解码）的方法，逐渐形成了一套比较严谨的方法体系。</p>
-<p><strong>5.信息检索</strong>：对大规模的文档进行索引。可简单对文档中的词汇，赋之以不同的权重来建立索引，也可利用1，2，3的技术来建立更加深层的索引。在查询的时候，对输入的查询表达式比如一个检索词或者一个句子进行分析，然后在索引里面查找匹配的候选文档，再根据一个排序机制把候选文档排序，最后输出排序得分最高的文档。</p>
-<p><strong>6.问答系统</strong>： 对一个自然语言表达的问题，由问答系统给出一个精准的答案。需要对自然语言查询语句进行某种程度的语义分析，包括实体链接、关系识别，形成逻辑表达式，然后到知识库中查找可能的候选答案并通过一个排序机制找出最佳的答案。</p>
-<p><strong>7.对话系统</strong>：系统通过一系列的对话，跟用户进行聊天、回答、完成某一项任务。涉及到用户意图理解、通用聊天引擎、问答引擎、对话管理等技术。此外，为了体现上下文相关，要具备多轮对话能力。同时，为了体现个性化，要开发用户画像以及基于用户画像的个性化回复。</p>
-<p>随着深度学习在图像识别、语音识别领域的大放异彩，人们对深度学习在NLP的价值也寄予厚望。再加上AlphaGo的成功，人工智能的研究和应用变得炙手可热。自然语言处理作为人工智能领域的认知智能，成为目前大家关注的焦点。很多研究生都在进入自然语言领域，寄望未来在人工智能方向大展身手。但是，大家常常遇到一些问题。俗话说，万事开头难。如果第一件事情成功了，学生就能建立信心，找到窍门，今后越做越好。否则，也可能就灰心丧气，甚至离开这个领域。这里针对给出我个人的建议，希望我的这些粗浅观点能够引起大家更深层次的讨论。</p>
-<p><strong>建议1：如何在NLP领域快速学会第一个技能？</strong></p>
-<p>我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。</p>
-<p><strong>建议2：如何选择第一个好题目？</strong></p>
-<p>工程型研究生，选题很多都是老师给定的。需要采取比较实用的方法，扎扎实实地动手实现。可能不需要多少理论创新，但是需要较强的实现能力和综合创新能力。而学术型研究生需要取得一流的研究成果，因此选题需要有一定的创新。我这里给出如下的几点建议。</p>
-<ul>
-<li>先找到自己喜欢的研究领域。你找到一本最近的ACL会议论文集, 从中找到一个你比较喜欢的领域。在选题的时候，多注意选择蓝海的领域。这是因为蓝海的领域，相对比较新，容易出成果。</li>
-<li>充分调研这个领域目前的发展状况。包括如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系；数据方面，有没有一个大家公认的标准训练集和测试集；研究团队，是否有著名团队和人士参加。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。</li>
-<li>在确认进入一个领域之后，按照建议一所述，需要找到本领域的开源项目或者工具，仔细研究一遍现有的主要流派和方法，先入门。</li>
-<li>反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。每次实验之后，必须要进行分析存在的错误，找出原因。</li>
-<li>对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。</li>
-<li>与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，则去写一篇文章，否则，应该换一个新的选题。</li>
-</ul>
-<p><strong>建议3：如何写出第一篇论文？</strong></p>
-<ul>
-<li>接上一个问题，如果想法不错，且被实验所证明，就可开始写第一篇论文了。</li>
-<li>确定论文的题目。在定题目的时候，一般不要“…系统”、“…研究与实践”，要避免太长的题目，因为不好体现要点。题目要具体，有深度，突出算法。</li>
-<li>写论文摘要。要突出本文针对什么重要问题，提出了什么方法，跟已有工作相比，具有什么优势。实验结果表明，达到了什么水准，解决了什么问题。</li>
-<li>写引言。首先讲出本项工作的背景，这个问题的定义，它具有什么重要性。然后介绍对这个问题，现有的方法是什么，有什么优点。但是（注意但是）现有的方法仍然有很多缺陷或者挑战。比如（注意比如），有什么问题。本文针对这个问题，受什么方法（谁的工作）之启发，提出了什么新的方法并做了如下几个方面的研究。然后对每个方面分门别类加以叙述，最后说明实验的结论。再说本文有几条贡献，一般写三条足矣。然后说说文章的章节组织，以及本文的重点。有的时候东西太多，篇幅有限，只能介绍最重要的部分，不需要面面俱到。</li>
-<li>相关工作。对相关工作做一个梳理，按照流派划分，对主要的最多三个流派做一个简单介绍。介绍其原理，然后说明其局限性。</li>
-<li>然后可设立两个章节介绍自己的工作。第一个章节是算法描述。包括问题定义，数学符号，算法描述。文章的主要公式基本都在这里。有时候要给出简明的推导过程。如果借鉴了别人的理论和算法，要给出清晰的引文信息。在此基础上，由于一般是基于机器学习或者深度学习的方法，要介绍你的模型训练方法和解码方法。第二章就是实验环节。一般要给出实验的目的，要检验什么，实验的方法，数据从哪里来，多大规模。最好数据是用公开评测数据，便于别人重复你的工作。然后对每个实验给出所需的技术参数，并报告实验结果。同时为了与已有工作比较，需要引用已有工作的结果，必要的时候需要重现重要的工作并报告结果。用实验数据说话，说明你比人家的方法要好。要对实验结果好好分析你的工作与别人的工作的不同及各自利弊，并说明其原因。对于目前尚不太好的地方，要分析问题之所在，并将其列为未来的工作。</li>
-<li>结论。对本文的贡献再一次总结。既要从理论、方法上加以总结和提炼，也要说明在实验上的贡献和结论。所做的结论，要让读者感到信服，同时指出未来的研究方向。</li>
-<li>参考文献。给出所有重要相关工作的论文。记住，漏掉了一篇重要的参考文献（或者牛人的工作），基本上就没有被录取的希望了。</li>
-<li>写完第一稿，然后就是再改三遍。</li>
-<li>把文章交给同一个项目组的人士，请他们从算法新颖度、创新性和实验规模和结论方面，以挑剔的眼光，审核你的文章。自己针对薄弱环节，进一步改进，重点加强算法深度和工作创新性。</li>
-<li>然后请不同项目组的人士审阅。如果他们看不明白，说明文章的可读性不够。你需要修改篇章结构、进行文字润色，增加文章可读性。</li>
-<li>如投ACL等国际会议，最好再请英文专业或者母语人士提炼文字。</li>
-</ul>
+        <h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p>Yamada I, Shindo H, Takeda H, et al. Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation[J]. 2016:250-259.</p>
+<h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><p>在NED（Named Entity Disambiguation）中的主要困难是实体指称词意义的模糊性。</p>
+<p>早期研究集中于建模上下文语境，比如上下文与候选实体的百科页面的相似度(Bunescu and Pasca, 2006;Mihalcea and Csomai, 2007)。很多先进的方法通过使用更复杂的全局方法，所有指称词基于全局相关度进行同时消歧。</p>
+<p>词向量逐渐流行(Mikolov et al., 2013a;Mikolov et al., 2013b; Pennington et al., 2014)。这种方法涉及到从大量非结构文本中学习单词的连续向量表达。当相似单词被放在低维向量空间中相邻的位置上时，这些向量可以捕捉单词之间的语义相似度.</p>
+<h1 id="3-所提算法创新的工作"><a href="#3-所提算法创新的工作" class="headerlink" title="3. 所提算法创新的工作"></a>3. 所提算法创新的工作</h1><p><strong>传统skip-gram模型：</strong></p>
+<p>Skip-gram模型的训练目标是给定目标单词的情况下找到有助于预测上下文词汇的单词表达。</p>
+<p>形式化：给定T个单词的序列：<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image002.gif" alt="img">。这个模型旨在最大化下面的目标函数：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image004.jpg" alt="img"></p>
+<p>其中c是上下文窗口的大小，</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image006-1544533695373.gif" alt="img"></p>
+<p>代表目标实体</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image008.gif" alt="img"></p>
+<p>代表其上下文单词。</p>
+<p>条件概率</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image010.gif" alt="img"></p>
+<p>通过下面的softmax函数计算：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image012.jpg" alt="img"></p>
+<p>其中W是词汇表中所有单词的集合，</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image014.gif" alt="img"></p>
+<p>和</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image016.gif" alt="img"></p>
+<p>代表单词</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image018.gif" alt="img"></p>
+<p>在矩阵V和U中向量。<br>通过调整V来使得目标函数最大化，即给定目标实体上下文出现概率最大。这样本文就得到了一个代表T个单词的向量表达V。</p>
+<p><strong>对skip-gram模型进行扩展：</strong></p>
+<p>本文扩展矩阵V和U除了单词向量之外还包括实体向量，得到</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image020.gif" alt="img"></p>
+<p>和</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image022.gif" alt="img"></p>
+<p><strong>知识库图模型KB Graph Model：</strong></p>
+<p>本文在KB中使用一个内部连接结构，使得模型学习到实体对之间的相关度。Wikipedia Link-based Measure（WLM）是一个基于连接结构测量实体相关度的方法。计算两个实体相关度的方法如下：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image024.jpg" alt="img"></p>
+<p>其中E是KB中所有实体的集合，Ce是与实体e有连接的实体集合。直观上，WLM认为具有相似连接的实体是相关的。虽然WLM简单，但是比很多算法要好。</p>
+<p>启发自WLM，知识库图模型将具有相似连接的实体放在向量空间中相近的位置，通过下面的目标函数来形式化这个过程：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image026.jpg" alt="img"></p>
+<p>本文使用softmax函数来计算上述公式中的条件概率：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image028.jpg" alt="img"></p>
+<p>对于给定的实体e，本文训练模型来预测连接Ce。因此，Ce在skip-gram模型中和上下文单词起到相似的作用。</p>
+<p><strong>Anchor Context Model（锚文本模型）：</strong></p>
+<p>如果本文仅考虑在skip-gram模型中加入KB图模型，实体和单词的向量不会相互作用，这些向量会被放在向量空间中不同的子空间中。为了解决这个问题，本文提出Anchor Context Model将相似的实体和单词放在向量空间中相近的位置。</p>
+<p>思想：利用KB锚和上下文来训练模型。Wikipedia中有很多内部锚，利用这些，本文能从KB中直接获取到实体及其上下文单词的出现。</p>
+<p>本文训练模型通过目标锚来预测一个实体指向的上下文单词。目标函数如下：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image030.jpg" alt="img"></p>
+<p>其中A代表KB中的锚集合，其中每一个包含一对实体指称<br><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image032.gif" alt="img"><br>和它的上下文单词Q的集合。Q包含前c个单词和后c个单词。|A|表示KB中内部锚的数量。</p>
+<p>条件概率通过softmax函数计算：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image034.jpg" alt="img"></p>
+<p>使用提出的模型，本文通过将单词和具有相似上下文单词的实体放在向量空间中相邻的地方，来分配单词和实体的向量表达。</p>
+<p><strong>结合</strong></p>
+<p>通过3中提出的三种模型及它们的目标函数，本文将它们线性结合在一起，得到最终的目标函数：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image036.jpg" alt="img"></p>
+<p>模型的训练意向最大化上述的函数，结果得到矩阵V被用于向量化单词和实体。</p>
+<p>算法的一个问题是，在训练模型时，包含在softmax函数中的正则化项的计算是非常昂贵的，因为涉及到所有单词W或实体E的总和。为了解决这个问题，本文使用负采样（NEG）来将原始的目标函数转化为计算可行的目标函数。</p>
+<p>NEG通过下面的目标函数定义：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image038.jpg" alt="img"></p>
+<p>其中<br><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image040.jpg" alt="img"><br>是一个sigmoid函数，g是负样本的数量。本文替换公式（1）中的条件概率通过上面这个目标函数。因此，公式（1）的目标函数转化成了一个简单的二分类目标函数，来对从噪声分布Pneg(w)中提取的words（上文中翻译成单词，这里还是用words防止错误解读）进行辨别。同样的本文也可以对公式（4）和公式（6）进行同样的替换。</p>
+<p>NEG将噪声分布Pneg(w)作为一个自由参数。</p>
+<p>本文使用Wikipedia来训练所有的模型。通过在Wikipedia页面上迭代几次来进行同时优化得到最大的目标函数。本文使用随机梯度下降（SGD）进行优化。</p>
+<h1 id="4-算法框架"><a href="#4-算法框架" class="headerlink" title="4. 算法框架"></a>4. 算法框架</h1><p><strong>使用词向量进行NED：</strong></p>
+<p>任务：给定文档d中的实体指称词集合</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image042.gif" alt="img"></p>
+<p>KB中的实体集合</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image044.gif" alt="img"></p>
+<p>将指称词指向对应的实体。<br>本文将NED任务分成两个部分：候选集生成和指称消歧。</p>
+<p><strong>指称消歧</strong></p>
+<p>给定一个文档d和指称词m以及它的候选实体集合{ e1, e2,…, ek}，任务是从集合中选择最相关实体对m进行消歧。</p>
+<p>提升效果的关键是有效建模上下文，本文提出两个模型，使用提出的词向量模型对上下文进行建模。本文使用监督学习将两个模型和标准NED特征结合起来。</p>
+<p><strong>1）建模文本上下文：</strong></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image046.jpg" alt="img"></p>
+<p>其中</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image048.gif" alt="img"></p>
+<p>是指称词m的上下文集合，</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image050.gif" alt="img"></p>
+<p>代表单词w的词向量。本文使用文档d中的所有名词作为上下文（&lt;<a href="https://opennlp.apache.org/）。" target="_blank" rel="noopener">https://opennlp.apache.org/）。</a><br>然后本文计算候选实体和文本上下文的相似度，通过</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image052.gif" alt="img"></p>
+<p>和</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif" alt="img"></p>
+<p>余弦相似度。</p>
+<p><strong>2）建模相关度</strong></p>
+<p>一个简单的两步方法：第一步，在非歧指称词上使用相关度得分训练机器学习模型；第二步，在预测到的实体分配上使用相关度得分重新训练模型。</p>
+<p>评价相关度：先计算上下文实体（非歧义的实体）的词向量，计算上下文实体向量和目标实体e向量的相似度。为了获得上下文实体的词向量，本文平均他们的词向量：</p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image056.jpg" alt="img"></p>
+<p>其中<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image058.gif" alt="img">表示上下文实体集合。<br>为了评价相关度得分，本文重新使用上下文实体<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image060.gif" alt="img">和实体<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif" alt="img">之间的余弦相似度。</p>
+<p><strong>3）学会排序</strong></p>
+<p>本文采用监督机器学习方法来排序给定指称词m和文档d之后的候选实体集，目的是为了将标准NED特征和上下文信息结合起来。</p>
+<p>梯度提升回归树（GBRT）（<a href="http://scikit-learn.org/stable/）：包含一组回归树，给定实例预测相关度得分。代价函数为logistic" target="_blank" rel="noopener">http://scikit-learn.org/stable/）：包含一组回归树，给定实例预测相关度得分。代价函数为logistic</a> loss。主要参数有迭代次数，学习速率和决策树的最大深度。</p>
+<h1 id="5-实验"><a href="#5-实验" class="headerlink" title="5. 实验"></a>5. 实验</h1><p><strong>训练词向量的数据：</strong><a href="https://dumps.wikimedia.org/" target="_blank" rel="noopener">https://dumps.wikimedia.org/</a></p>
+<p><strong>1）测试实体词向量的质量：</strong></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image062.jpg" alt="img"></p>
+<p><strong>2）命名实体消歧</strong></p>
+<p><strong>数据集：CoNLL（Hoffart et al. 2011）、TAC 2010（Ji et al. 2010）。</strong></p>
+<p><strong>对比算法：Hoffart et al.、He et al.、Chisholm and Hachey、Pershina et al.</strong></p>
+<p><strong>本文算法的结果：</strong></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image064.jpg" alt="img"></p>
+<p><strong>表3是对比实验结果：</strong></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image066.jpg" alt="img"></p>
+<p><strong>表4是本文算法不同特征学习的结果：</strong></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image068.jpg" alt="img"></p>
+<p><strong>在加入基于本文的词向量模型的上下文特征时，效果大大的提升了。</strong></p>
+<p><strong>错误分析：观察到在CoNLL测试集上，大约48.6%的错误率是由于metonymy mentions造成的。当一个流行的错误实体，匹配到指称词，本文的NED算法经常出错，这是由于本文的算法利用KB中的实体流行性数据。</strong></p>
+<h1 id="6-工作评价"><a href="#6-工作评价" class="headerlink" title="6. 工作评价"></a>6. 工作评价</h1><p>本文提出了一种词嵌入方法，将文字和实体联合映射到相同的连续向量空间中。本文的方法使本文能够有效地对文本和全局的文本进行建模。此外，在这些背景下，本文的NED方法优于最先进的NED方法。</p>
+<p><strong>在未来的工作中，本文打算通过利用关系知识来改进本文的模型，例如在知识图中（例如Freebase的关系。本文也想使本文的嵌入应用到其他的应用领域。</strong></p>
 
       
     </div>
@@ -439,6 +562,12 @@
           
             <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
           
+            <a href="/tags/实体链接/" rel="tag"># 实体链接</a>
+          
+            <a href="/tags/知识图谱/" rel="tag"># 知识图谱</a>
+          
+            <a href="/tags/论文阅读/" rel="tag"># 论文阅读</a>
+          
         </div>
       
 
@@ -450,8 +579,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/29/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/12/06/Zero-Shot应用于跨语言实体链接/" rel="next" title="Zero-Shot应用于跨语言实体链接">
+                <i class="fa fa-chevron-left"></i> Zero-Shot应用于跨语言实体链接
               </a>
             
           </div>
@@ -459,10 +588,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/03/论文阅读：Neural Cross-Lingual Entity Linking/" rel="prev" title="论文阅读：Neural Cross-Lingual Entity Linking">
-                论文阅读：Neural Cross-Lingual Entity Linking <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -514,8 +639,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -606,6 +740,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-阅读文献来源"><span class="nav-number">1.</span> <span class="nav-text">1. 阅读文献来源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-论文解决的科学问题及研究动机"><span class="nav-number">2.</span> <span class="nav-text">2. 论文解决的科学问题及研究动机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-所提算法创新的工作"><span class="nav-number">3.</span> <span class="nav-text">3. 所提算法创新的工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法框架"><span class="nav-number">4.</span> <span class="nav-text">4. 算法框架</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-实验"><span class="nav-number">5.</span> <span class="nav-text">5. 实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-工作评价"><span class="nav-number">6.</span> <span class="nav-text">6. 工作评价</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
