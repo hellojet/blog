@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-17T08:06:17.223Z</updated>
+  <updated>2018-12-19T14:23:28.031Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy</title>
+    <link href="http://yoursite.com/2018/12/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ALinear%20Algebraic%20Structure%20of%20Word%20Senses,%20with%20Applications%20to%20Polysemy/"/>
+    <id>http://yoursite.com/2018/12/19/论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy/</id>
+    <published>2018-12-19T14:23:00.000Z</published>
+    <updated>2018-12-19T14:23:28.031Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p>Arora S, Li Y, Liang Y, et al. Linear algebraic structure of word senses, with applications to polysemy[J]. Transactions of the Association of Computational Linguistics, 2018, 6: 483-495.</p><p>Sanjeev Arora（大牛）：Professor of Computer Science，Princeton University，theoretical machine learningtheoretical computer science</p><p>Yingyu Liang： University of Wisconsin-Madison，machine learning</p><h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><p>Firth’s hypothesis：一个单词的意思可以通过周围词的分布得到（Firth，1957）。所以现在的词嵌入通过一个实值向量表示一个单词的意思。</p><p>比较经典的模型有(Turney et al., 2010)：词的共现矩阵统计、神经网络模型（word2vec)，使用非凸优化(Mikolov et al., 2013a;b)。</p><p><strong>而问题在于</strong>当一词多义的情况出现，一个词嵌入所表示的意义是不明确的。</p><p><strong>现行的解决思路：</strong></p><ul><li>通过内积来提取隐藏信息，效果不好</li><li>线性叠加，通过简单稀疏编码恢复</li></ul><p><strong>现行的解决方案（Word Sense Induction）：</strong></p><ul><li>通过Yarowsky (1995)中的几种范例方法来自动学习语义</li><li>通过聚类邻居词来识别多义</li><li>通过将嵌入扩张为更复杂的表示，而不是单个向量，来捕捉单词的含义(Mruphy et al., 2012; Huang et al., 2012)，但是在缺少WordNets的语言上没办法使用</li></ul><p>本文旨在提出一种从词嵌入中提取出不同意义，用来解决一词多义问题的方法。</p><p>通过本文算法可以进一步解决WSD（word sense disambiguation 语义消歧）问题，为其创造标注语料库或者WordNet。</p><h1 id="3-所提算法创新的工作"><a href="#3-所提算法创新的工作" class="headerlink" title="3. 所提算法创新的工作"></a>3. 所提算法创新的工作</h1><ul><li><p>本文使用语料库仅仅是为了生成词向量，而基于图的聚类方法在语料库上进行work，速度非常慢。</p></li><li><p>本文算法恢复得到的不同语义是通过话语原语相互联系的。</p></li><li><p>本文算法完全非监督，不需要大量标注集</p></li><li><p>使用了稀疏编码，曾经没有出现在解决一词多义词嵌入问题中</p></li><li><strong>通过话语原语（discourse atom）提取语义：</strong></li></ul><p>先说语义的线性结构，“tie”具有很多意思，其词嵌入应该约等于它的意思的加权和。（这个在作者16年工作中句子向量也提到过）。当然作者是做了一些实验发现这个的：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545224903660.png" alt="1545224903660"></p><p>这个实验通过合并两个单词创建一个多义词：删除这两个词并替换成一个词，进而计算该新词的词嵌入，计算方式和之前计算两个词的方法相同。改变两个词的频率，做大量实验，结果发现新词的向量总是接近两个词的张量子空间。</p><p>那么如何从词嵌入中提取不同的语义信息呢？</p><p>上述实验表明：<br>$$<br>v_{tie} = \alpha_1v_{tie1}+\alpha_2v_{tie2}+\alpha_3v_{tie3}+…<br>$$<br>但是这种组合是无穷的，我们还需要其他的信息帮助我们提取语义。</p><p><strong>借助不同词的语义关联</strong></p><p>比如，“tie”的“article of clothing”与shoe，jacket等相连。</p><p>为此，需要用到作者16年工作Arora et al. (2016)中的<strong>话语模型随机游走</strong>。</p><p>这个模型建立在(Mnih and Hinton, 2007)的逻辑线性主题模型上，原模型定义了主题c与词w之间的一个分布，而随机游走模型将c视为一个话语（在语料库的这个地方正在谈论什么），通过允许c游走来构建语料库：当走到c时，根据原模型的分布来生成一些词，这些词是与c在余弦上相近的。</p><p>有了以上的基础之后，tie1和tie2等对应于tie周围不同词的分布，也可以叫做不同的话语（话语就是一种词的分布）。比如，遇到“clothing”话语，高概率产生tie1（article of clothing），shoe，jacket等词。</p><p>进一步，<strong>“clothing”话语与shoe，jacket，tie1等有很高的内积。</strong>（这是根据原模型w关于c的分布的公式得到的）</p><p>接下来，就引入一个全局优化，目标是找出所有的话语原语：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545226941682.png" alt="1545226941682"></p><p>系数α非零（叫做硬稀疏约束），加号后面一项是噪声向量。</p><p>A和α都是未知的，所以该问题是非凸的，涉及到稀疏编码，本文使用标准k-SVD算法来解决做个问题。</p><p>这里的A就是话语原语。</p><p><strong>通俗解释：训练可以得到话语原语，通过话语原语可以重现一个单词向量。这些话语原语就是我们讲的一词多义中的多义。而如何解释某个原语意义就看与这个原语关联最近的一些词。</strong></p><h1 id="4-实验"><a href="#4-实验" class="headerlink" title="4. 实验"></a>4. 实验</h1><h2 id="话语原语实验"><a href="#话语原语实验" class="headerlink" title="话语原语实验"></a>话语原语实验</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545210119277.png" alt="1545210119277"></p><p>上图包含了一些话语原语以及他们的近邻词，出现在一个话语中的单词通常彼此相近</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545210249432.png" alt="1545210249432"></p><p>上图是连接到“chair”和“bank”的五个话语原语，每个原语通过六个最近的词来表示。比如上面表中是连接到“chair”的五个原语1187,739,590,1322,1457.</p><p><strong>话语原语的层级结构：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545210621661.png" alt="1545210621661"></p><p>上图是科学领域使用原语的一个例子，biology和chemistry的线性组合与跨学科biochemistry相近。</p><h2 id="定量测试"><a href="#定量测试" class="headerlink" title="定量测试"></a>定量测试</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545227648755.png" alt="1545227648755"></p><p>m代表正确的含义数和干扰项，所有的算法从中选择k个正确的含义。</p><p>m=20，k=4时，本文算法precision=0.63，recall=0.70。</p><p>在m20时，本文算法与非本语说话者表现相同。</p><h1 id="5-作者工作评价"><a href="#5-作者工作评价" class="headerlink" title="5. 作者工作评价"></a>5. 作者工作评价</h1><p>从(Arora et al . 2016年)获得的词嵌入，还有其他几个方法，已被证明包含这个词的不同意义，通过简单的稀疏编码可提取出。目前似乎名词做得比其他词性更好。本文方法的一个新颖之处在于，词义与2000个话语向量相关联。这使得该方法在NLP其他领域的任务，与WordNets一样有用。这种方法在半自动化模式下更有用，更准确，因为人工更能够识别词义。</p><p>对数可能是本文算法成功的关键，因为对数使得很少出现的词义有一个合理的权重。</p><h1 id="6-自己对该论文的评价"><a href="#6-自己对该论文的评价" class="headerlink" title="6. 自己对该论文的评价"></a>6. 自己对该论文的评价</h1><p>本文通过提出话语原语（discourse atom）的概念来表示一个词向量中包含的各种语义，在数学和实践上都证明了各种方法生成的词向量都近似于该词各种含义的向量线性组合这一点。这对nlp领域的发展具有重大的意义。</p><p>在实体链接任务中可以通过判断一个词的语义来更准确的链接到知识库中，可行性很高，具体来说：</p><p>通过语料库训练每个词的词向量以及话语原语向量，以及词向量和话语原语之间的余弦相似度（判断其含义是否近似），拿到一个mention之后，先判断该词与哪个话语原语有较高的相似度，可以作为一种辅助决策，也可以进一步根据上下文来判断该mention对应的实体。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-阅读文献来源&quot;&gt;&lt;a href=&quot;#1-阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;1. 阅读文献来源&quot;&gt;&lt;/a&gt;1. 阅读文献来源&lt;/h1&gt;&lt;p&gt;Arora S, Li Y, Liang Y, et al. Linear algebr
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="词嵌入" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%B5%8C%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>论文阅读：A Simple but Tough-to-beat Baseline for Sentence Embeddings</title>
