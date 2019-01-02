@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-24T02:37:12.027Z</updated>
+  <updated>2019-01-02T01:18:38.646Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction</title>
+    <link href="http://yoursite.com/2019/01/02/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEffective%20Deep%20Memory%20Networks%20for%20Distant%20Supervised%20Relation%20Extraction/"/>
+    <id>http://yoursite.com/2019/01/02/论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction/</id>
+    <published>2019-01-02T01:17:28.000Z</published>
+    <updated>2019-01-02T01:18:38.646Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p>Feng X, Guo J, Qin B, et al. Effective deep memory networks for distant supervised relation extraction[C]//Proceedings of the Twenty-Sixth International Joint Conference on Artificial Intelligence, IJCAI. 2017: 19-25.</p><p>作者单位来自哈尔滨工业大学</p><h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><h2 id="研究内容"><a href="#研究内容" class="headerlink" title="研究内容"></a>研究内容</h2><p>远程监督关系提取(RE)是一种不需要标记训练数据就能从文本中找到新的关系的有效方法。通常可以将其形式化为一个多实例多标签问题。</p><p>该文章介绍了一种新型的用于远距离监督RE的神经方法，并着重介绍了注意机制。</p><p>与基于特征的逻辑回归模型和组合神经模型(如CNN)不同，本文的方法包括两个主要的基于注意力的记忆组件，它们能够显式地捕捉每个上下文单词对实体对（entity pair）表示建模的重要性，以及关系之间的内在依赖关系。</p><p>这种重要程度和依赖关系是通过多个计算层来计算的，每个计算层都是外部存储器上的神经注意模型。</p><p>在真实数据集上的实验表明，本文的方法比各种基线更具有显著的、一致的性能。</p><h2 id="研究动机"><a href="#研究动机" class="headerlink" title="研究动机"></a>研究动机</h2><p>关系提取(RE)的目的是提取实体之间的语义关系。给出一个带注释的头实体$e_h$和尾实体$e_t$的句子$s$，RE的目的是预测$e_h$和$e_t$之间的关系。</p><p>RE是自然语言处理(NLP)中的一项基本任务，是构建结构化知识库的重要组成部分。</p><p>以前的方法包括基于特征的方法[Zhang et al., 2006; Li et al., 2012]和基于神经的方法[Nguyen and Grishman, 2015b]，能够基于人类标注提取高质量的关系。然而，注释的高成本通常会在规模和领域上限制现有的已标记的RE数据。</p><p>解决该问题的一个有效解决方案就是<strong>远程监管</strong>。远程监督能通过将关系数据库与文本进行对齐来自动生成训练数据[Mintz et al., 2009]。</p><p>为了方便文本的建模，神经网络在远程监督RE中得到了广泛的探索，并取得了最先进的结果[Zeng et al., 2015; Lin et al., 2016; Jiang et al., 2016]。</p><p>多种神经网络如卷积神经网络(CNN)和递归神经网络(RNN)等被采用来学习每个句子（实例）的表征，然后被用来作为关系分类中对应实体对的表征。</p><p>作者观察到：并不是所有的上下文词都对实体对的关系推断有同样的贡献；不同关系之间存在依赖关系(如蕴涵关系、冲突关系)，这是用隐式关系表达推断某些实例的关键线索。</p><p>因此，一个理想的解决方案不仅应该能够显式地捕捉不同上下文单词的重要性，而且应该能够自动地学习关系之间的依赖关系。</p><h1 id="3-所提算法创新的工作"><a href="#3-所提算法创新的工作" class="headerlink" title="3. 所提算法创新的工作"></a>3. 所提算法创新的工作</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545794921586.png" alt="1545794921586"></p><h2 id="单词层记忆网络（Word-Level-Memory-Network）"><a href="#单词层记忆网络（Word-Level-Memory-Network）" class="headerlink" title="单词层记忆网络（Word-Level Memory Network）"></a>单词层记忆网络（Word-Level Memory Network）</h2><p>该层是一个单词层的记忆网络，它学习每个上下文单词相对于特定实体对的重要性/权重。</p><p>先将上下⽂句子编码成向量，比如存在句⼦$s={w_1,…,w_l}$，从中提取出实体对的词后得到<br>$$<br>{w_1,…,w_{e_h-1},w_{e_h+1},…,w_{e_t-1},w_{e_t+1},…,w_l}<br>$$<br>称其为外部记忆单元m。之后对上下⽂进行attention计算并求出相应字符的加权和求出上下文的向量表示。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545790729160.png" alt="1545790729160"></p><p>如图所示，生成的上下文向量可以再次输入到下一层hop中计算新的attention并⽣成新的上下⽂向量表示，因此可以叠加多层的hop得到最终的基于注意力的上下文向量。</p><p>得到上下文向量后，将其与CNN模型得到的向量拼接在一起，得到关于该实体对的句子表征。</p><p><strong>单词注意力：</strong></p><p>注意机制的基本思想是，在计算上层表示时，对每一个较低的位置赋予一个权重(重要性)(Bahdanauet al.，2015)。直觉告诉我们语境词对句子语义的贡献是不相等的。此外，如果我们关注不同的实体对，单词的重要性应该是不同的。</p><p>我们通过注意力模型计算上层向量可以通过下述加权的方式。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545809741451.png" alt="1545809741451"></p><p>其中m是外部记忆，α是权重，x是输出向量。</p><p>对于每个m，使用FNN来计算与实体对的语义相似度，评价函数如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545809748395.png" alt="1545809748395"></p><p>最后通过softmax来计算得到m最终的重要性分布。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545809754585.png" alt="1545809754585"></p><h2 id="关系层基于注意力记忆网络（two-layer-relation-level-attention-based-memory-network）"><a href="#关系层基于注意力记忆网络（two-layer-relation-level-attention-based-memory-network）" class="headerlink" title="关系层基于注意力记忆网络（two-layer relation-level attention-based memory network）"></a>关系层基于注意力记忆网络（two-layer relation-level attention-based memory network）</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545808833980.png" alt="1545808833980"></p><p>该层学习关系之间的依赖关系，将上下文向量编码（单词层记忆网络得到的输出）成多种关系向量。</p><p>如上图所示，我们为每对关系构建了一个两层记忆网络。</p><ol><li>第一层：依循[Lin et al., 2016]使用实例级别的注意力去挑选能够表达对应关系的句子。具体：随机选择一个向量作为关系的表征，然后通过注意力层来计算关系和每个句子之间的关联权重。</li><li>第二层：设计一个关系层的注意力模型，来学习关系之间的依赖关系。比如，如果一个人是一个公司的创立者（A，founder，B），那么A有大概率是B的股东（A，major_shareholders，B）。该层的输入是第一层的输出，该层的输出用于多标签关系分类。</li></ol><p><strong>关系注意力：</strong></p><p>探讨每个关系中所有句子的重要性，并学习关系之间的依赖关系。实体对的最终表示将是句子表示的组合。</p><ul><li><p>实例上的选择性注意力</p><p>最终表征取决于所有句子的表征，每个句子具有实体对是否包含关系的信息。因为，最终表征可以被计算为句子表征的加权和：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810130725.png" alt="1545810130725"></p><p>然后学习$\beta$权重：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810169928.png" alt="1545810169928"></p><p>其中$z_i$表明输入句子和预测关系之间的匹配度[Lin et al., 2016]：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810322564.png" alt="1545810322564"></p></li><li><p>关系上的选择性注意力</p><p>为了探索所有关系的依赖，使用选择性注意力来计算每个关系之间的相似度。输入为前者输出：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810445408.png" alt="1545810445408"></p><p>$\gamma_{ji}$是关系表征$R_j$和$R_i$之间的相似度，计算如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810536552.png" alt="1545810536552"></p><p>其中$h_i$表明$R_j$和$R_i$之间的相似度，计算如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810580889.png" alt="1545810580889"></p></li></ul><h2 id="远程监督关系抽取"><a href="#远程监督关系抽取" class="headerlink" title="远程监督关系抽取"></a>远程监督关系抽取</h2><p>对于每种关系对应的特征向量$R^*_i$，将其输入一个二分类器中通过logistic回归得到其是否存在关系的概率值。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810667088.png" alt="1545810667088"></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810683481.png" alt="1545810683481"></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545810694669.png" alt="1545810694669"></p><h1 id="4-实验"><a href="#4-实验" class="headerlink" title="4. 实验"></a>4. 实验</h1><h2 id="数据集："><a href="#数据集：" class="headerlink" title="数据集："></a>数据集：</h2><p>NYT10：[Riedel et al., 2010]</p><p>该数据集是通过对齐Freebase与《纽约时报》(NYT)语料库生成的关系，2005年和2006年的句子用于训练，2007年的句子用于测试。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545812077634.png" alt="1545812077634"></p><h2 id="对比算法实验"><a href="#对比算法实验" class="headerlink" title="对比算法实验"></a>对比算法实验</h2><ul><li>基于特征的方法：Mintz，Multir，MIML</li><li>基于神经的方法：PCNN，ATT</li></ul><p>结果：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545812150895.png" alt="1545812150895"></p><h2 id="两种记忆网络的影响"><a href="#两种记忆网络的影响" class="headerlink" title="两种记忆网络的影响"></a>两种记忆网络的影响</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545812159417.png" alt="1545812159417"></p><h2 id="Hop数量的影响"><a href="#Hop数量的影响" class="headerlink" title="Hop数量的影响"></a>Hop数量的影响</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545812214181.png" alt="1545812214181"></p><h1 id="5-作者工作评价"><a href="#5-作者工作评价" class="headerlink" title="5. 作者工作评价"></a>5. 作者工作评价</h1><p>本文设计了一种新的神经网络模型，该模型具有两个记忆网络，用于远程监督RE。在第一个词级记忆网络中，本文的模型捕捉上下文词的重要性，并自动对句子的语义表示建模。本文还设计了关系级记忆网络，以捕获关系之间的依赖关系，并结合多实例多标签学习。实验结果表明，与同类方法相比，该方法有明显的改进。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;1-阅读文献来源&quot;&gt;&lt;a href=&quot;#1-阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;1. 阅读文献来源&quot;&gt;&lt;/a&gt;1. 阅读文献来源&lt;/h1&gt;&lt;p&gt;Feng X, Guo J, Qin B, et al. Effective deep 
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+      <category term="关系抽取" scheme="http://yoursite.com/categories/nlp/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="关系抽取" scheme="http://yoursite.com/tags/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/"/>
+    
+      <category term="远程监督" scheme="http://yoursite.com/tags/%E8%BF%9C%E7%A8%8B%E7%9B%91%E7%9D%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>论文简读：word sense disambiguation：a survey</title>
