@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-02T01:18:38.646Z</updated>
+  <updated>2019-01-07T11:59:52.788Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts</title>
+    <link href="http://yoursite.com/2019/01/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AWeakly-supervised%20Contextualization%20of%20Knowledge%20Graph%20Facts/"/>
+    <id>http://yoursite.com/2019/01/07/论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts/</id>
+    <published>2019-01-07T11:58:28.000Z</published>
+    <updated>2019-01-07T11:59:52.788Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="阅读文献来源"><a href="#阅读文献来源" class="headerlink" title="阅读文献来源"></a>阅读文献来源</h1><p><strong>Voskarides N , Meij E , Reinanda R , et al. Weakly-supervised Contextualization of Knowledge Graph Facts[J]. 2018.</strong></p><p>第一作者是Nikos Voskarides，个人主页：<a href="https://nickvosk.github.io/，就读于美国弗吉尼亚大学（The" target="_blank" rel="noopener">https://nickvosk.github.io/，就读于美国弗吉尼亚大学（The</a> University of Virginia）。研究重点是使用结构化和非结构化信息源提升信息访问。目前的工作是通过描述和语境化内容，使最终用户更容易访问搜索领域的知识图谱。发表的paper：</p><ul><li><strong>Weakly-supervised Contextualization of Knowledge Graph Facts</strong> [<a href="https://arxiv.org/abs/1805.02393" target="_blank" rel="noopener">pdf</a>|<a href="https://www.techatbloomberg.com/research-weakly-supervised-contextualization-knowledge-graph-facts/" target="_blank" rel="noopener">data</a>]<br>Nikos Voskarides, Edgar Meij, Ridho Reinanda, Abhinav Khaitan, Miles Osborne, Giorgio Stefanoni, Kambadur Prabhanjan and Maarten de Rijke.<br>SIGIR 2018.</li><li><strong>Generating Descriptions of Entity Relationships</strong> [<a href="https://staff.fnwi.uva.nl/m.derijke/wp-content/papercite-data/pdf/voskarides-generating-2017.pdf" target="_blank" rel="noopener">pdf</a>|<a href="https://github.com/nickvosk/ecir2017-gder-dataset" target="_blank" rel="noopener">data</a>]<br>Nikos Voskarides, Edgar Meij, and Maarten de Rijke.<br>ECIR 2017.</li><li><strong>Learning to Explain Entity Relationships in Knowledge Graphs</strong> [<a href="https://www.aclweb.org/anthology/P15-1055" target="_blank" rel="noopener">pdf</a>|<a href="https://github.com/nickvosk/acl2015-dataset-learning-to-explain-entity-relationships" target="_blank" rel="noopener">data</a>]<br>Nikos Voskarides, Edgar Meij, Manos Tsagkias, Maarten de Rijke and Wouter Weerkamp.<br>ACL 2015.</li><li><strong>Query-dependent contextualization of streaming data</strong> [<a href="https://staff.fnwi.uva.nl/m.derijke/wp-content/papercite-data/pdf/voskarides-query-dependent-2014.pdf" target="_blank" rel="noopener">pdf</a>|<a href="https://nickvosk.github.io/resources/ecir2014_dataset.zip" target="_blank" rel="noopener">data</a>]<br>Nikos Voskarides, Daan Odijk, Manos Tsagkias, Wouter Weerkamp, and Maarten de Rijke.<br>ECIR 2014.</li></ul><p>Edgar Meij：个人主页：<a href="https://edgar.meij.pro/。" target="_blank" rel="noopener">https://edgar.meij.pro/。</a></p><p>Ridho Reinanda：<a href="https://www.linkedin.com/in/ridhoreinanda/" target="_blank" rel="noopener">https://www.linkedin.com/in/ridhoreinanda/</a></p><h1 id="本文解决的科学问题及研究动机"><a href="#本文解决的科学问题及研究动机" class="headerlink" title="本文解决的科学问题及研究动机"></a>本文解决的科学问题及研究动机</h1><h2 id="问题来源"><a href="#问题来源" class="headerlink" title="问题来源"></a>问题来源</h2><p>KG可以应用于搜索，查询理解，推荐和问答等。最近，[10,17]表明搜索引擎用户发现实体卡片（提供关于检索目标实体的信息）是有用的，就把检索目标实体相关的信息以一种实体卡片集合的方式呈现出来。之前有一些工作就专注于增量检索实体相关实体卡片。<br>但是用户对KG事实感兴趣，而不是对实体感兴趣。比如“谁创立了微软”=》“比尔盖茨”。通过提供检索相关的额外事实可以增加用户对事实的理解。比如额外相关的事实有“比尔盖茨的专业领域”“微软的创立日期”“微软的主要产业”“微软的联合创始人”</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824712938.png" alt="1546824712938"></p><p>检索相关事实还可以用于QA，自然语言生成。<br>KG事实语境化是通过额外有用的KG事实增加给定KG事实的一类任务。这个任务的难点在于KG的大尺寸：即使是在给定事实小范围邻居内探索其他相关的事实，都会产生数量非常大的候选实体。</p><h2 id="问题数学定义"><a href="#问题数学定义" class="headerlink" title="问题数学定义"></a>问题数学定义</h2><p>E为实体集合，包括非CVT实体$E_n$和CVT实体$E_c$（CVT是指复合值类型实体，比如讲一个人的家庭关系，有他的爸爸是谁，妈妈是谁，那么家庭关系就是一个CVT）。<br>P为谓语<br>K为KG，包含&lt;s,p,o&gt;，即主谓宾，s和o属于E，p属于P，K可被认为是带标签的有向图。<br>path路径在KG中的表示$&lt;s_0, p_0, t_0&gt;,…,&lt;s_m, p_m, t_m&gt;$，其中$t_i=s_{i+1}$<br>fact事实定义为K中的一条路径满足以下任一种情况：</p><ol><li>包含一个三元组，$s_0$属于E，$t_0$属于$E_n$</li><li>包含两个三元组，$s_0,t_1$属于$E_n$，$t_0=s_1$属于$E_c$<br> R关系的集合，r属于R，是有同样谓语不同实体的事实集合的标记。事实f可以表示为r&lt;s,t&gt;。</li></ol><p>给定查询事实$f_q$和K，目标是找到K中相关的事实集F，并对其通过与$f_q$的相关性进行排序。</p><h1 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h1><p>本文提出了一种神经事实语境化方法NFCM来解决这个任务。NFCM包括候选事实生成，语境相关候选事实排序。排序模型采用监督学习，特征包括两部分：自动生成的和人工特征。远程监督生成训练数据。具体来说：</p><h2 id="列举候选实体"><a href="#列举候选实体" class="headerlink" title="列举候选实体"></a>列举候选实体</h2><p>给定一个检索事实$f_q$，从K中得到候选事实集F。<br>因为KG的庞大，限制F在实体s和t的<strong>两跳邻居</strong>中取得。<br>对应算法如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824740444.png" alt="1546824740444"></p><p>三条规则：</p><ul><li>CVT不作为一跳</li><li>不把检索事实放入F</li><li>为了减少搜索空间，不扩张表示类或类型的实体<h2 id="事实排序"><a href="#事实排序" class="headerlink" title="事实排序"></a>事实排序</h2>对每个候选事实$f_c$属于F，建立$(f_q,f_c)$对，类似于检索-文档对，并使用函数u进行评分，越高代表相关度越高。得到排序后的候选事实集合F’。<br>接下来是学习函数u：<br>训练一个端到端的神经网络，使用mini-batch和随机梯度下降。<br>使用Adam优化参数，最小化平均pairwise均方误差：<br><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824756646.png" alt="1546824756646"><br>$x_1=(f_q,f_{c_1})$和$x_2=(f_q,f_{c_2})$是事实对，l(x)函数是事实对的相关性标记，值在01之间。<br><strong>神经网络结构：</strong></li></ul><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824771015.png" alt="1546824771015"></p><p>使用RNN编码查询事实$f_q$为$v_q$。不编码实体，取而代之编码实体的类型聚合。编码候选事实的时候，先列举到检索事实两跳距离内的所有路径，标为$A$。先用RNN编码A中所有路径，然后组合所有编码路径。<br>最后，使用多层感知机MLP-o集合三个输入（检索事实编码，路径编码，手工特征），RELU作为隐藏层激活函数，sigmoid作为输出层激活函数。</p><h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>KG使用Freebase<br><strong>数据集：</strong>包括检索事实，候选事实，相关度标记。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824788957.png" alt="1546824788957"></p><p>上面是通过远程监督从Freebase中提取到的数据集。<br>接下来是得到相关度标记：<br>从Wikipedia筛选得到主要实体在Freebase中的文章。第一步：使用[32]中的实体链接方法来增量有额外实体链接的文章。第二步：保留包含t的文章片段（包含t的句子和前后各一个句子）。最后从这些片段中统计相关度。<br><strong>手工标记评价数据集：</strong>使用crowdsourcing得到评价集合。<br><strong>评价指标：</strong>MAP，NDCG@5，NDCG@10和MRR。</p><h2 id="启发式baseline"><a href="#启发式baseline" class="headerlink" title="启发式baseline"></a>启发式baseline</h2><p>之前的工作没有解决这种问题的，因此本文设计了一些baseline：</p><ul><li>Fact informativeness（FI）：与检索事实无关</li><li>平均谓语相似度（APS）：如果两个事实的谓语相似，那么两个事实可能相关</li><li>平均实体相似度（AES）：如果两个事实的实体相似，那么两个事实可能相关<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2>实验的设置为了回答下面四个问题：<br><strong>RQ1</strong>：NFCM和一些启发式baseline在众包数据集上的表现如何</li></ul><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824807991.png" alt="1546824807991"></p><p>NFCM表现大大超过baseline。这说明本文提出的任务不是很轻易就能够解决的。<br><strong>RQ2</strong>：NFCM和在众包数据集上使用远程监督得到的相关度标记的检索事实上使用打分函数得到的效果相比表现如何？（NFCM和远程监督得到的打分函数DistSup相比）</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824816782.png" alt="1546824816782"></p><p>NFCM在三个指标上都大大超过了DistSup。学习到的排序函数对该任务是有效的。<br><strong>RQ3</strong>：NFCM能从手工特征和自动学到的特征上受益吗？<br>调整LF（学习到的特征）和HF（手工特征）在验证集上的参数。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824825392.png" alt="1546824825392"></p><p>NFCM大大超过HF和LF，意味着结合HF和LF可以获得更相关的结果。未来工作在更复杂的结合HF和LF。</p><p><strong>RQ4</strong>：NFCM的per-relationship表现怎么样？每对关系的实例数量是如何影响那个排名表现的？</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546824844573.png" alt="1546824844573"></p><p>NFCM表现最好的关系是profession，最差的是awardNominated。awardNominated有很多候选事实，可能是差表现的原因之一。</p><h1 id="工作评价"><a href="#工作评价" class="headerlink" title="工作评价"></a>工作评价</h1><p>本文提出了一个新的任务：知识图谱事实语境化任务，以及提出了一个方法NFCM。NFCM首先通过查看两跳之内的邻居，产生检索事实的候选集合，然后通过监督机器学习排序候选事实。NFCM结合手工特征和深度学习自动学到的特征。使用远程监督来收集训练数据，通过使用和Freebase有大量重叠实体的Wikipedia。<br>实验结果表明：远程监督在这个任务中收集训练数据非常有效，NFCM效果很好，两种特征都对NFCM有重要作用。<br>未来旨在探索更复杂的特征结合方式（更好的模型）；探索其他产生训练集的方法，比如新闻文章和点击日志（更多的数据，更好的效果）；找到在搜索引擎页面上能够结合和呈现这些排序好的事实的方法（更好的落地）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;阅读文献来源&quot;&gt;&lt;a href=&quot;#阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;阅读文献来源&quot;&gt;&lt;/a&gt;阅读文献来源&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Voskarides N , Meij E , Reinanda R , et al. We
+      
+    
+    </summary>
+    
+      <category term="KG" scheme="http://yoursite.com/categories/KG/"/>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/KG/nlp/"/>
+    
+      <category term="事实语境化" scheme="http://yoursite.com/categories/KG/nlp/%E4%BA%8B%E5%AE%9E%E8%AF%AD%E5%A2%83%E5%8C%96/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
+    
+      <category term="事实语境化" scheme="http://yoursite.com/tags/%E4%BA%8B%E5%AE%9E%E8%AF%AD%E5%A2%83%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction</title>
