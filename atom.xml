@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-07T11:59:52.788Z</updated>
+  <updated>2019-01-07T12:04:48.751Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>论文阅读：Enriching Taxonomies With Functional Domain Knowledge</title>
+    <link href="http://yoursite.com/2019/01/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEnriching%20Taxonomies%20With%20Functional%20Domain%20Knowledge/"/>
+    <id>http://yoursite.com/2019/01/07/论文阅读：Enriching Taxonomies With Functional Domain Knowledge/</id>
+    <published>2019-01-07T12:03:28.000Z</published>
+    <updated>2019-01-07T12:04:48.751Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="阅读文献来源"><a href="#阅读文献来源" class="headerlink" title="阅读文献来源"></a>阅读文献来源</h1><p><strong>Vedula N, Nicholson P K, Ajwani D, et al. Enriching taxonomies with functional domain knowledge[C]//The 41st International ACM SIGIR Conference on Research &amp; Development in Information Retrieval. ACM, 2018: 745-754.</strong></p><p>第一作者Nikhita Vedula：PhD Student, 俄亥俄州立大学(Ohio State University)。个人主页：<a href="http://web.cse.ohio-state.edu/~vedula.5/。发表的paper：" target="_blank" rel="noopener">http://web.cse.ohio-state.edu/~vedula.5/。发表的paper：</a></p><ul><li><strong>Nikhita Vedula</strong>, Patrick K. Nicholson, Deepak Ajwani, Sourav Dutta, Alessandra Sala and Srinivasan Parthasarathy. “Enriching Taxonomies with Functional Domain Knowledge.” <em>In Proceedings of the 41st International ACM SIG Conference on Research and Development in Information Retrieval (SIGIR)</em> , Ann Arbor, MI, July 2018.</li><li><strong>Nikhita Vedula</strong>, Wei Sun, Hyunhwan Lee, Harsh Gupta, Mitsunori Ogihara, Joseph Johnson, Gang Ren and Srinivasan Parthasarathy. “Multimodal Content Analysis for Effective Advertisements on YouTube.” <em>In Proceedings of the IEEE International Conference on Data Mining (ICDM)</em>, New Orleans, LA, November 2017.</li><li><strong>Nikhita Vedula</strong> and Srinivasan Parthasarathy. “Emotional and Linguistic Cues of Depression from Social Media.” <em>In Proceedings of the 7th International ACM Digital Health Conference (DH)</em> , London, UK, July 2017.</li><li><p><strong>Nikhita Vedula</strong>, Srinivasan Parthasarathy and Valerie Shalin. “Predicting Trust Relations in Social Networks: A Case Study on Emergency Response.” <em>In Proceedings of the 9th International ACM Web Science Conference (WebSci)</em>, Troy, NY, June 2017.</p></li><li><p>Hemant Purohit, <strong>Nikhita Vedula</strong>, Krishnaprasad Thirunarayan and Srinivasan Parthasarathy. “Modeling Transportation Uncertainty in Matching Help Seekers and Suppliers during Disasters.” <em>InTI Workshop at the ACM SIG Conference on Research and Development in Information Retrieval (SIGIR)</em>, Ann Arbor, MI, July 2018.</p></li><li><strong>Nikhita Vedula</strong>, Srinivasan Parthasarathy and Valerie Shalin. “Predicting Trust Relations Among Users in a Social Network: The Role of Influence, Cohesion and Valence.” <em>WISDOM workshop at the ACM International Conference on Knowledge Discovery and Data Mining (SIGKDD)</em>, San Francisco, CA, August 2016.</li></ul><h1 id="本文解决的科学问题及研究动机"><a href="#本文解决的科学问题及研究动机" class="headerlink" title="本文解决的科学问题及研究动机"></a>本文解决的科学问题及研究动机</h1><p>用来自新闻或者研究刊物的概念来丰富大规模通用分类系统</p><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>知识以分层的方式组织存在，比如Wikipedia Categories，Freebase和WordNet。但是，这些分层次的知识难以增加和维持，当新概念和新关系的快速出现。需要<strong>自动化的，可扩展的</strong>技术来解决分类系统扩张问题。</p><p>很多技术依赖于WordNet独特的同义词结构【14，31，37】，不能泛化到其他分类系统上，只能识别新概念到一个单独的分类。</p><h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p>以前的工作不是：</p><ul><li>语言高度相关【47，48】</li><li>领域高度相关【28】<br> 就是：</li><li>不能扩展到大规模分类系统【3，21，43】</li></ul><p>机器学习方法：给予共现分析【42】，聚类【20】，图构造和遍历【25】，分布式相似度【47，48】。<br>基于语言模式匹配方法【9，25，31，49】<br>基于词嵌入的方法【8，36，38，51】开始流行<br>【8，36】精确率较差，【51】不能泛化到没有见过的关系实例。【38】解决了这些问题，但是对训练数据有和Wikipedia风格的概念和分类名称不一样的要求。<br>本文直接基于加强WordNet分类法来设计模型。<br>【37】用Wikipedia来扩展WordNet。<br>【45】设计了一种将不知道的单词放在其邻居大多集中的地方的方法，这个idea在本文中也被采用了。<br>【47，48】用新的日语词汇来增加日语Wikipedia和WordNet，从维基中找到相似词汇，对上位词打分，选择得分最高上位词作为输出。但是严重依赖日语中的动名词依赖关系，这在英语中不常见。<br>相关问题知识图谱补全：knowledge graph completion，预测实体间关系【3，21，43】。本文将ETF与链接预测方法TransR【21】进行了对比。</p><h1 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h1><p>ETF的框架如图：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546826541580.png" alt="1546826541580"></p><ol><li>先学习分类系统中新概念和已存在概念的表征。</li><li>对每个新概念，利用表征来识别这个新概念最相似的一些实体</li><li>将对新概念父类的搜索缩小到对相似实体祖先集的搜索</li><li>使用图论和语义特征的结合作为语义类别的替代品，基于这个来对祖先进行筛选和排序，最后把适当的链接放入分类系统</li></ol><h2 id="1-发现概念和分类关系"><a href="#1-发现概念和分类关系" class="headerlink" title="1.发现概念和分类关系"></a>1.发现概念和分类关系</h2><p>从分类系统结构中获得实体（叶节点）和目录（非叶节点），并利用祖先-子孙关系来构建有向无环图T：分类系统。</p><p>因为我们一般接触的是文本，而非单个新概念实体，所以使用Off-the-shelf命名实体识别算法【11,24】从文本中定位并抽取命名实体。</p><p>从文本中找到区别于已存在实体的新实体是一个问题，但不是本文的重点。</p><h2 id="2-学习概念表征"><a href="#2-学习概念表征" class="headerlink" title="2.学习概念表征"></a>2.学习概念表征</h2><p>基于高效Skip-gram变体【23】。</p><p>最小化损失函数：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546828593852.png" alt="1546828593852"></p><p>先通过消歧名词【22】将预料库D中的出现的实体进行替换（Wikipedia的锚链接）。</p><p>然后在D上训练doc2vec（分布式内存或者段落向量的DM版本）【19】，使用负采样，得到文档的向量表示。DM模型可以同时训练word2vec和doc2vec。</p><p>然后将word2vec的tf加权和（倾向高频）与doc2vec表征（倾向低频）进行聚合。聚合好处：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546829428978.png" alt="1546829428978"></p><p>在得到已存在的概念之后，接下来学习新概念的表征，这是至关重要的一步【44】，用已存在的学习模型产生未见过的实体的表征。之前的工作有【27】重新训练模型，【44,50】基于邻居的半监督学习。本文对每个新概念产生一个上下文c，由频繁项基于tf分数组成。使用c通过梯度下降推出doc2vec嵌入【19】。然后通过加入word2vec的tf加权和得到新概念嵌入。</p><h2 id="3-筛序并排序父类"><a href="#3-筛序并排序父类" class="headerlink" title="3.筛序并排序父类"></a>3.筛序并排序父类</h2><p>有了概念的嵌入，接下来决定新概念最好的父类。对每个新概念使用kNN。假设最好父类与这些近邻的祖先相关。接下来就是排序这些候选父类。</p><p>学习排序模型：使用分类系统图结构中的拓扑特征，从文本中得到的语义特征。尝试了七种模型【13】，最终使用表现最好的LambdaMART【5】。</p><p>基于图的特征：</p><ul><li>Katz Similarity</li><li>Random Walk Betweenness Centrality</li><li>Information Propagation Score</li></ul><p>语义特征：</p><ul><li>Ancestor-Neighbor Similarity</li><li>New concept-Ancestor Similarity</li><li>Pointwise Mutual Information (PMI)：点间互信息</li></ul><h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>在Wikipedia Categories和WordNet上评价ETF。</p><h2 id="评价概念表征"><a href="#评价概念表征" class="headerlink" title="评价概念表征"></a>评价概念表征</h2><p>测试新概念的聚合向量嵌入，通过检查和已存在实体的距离。</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546831075503.png" alt="1546831075503"></p><p>28%的新概念与已存在概念有大于0.4的相似度。换句话说，大于70%的新概念和已存在概念分离开来，当相似度阈值设置为0.4的时候。</p><h2 id="评价排序模型"><a href="#评价排序模型" class="headerlink" title="评价排序模型"></a>评价排序模型</h2><p>本文算法和一些baseline（Random，Text similarity， Graph features，Semantic features，TransR）对比。</p><p>下面是不同的模型在几种评价指标下的结果：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546841231166.png" alt="1546841231166"></p><p>和只用图特征（ranker-gr）与只用语义特征（ranker-sem-noPMI）相比，两种特征集合可以有更好的效果。</p><p>下面是在k跳之内能够召回的父类比例：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546841600059.png" alt="1546841600059"></p><h2 id="计算消耗和特征重要性"><a href="#计算消耗和特征重要性" class="headerlink" title="计算消耗和特征重要性"></a>计算消耗和特征重要性</h2><p>本文框架大概平均一分钟插入一个新概念。瓶颈在于随机游走和PMI，其他的特征能够在几秒间完成。PMI可以用【18】快速批量PMI执行来解决。所以瓶颈在于随机游走。</p><p>最重要的三个特征是：information propagation，random walk betweenness centrality和Katz similarity。</p><h2 id="在SemEval-Task-Benchmark-15-上的结果"><a href="#在SemEval-Task-Benchmark-15-上的结果" class="headerlink" title="在SemEval Task Benchmark[15]上的结果"></a>在SemEval Task Benchmark[15]上的结果</h2><p>对比模型：Random synset，First-Word-First-Sense（FWFS），MSejrKU System 2（Task 14的冠军模型）</p><p>评价指标：Accuracy (Wu&amp;Palmer Similarity)【46】，Lemma Match（大概是算法找出的同义词集合中至少包含正确同义词的比例）</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1546842089195.png" alt="1546842089195"></p><p>ranker-ETF-FWFS：使用FWFS中用到的二进制特征的排序模型。</p><p>有了FWFS特征的模型表现的最好，FWFS是一个很强的特征，用来排序父类，但是这个特征不容易泛化。</p><h2 id="新兴领域概念"><a href="#新兴领域概念" class="headerlink" title="新兴领域概念"></a>新兴领域概念</h2><p>ETF如何将新兴领域概念加到Wikipedia分类层次结构中。危机应对和医学领域。</p><p>结果表明：对于这两个领域，大多数预测的父类都很好，并且与许多手动分配的父类有重叠。</p><p>对于危机事件，ETF正确地标识了它们的发生年份和许多受影响的区域，只需要初始的文本输入量。</p><p>对医学领域，本文的方法可以区分禽流感和猪流感。还能够为新概念，在没有手动分配的情况下提出准确的分类。</p><h2 id="Quora-问答分类"><a href="#Quora-问答分类" class="headerlink" title="Quora 问答分类"></a>Quora 问答分类</h2><p>将Quora上的问题和答案放到Wikipedia分类中。结果：每个问答有平均8个父类，NDCG=0.445，F1=0.523.比其他的结果都好。</p><h1 id="工作评价"><a href="#工作评价" class="headerlink" title="工作评价"></a>工作评价</h1><p>本文对自动分类系统扩充问题提出了一个解决方案ETF：先通过术语生成的上下文为每个概念学习高维向量嵌入；然后从近邻概念祖先基于图特征和语义特征预测新概念的潜在父类。实验表明ETF在大规模知识图谱Wikipedia和WordNet上比其他算法表现要好。</p><p>ETF有应用于其他文本源（短的社交媒体文本）和分类系统类型（特殊领域）的潜质。允许简单的并行化，并且可以通过分布式实现可伸缩性。ETF使用的所有特性都可以在几秒钟内计算出来，除了random walk betweenness centrality特征。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;阅读文献来源&quot;&gt;&lt;a href=&quot;#阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;阅读文献来源&quot;&gt;&lt;/a&gt;阅读文献来源&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Vedula N, Nicholson P K, Ajwani D, et al. Enri
+      
+    
+    </summary>
+    
+      <category term="KG" scheme="http://yoursite.com/categories/KG/"/>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/KG/nlp/"/>
+    
+      <category term="分类系统填充" scheme="http://yoursite.com/categories/KG/nlp/%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F%E5%A1%AB%E5%85%85/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
+    
+      <category term="分类系统填充" scheme="http://yoursite.com/tags/%E5%88%86%E7%B1%BB%E7%B3%BB%E7%BB%9F%E5%A1%AB%E5%85%85/"/>
+    
+  </entry>
   
   <entry>
     <title>论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts</title>
