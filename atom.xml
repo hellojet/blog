@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-07T08:46:54.479Z</updated>
+  <updated>2019-11-28T02:52:49.442Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,9 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>NAACL医疗有关文献瞎jier阅读</title>
+    <link href="http://yoursite.com/2019/11/27/2019-11/NAACL%E5%8C%BB%E7%96%97%E6%9C%89%E5%85%B3%E6%96%87%E7%8C%AE%E7%9E%8Ejier%E9%98%85%E8%AF%BB/"/>
+    <id>http://yoursite.com/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/</id>
+    <published>2019-11-26T16:00:00.000Z</published>
+    <updated>2019-11-28T02:52:49.442Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="NAACL2019医疗有关文献瞎jier阅读"><a href="#NAACL2019医疗有关文献瞎jier阅读" class="headerlink" title="NAACL2019医疗有关文献瞎jier阅读"></a>NAACL2019医疗有关文献瞎jier阅读</h2><h3 id="Publicly-Available-Clinical-BERT-Embeddings"><a href="#Publicly-Available-Clinical-BERT-Embeddings" class="headerlink" title="Publicly Available Clinical BERT Embeddings"></a>Publicly Available Clinical BERT Embeddings</h3><p>之前有一篇文章是讲生物医疗方面的bert的叫BioBERT，这篇文章的作者训练了新的医疗bert叫做<a href="github.com/EmilyAlsentzer/clinicalBERT">clinicalBERT</a>。数据集是MIMIC-III v1.4两百万的医疗note。作者训练了两个BERT的变体，一个是基于所有note的clinical BERT，一个叫做Discharge Summary BERT，使用出院总结，应对使用出院总结的下游任务（可能在英文中这类任务比较多？）。然后下游任务用了i2b2NER任务（比较经典的一个任务），和MedNLI（18年提出的一个任务）。效果和BioBERT不相上下。</p><h3 id="Medical-Entity-Linking-using-Triplet-Network"><a href="#Medical-Entity-Linking-using-Triplet-Network" class="headerlink" title="Medical Entity Linking using Triplet Network"></a>Medical Entity Linking using Triplet Network</h3><p>正好要做EL的内容。EL一般分成候选实体生成和排序两个阶段。</p><p>文章中生成部分来自C1和C2两个集合，C1是通过计算KB中的实体向量与Mention向量的相似度，根据一个阈值取top k1得到，实体向量是他的同义词向量相加。Mention向量是mention中所有词的向量和。C2是通过mention和候选实体之间的jaccard重合度（换了个相似度度量？），根据阈值取top k2得到。</p><p>排序部分用了triplet网络，编码部分是共享权重的，过embedding之后经conv。然后用距离函数来计算mention和正负实体之间距离，损失函数来最大化两个距离之差：<br>$$<br>L = max(d_p - d_{n_i} + \alpha, 0)<br>$$<br>实验部分用了从wikipedia和pubmed PMC-Corpus上训练的200维词向量。用fastText解决OOV问题。最好的模型效果是subword（字词模型）+abb（缩略词扩展）+Triplet CNN。</p><p>用CNN和fastText模型速度应该会挺快的，针对EL这种需要大量计算的问题来说，效率也很重要。这里实体向量的构建用的是同名，应该可以加上更多的，比如关系之类的来丰富实体语义。</p><h3 id="Attention-Neural-Model-for-Temporal-Relation-Extraction"><a href="#Attention-Neural-Model-for-Temporal-Relation-Extraction" class="headerlink" title="Attention Neural Model for Temporal Relation Extraction"></a>Attention Neural Model for Temporal Relation Extraction</h3><p>对我而言，了解到一个新的概念Temporal Relation Extraction，这个概念来自17年的一篇论文<a href="https://www.aclweb.org/anthology/E17-2118.pdf" target="_blank" rel="noopener">Neural temporal relation extraction</a>.在研究药物不良反应，疾病进展和临床结果等中，时间关系抽取式建立时间线最可行的方式，将每个医疗事件event与发生的时间time联系起来。比如</p><blockquote><p>Patient was diagnosed with a rectal cancer in May of 2010</p></blockquote><p>病人时在May of 2010这个时间包含被诊断为直肠癌这个事件。</p><p>除了time和event之间存在可能的关系，event和event之间也会存在关系，比如在手术期出现心跳加速。所以现在是一个多分类任务，有三种关系1. time contain event或者event contain event、2. event contain-1 time或者event contain-1 event、3.none表示不存在关系。</p><p>论文用到的数据集是THYME（医疗事件的时间）语料库，包含200名患者的临床记录。包含两类实体：time和event，time包括事件日期和事件戳。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;NAACL2019医疗有关文献瞎jier阅读&quot;&gt;&lt;a href=&quot;#NAACL2019医疗有关文献瞎jier阅读&quot; class=&quot;headerlink&quot; title=&quot;NAACL2019医疗有关文献瞎jier阅读&quot;&gt;&lt;/a&gt;NAACL2019医疗有关文献瞎jier
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="nlp" scheme="http://yoursite.com/tags/nlp/"/>
+    
+      <category term="医疗" scheme="http://yoursite.com/tags/%E5%8C%BB%E7%96%97/"/>
+    
+  </entry>
+  
+  <entry>
     <title>BERT预训练总结</title>
-    <link href="http://yoursite.com/2019/08/07/BERT%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2019/08/07/BERT预训练总结/</id>
+    <link href="http://yoursite.com/2019/08/07/2019-08/BERT%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/08/07/2019-08/BERT预训练总结/</id>
     <published>2019-08-07T08:46:22.000Z</published>
     <updated>2019-08-07T08:46:54.479Z</updated>
     
@@ -38,8 +65,8 @@
   
   <entry>
     <title>论文阅读：Enriching Taxonomies With Functional Domain Knowledge</title>
-    <link href="http://yoursite.com/2019/01/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEnriching%20Taxonomies%20With%20Functional%20Domain%20Knowledge/"/>
-    <id>http://yoursite.com/2019/01/07/论文阅读：Enriching Taxonomies With Functional Domain Knowledge/</id>
+    <link href="http://yoursite.com/2019/01/07/2019-01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEnriching%20Taxonomies%20With%20Functional%20Domain%20Knowledge/"/>
+    <id>http://yoursite.com/2019/01/07/2019-01/论文阅读：Enriching Taxonomies With Functional Domain Knowledge/</id>
     <published>2019-01-07T12:03:28.000Z</published>
     <updated>2019-01-07T12:04:48.000Z</updated>
     
@@ -73,8 +100,8 @@
   
   <entry>
     <title>论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts</title>
-    <link href="http://yoursite.com/2019/01/07/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AWeakly-supervised%20Contextualization%20of%20Knowledge%20Graph%20Facts/"/>
-    <id>http://yoursite.com/2019/01/07/论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts/</id>
+    <link href="http://yoursite.com/2019/01/07/2019-01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AWeakly-supervised%20Contextualization%20of%20Knowledge%20Graph%20Facts/"/>
+    <id>http://yoursite.com/2019/01/07/2019-01/论文阅读：Weakly-supervised Contextualization of Knowledge Graph Facts/</id>
     <published>2019-01-07T11:58:28.000Z</published>
     <updated>2019-01-07T11:59:52.000Z</updated>
     
@@ -108,8 +135,8 @@
   
   <entry>
     <title>论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction</title>
-    <link href="http://yoursite.com/2019/01/02/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEffective%20Deep%20Memory%20Networks%20for%20Distant%20Supervised%20Relation%20Extraction/"/>
-    <id>http://yoursite.com/2019/01/02/论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction/</id>
+    <link href="http://yoursite.com/2019/01/02/2019-01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEffective%20Deep%20Memory%20Networks%20for%20Distant%20Supervised%20Relation%20Extraction/"/>
+    <id>http://yoursite.com/2019/01/02/2019-01/论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction/</id>
     <published>2019-01-02T01:17:28.000Z</published>
     <updated>2019-01-02T01:18:38.000Z</updated>
     
@@ -141,8 +168,8 @@
   
   <entry>
     <title>论文简读：word sense disambiguation：a survey</title>
-    <link href="http://yoursite.com/2018/12/24/%E8%AE%BA%E6%96%87%E7%AE%80%E8%AF%BB%EF%BC%9Aword%20sense%20disambiguation%EF%BC%9Aa%20survey/"/>
-    <id>http://yoursite.com/2018/12/24/论文简读：word sense disambiguation：a survey/</id>
+    <link href="http://yoursite.com/2018/12/24/2018-12/%E8%AE%BA%E6%96%87%E7%AE%80%E8%AF%BB%EF%BC%9Aword%20sense%20disambiguation%EF%BC%9Aa%20survey/"/>
+    <id>http://yoursite.com/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/</id>
     <published>2018-12-24T01:44:09.000Z</published>
     <updated>2018-12-24T02:37:12.000Z</updated>
     
@@ -170,8 +197,8 @@
   
   <entry>
     <title>论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy</title>
-    <link href="http://yoursite.com/2018/12/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ALinear%20Algebraic%20Structure%20of%20Word%20Senses,%20with%20Applications%20to%20Polysemy/"/>
-    <id>http://yoursite.com/2018/12/19/论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy/</id>
+    <link href="http://yoursite.com/2018/12/19/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ALinear%20Algebraic%20Structure%20of%20Word%20Senses,%20with%20Applications%20to%20Polysemy/"/>
+    <id>http://yoursite.com/2018/12/19/2018-12/论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy/</id>
     <published>2018-12-19T14:23:00.000Z</published>
     <updated>2018-12-19T14:23:28.000Z</updated>
     
@@ -199,8 +226,8 @@
   
   <entry>
     <title>论文阅读：A Simple but Tough-to-beat Baseline for Sentence Embeddings</title>
-    <link href="http://yoursite.com/2018/12/17/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AA%20Simple%20but%20Tough-to-beat%20Baseline%20for%20Sentence%20Embeddings/"/>
-    <id>http://yoursite.com/2018/12/17/论文阅读：A Simple but Tough-to-beat Baseline for Sentence Embeddings/</id>
+    <link href="http://yoursite.com/2018/12/17/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AA%20Simple%20but%20Tough-to-beat%20Baseline%20for%20Sentence%20Embeddings/"/>
+    <id>http://yoursite.com/2018/12/17/2018-12/论文阅读：A Simple but Tough-to-beat Baseline for Sentence Embeddings/</id>
     <published>2018-12-17T08:05:00.000Z</published>
     <updated>2018-12-17T08:06:17.000Z</updated>
     
@@ -228,8 +255,8 @@
   
   <entry>
     <title>cs224n-TensorFlow实战入门笔记</title>
-    <link href="http://yoursite.com/2018/12/17/cs224n-TensorFlow%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/12/17/cs224n-TensorFlow实战入门笔记/</id>
+    <link href="http://yoursite.com/2018/12/17/2018-12/cs224n-TensorFlow%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/12/17/2018-12/cs224n-TensorFlow实战入门笔记/</id>
     <published>2018-12-17T01:16:22.000Z</published>
     <updated>2018-12-18T08:49:22.000Z</updated>
     
@@ -255,8 +282,8 @@
   
   <entry>
     <title>论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation</title>
-    <link href="http://yoursite.com/2018/12/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AJoint%20Learning%20of%20the%20Embedding%20of%20Words%20and%20Entities%20for%20Named%20Entity%20Disambiguation/"/>
-    <id>http://yoursite.com/2018/12/11/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/</id>
+    <link href="http://yoursite.com/2018/12/11/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AJoint%20Learning%20of%20the%20Embedding%20of%20Words%20and%20Entities%20for%20Named%20Entity%20Disambiguation/"/>
+    <id>http://yoursite.com/2018/12/11/2018-12/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/</id>
     <published>2018-12-11T13:03:28.000Z</published>
     <updated>2018-12-11T13:20:15.000Z</updated>
     
@@ -286,8 +313,8 @@
   
   <entry>
     <title>Zero-Shot应用于跨语言实体链接</title>
-    <link href="http://yoursite.com/2018/12/06/Zero-Shot%E5%BA%94%E7%94%A8%E4%BA%8E%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
-    <id>http://yoursite.com/2018/12/06/Zero-Shot应用于跨语言实体链接/</id>
+    <link href="http://yoursite.com/2018/12/06/2018-12/Zero-Shot%E5%BA%94%E7%94%A8%E4%BA%8E%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
+    <id>http://yoursite.com/2018/12/06/2018-12/Zero-Shot应用于跨语言实体链接/</id>
     <published>2018-12-06T13:32:01.000Z</published>
     <updated>2018-12-06T13:41:31.000Z</updated>
     
@@ -315,8 +342,8 @@
   
   <entry>
     <title>《CS224n: Natural Language Processing with Deep Learning》Assignments1: 理论推导部分</title>
-    <link href="http://yoursite.com/2018/12/05/%E3%80%8ACS224n-Natural-Language-Processing-with-Deep-Learning%E3%80%8BAssignments1-%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC%E9%83%A8%E5%88%86/"/>
-    <id>http://yoursite.com/2018/12/05/《CS224n-Natural-Language-Processing-with-Deep-Learning》Assignments1-理论推导部分/</id>
+    <link href="http://yoursite.com/2018/12/05/2018-12/%E3%80%8ACS224n-Natural-Language-Processing-with-Deep-Learning%E3%80%8BAssignments1-%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC%E9%83%A8%E5%88%86/"/>
+    <id>http://yoursite.com/2018/12/05/2018-12/《CS224n-Natural-Language-Processing-with-Deep-Learning》Assignments1-理论推导部分/</id>
     <published>2018-12-05T02:49:08.000Z</published>
     <updated>2018-12-05T08:12:12.000Z</updated>
     
@@ -342,8 +369,8 @@
   
   <entry>
     <title>论文阅读：Neural Cross-Lingual Entity Linking</title>
-    <link href="http://yoursite.com/2018/12/03/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ANeural%20Cross-Lingual%20Entity%20Linking/"/>
-    <id>http://yoursite.com/2018/12/03/论文阅读：Neural Cross-Lingual Entity Linking/</id>
+    <link href="http://yoursite.com/2018/12/03/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ANeural%20Cross-Lingual%20Entity%20Linking/"/>
+    <id>http://yoursite.com/2018/12/03/2018-12/论文阅读：Neural Cross-Lingual Entity Linking/</id>
     <published>2018-12-03T03:21:05.000Z</published>
     <updated>2018-12-03T04:29:11.000Z</updated>
     
@@ -371,8 +398,8 @@
   
   <entry>
     <title>[转载]自然语言处理如何入门？————周明博士</title>
-    <link href="http://yoursite.com/2018/11/30/%E8%BD%AC%E8%BD%BD-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8%EF%BC%9F%E2%80%94%E2%80%94%E5%91%A8%E6%98%8E%E5%8D%9A%E5%A3%AB/"/>
-    <id>http://yoursite.com/2018/11/30/转载-自然语言处理如何入门？——周明博士/</id>
+    <link href="http://yoursite.com/2018/11/30/2018-11/%E8%BD%AC%E8%BD%BD-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8%EF%BC%9F%E2%80%94%E2%80%94%E5%91%A8%E6%98%8E%E5%8D%9A%E5%A3%AB/"/>
+    <id>http://yoursite.com/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/</id>
     <published>2018-11-30T06:43:05.000Z</published>
     <updated>2018-11-30T06:55:50.000Z</updated>
     
@@ -394,8 +421,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/11/29/hello-world/"/>
-    <id>http://yoursite.com/2018/11/29/hello-world/</id>
+    <link href="http://yoursite.com/2018/11/29/2018-11/hello-world/"/>
+    <id>http://yoursite.com/2018/11/29/2018-11/hello-world/</id>
     <published>2018-11-29T04:23:55.000Z</published>
     <updated>2018-11-29T04:23:55.000Z</updated>
     
@@ -415,8 +442,8 @@
   
   <entry>
     <title>Deep Learning for Entity Matching：A Design Space Exploration</title>
-    <link href="http://yoursite.com/1995/04/19/Deep%20Learning%20for%20Entity%20Matching%EF%BC%9AA%20Design%20Space%20Exploration/"/>
-    <id>http://yoursite.com/1995/04/19/Deep Learning for Entity Matching：A Design Space Exploration/</id>
+    <link href="http://yoursite.com/1995/04/19/2019-05/Deep%20Learning%20for%20Entity%20Matching%EF%BC%9AA%20Design%20Space%20Exploration/"/>
+    <id>http://yoursite.com/1995/04/19/2019-05/Deep Learning for Entity Matching：A Design Space Exploration/</id>
     <published>1995-04-18T16:00:00.000Z</published>
     <updated>2019-05-08T05:26:00.839Z</updated>
     

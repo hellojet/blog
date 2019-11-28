@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Pal A R , Saha D . Word sense disambiguation: a survey[J]. 2018. 更具体的版本可以看这个： Navigli R . Word sense disambiguation: A survey[M]. ACM, 2009. 词义消歧：Word Sense Disambiguation (WSD)在世界上所有的主要语言中，有很多词在不同的语境">
+<meta name="keywords" content="自然语言处理,词义消歧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文简读：word sense disambiguation：a survey">
+<meta property="og:url" content="http://yoursite.com/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/index.html">
+<meta property="og:site_name" content="hellojet">
+<meta property="og:description" content="Pal A R , Saha D . Word sense disambiguation: a survey[J]. 2018. 更具体的版本可以看这个： Navigli R . Word sense disambiguation: A survey[M]. ACM, 2009. 词义消歧：Word Sense Disambiguation (WSD)在世界上所有的主要语言中，有很多词在不同的语境">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545618622138.png">
+<meta property="og:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545618662407.png">
+<meta property="og:updated_time" content="2018-12-24T02:37:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文简读：word sense disambiguation：a survey">
+<meta name="twitter:description" content="Pal A R , Saha D . Word sense disambiguation: a survey[J]. 2018. 更具体的版本可以看这个： Navigli R . Word sense disambiguation: A survey[M]. ACM, 2009. 词义消歧：Word Sense Disambiguation (WSD)在世界上所有的主要语言中，有很多词在不同的语境">
+<meta name="twitter:image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545618622138.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hellojet" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>论文简读：word sense disambiguation：a survey | hellojet</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hellojet</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李洁厅">
+      <meta itemprop="description" content="余生很长 但求无憾 以梦为马 不负韶华">
+      <meta itemprop="image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hellojet">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">论文简读：word sense disambiguation：a survey
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-24 09:44:09 / 修改时间：10:37:12" itemprop="dateCreated datePublished" datetime="2018-12-24T09:44:09+08:00">2018-12-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/nlp/" itemprop="url" rel="index"><span itemprop="name">nlp</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/24/2018-12/论文简读：word sense disambiguation：a survey/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Pal A R , Saha D . Word sense disambiguation: a survey[J]. 2018.</p>
+<p>更具体的版本可以看这个：</p>
+<p>Navigli R . Word sense disambiguation: A survey[M]. ACM, 2009.</p>
+<h1 id="词义消歧：Word-Sense-Disambiguation-WSD"><a href="#词义消歧：Word-Sense-Disambiguation-WSD" class="headerlink" title="词义消歧：Word Sense Disambiguation (WSD)"></a>词义消歧：Word Sense Disambiguation (WSD)</h1><p>在世界上所有的主要语言中，有很多词在不同的语境中表示不同的意思。</p>
+<p>词义消歧是在特定语境中发现歧义词准确意义的一种技术。</p>
+<p>词义消歧的方法主要分为三类:基于知识的、受监督的和无监督的方法。</p>
+<h1 id="词义消歧的应用"><a href="#词义消歧的应用" class="headerlink" title="词义消歧的应用"></a>词义消歧的应用</h1><ul>
+<li>机器翻译(MT):机器翻译(MT)需要WSD[14-17]，因为每一种语言中的词根据它们的上下文都有不同的翻译。例如，在英语句子中，“He got a goal”，“It was his goal in life”——“goal”这个词有不同的含义，这是语言翻译中的一个大问题。</li>
+<li>信息检索(IR):在IR[18-23]系统中，解决查询中的歧义是最关键的问题。例如，查询中的“depression”一词可能具有与疾病、天气系统或经济学不同的含义。因此，在找到一个特定问题的答案之前，找到一个模糊词的确切含义是这方面最重要的问题。</li>
+<li>信息提取(IE)和文本挖掘:WSD在生物信息学研究、命名实体识别系统等不同的研究工作中发挥着重要的信息提取作用。</li>
+</ul>
+<h1 id="词义消歧的方法"><a href="#词义消歧的方法" class="headerlink" title="词义消歧的方法*"></a>词义消歧的方法*</h1><h2 id="基于知识的WSD"><a href="#基于知识的WSD" class="headerlink" title="基于知识的WSD"></a>基于知识的WSD</h2><p>基于机器可读词典或词义库、词典等不同知识来源的基于知识的方法。Wordnet (Miller 1995)是本研究领域使用最多的机器可读词典。一般采用四种主要的基于知识的方法。</p>
+<ul>
+<li><p>LESK算法</p>
+<p>第一个基于机器可读字典的词义消歧算法，取决于词典对一个句子中单词定义的重叠。</p>
+<p>从句子中提取短语-&gt;从在线词典中收集信息(该词的不同意义和短语中其他有意义的词)-&gt;比较两者-&gt;最大重叠表示该歧义词的在此处的意义</p>
+</li>
+<li><p>语义相似度</p>
+</li>
+<li><p>选择偏好</p>
+<p>找到词类之间可能的关系，使用知识库表示共同的词义。</p>
+</li>
+<li><p>启发式算法</p>
+<p>三种启发式算法作为评价WSA系统的baseline：</p>
+<p> 1) Most Frequent Sense,</p>
+<p> 2) One Sense per Discourse and</p>
+<p> 3) One Sense per Collocation</p>
+</li>
+</ul>
+<h2 id="受监督的WSD"><a href="#受监督的WSD" class="headerlink" title="受监督的WSD"></a>受监督的WSD</h2><p>手工创建标注数据，通过分类器学习训练集。</p>
+<ul>
+<li><p>决策表</p>
+<p>决策表[33-35]是一组“if-then-else”规则。在决策表中使用训练集来归纳给定单词的特征集。</p>
+</li>
+<li><p>决策树</p>
+<p>决策树[36-38]用于表示树结构中递归划分训练数据集的分类规则。决策树的内部节点表示将应用于某个特征值的测试，每个分支表示测试的输出。叶节点表示单词的含义(如果可能的话)。</p>
+</li>
+<li><p>朴素贝叶斯</p>
+<p>朴素贝叶斯分类器[39-41]是一种基于贝叶斯定理的概率分类器。</p>
+</li>
+<li><p>神经网络</p>
+<p>在基于神经网络的计算模型[42- 45,64]中，人工神经元采用连接主义方法进行数据处理。输入是特征对，目标是将训练上下文划分为非重叠集合。接下来，为了产生更大的激活（目标函数），逐渐调整这些新形成的对和连接权重。</p>
+</li>
+<li><p>基于范例或基于实例的学习</p>
+<p>该监督算法通过实例建立分类模型[40,46]。该模型将实例存储为特征空间中的点，并考虑新的实例进行分类。</p>
+</li>
+<li><p>支持向量机</p>
+<p>基于支持向量机的算法[47-49]使用了结构风险最小化理论。这种方法的目的是用最大边距来区分正例子和负例子，边距是超平面到最近的正例子和负例子的距离。最接近超平面的正负例子称为支持向量。</p>
+</li>
+<li><p>集成方法</p>
+<ul>
+<li><p>多数投票</p>
+</li>
+<li><p>概率混合</p>
+<p>该策略首先采用一阶分类器对目标词的意义进行置信度评价，然后进行归一化处理。结果得到了词义的概率分布。接下来，将这些概率相加，并将得分最高的词义视为所需词义。</p>
+</li>
+<li><p>基于排名的组合</p>
+</li>
+<li><p>AdaBoost</p>
+<p>AdaBoost[51,52]是一种利用多个弱分类器的线性组合来创建强分类器的方法。该方法从以前的分类器中找到分类错误的实例，以便可以用于以后的分类器。从加权训练集中学习分类器，一开始所有的权重都是相等的。在每个步骤中，它对每个分类器执行特定的迭代。在每次迭代中，不正确的分类器的权重都会增加，以便后续的分类器可以关注那些不正确的示例。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="非监督的WSD"><a href="#非监督的WSD" class="headerlink" title="非监督的WSD"></a>非监督的WSD</h2><p>不依赖于外部知识来源或词义清单、机器可读的字典或标注好的数据集。</p>
+<ul>
+<li><p>上下文聚类</p>
+<p>上下文聚类方法[56,57]是一种基于聚类技术的方法，在聚类技术中，首先创建上下文向量，然后将它们分组成簇，以识别单词的含义。</p>
+</li>
+<li><p>词聚类</p>
+<p>这种技术在消歧词义方面类似于上下文聚类，但它将语义相同的词聚类。</p>
+</li>
+<li><p>共现图</p>
+<p>该方法创建顶点V和边E的共现图，其中V表示文本中的单词，如果单词按照同一段落或文本中的语法在关系中共现，则添加E。对于给定的目标字，首先创建图形，并创建图形的邻接矩阵。然后，应用马尔科夫聚类方法来进行词义消歧。</p>
+</li>
+<li><p>基于生成树的方法</p>
+</li>
+</ul>
+<h1 id="最新表现（2015）"><a href="#最新表现（2015）" class="headerlink" title="最新表现（2015）*"></a>最新表现（2015）*</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545618622138.png" alt="1545618622138"></p>
+<p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1545618662407.png" alt="1545618662407"></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+            <a href="/tags/词义消歧/" rel="tag"># 词义消歧</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/19/2018-12/论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy/" rel="next" title="论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy">
+                <i class="fa fa-chevron-left"></i> 论文阅读：Linear Algebraic Structure of Word Senses, with Applications to Polysemy
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/02/2019-01/论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction/" rel="prev" title="论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction">
+                论文阅读：Effective Deep Memory Networks for Distant Supervised Relation Extraction <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg" alt="李洁厅">
+            
+              <p class="site-author-name" itemprop="name">李洁厅</p>
+              <p class="site-description motion-element" itemprop="description">余生很长 但求无憾 以梦为马 不负韶华</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hellojet" title="GitHub &rarr; https://github.com/hellojet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:lijieting@zju.edu.cn" title="E-Mail &rarr; mailto:lijieting@zju.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#词义消歧：Word-Sense-Disambiguation-WSD"><span class="nav-number">1.</span> <span class="nav-text">词义消歧：Word Sense Disambiguation (WSD)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词义消歧的应用"><span class="nav-number">2.</span> <span class="nav-text">词义消歧的应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#词义消歧的方法"><span class="nav-number">3.</span> <span class="nav-text">词义消歧的方法*</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于知识的WSD"><span class="nav-number">3.1.</span> <span class="nav-text">基于知识的WSD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#受监督的WSD"><span class="nav-number">3.2.</span> <span class="nav-text">受监督的WSD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非监督的WSD"><span class="nav-number">3.3.</span> <span class="nav-text">非监督的WSD</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最新表现（2015）"><span class="nav-number">4.</span> <span class="nav-text">最新表现（2015）*</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李洁厅</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script color="0,0,0" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'mIlivazwHxS9PQTVE8AQ4vaX-gzGzoHsz',
+        appKey: 'hxwBrtBNgKNH54JCXQU82i9Y',
+        placeholder: '有什么想说的吗？',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

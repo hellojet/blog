@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
+<meta name="keywords" content="自然语言处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[转载]自然语言处理如何入门？————周明博士">
+<meta property="og:url" content="http://yoursite.com/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/index.html">
+<meta property="og:site_name" content="hellojet">
+<meta property="og:description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-30T06:55:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[转载]自然语言处理如何入门？————周明博士">
+<meta name="twitter:description" content="作者：微软亚洲研究院链接：https://www.zhihu.com/question/19895141/answer/149475410来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 自然语言处理（简称NLP），是研究计算机处理人类语言的一门技术，包括：1.句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hellojet" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[转载]自然语言处理如何入门？————周明博士 | hellojet</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hellojet</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李洁厅">
+      <meta itemprop="description" content="余生很长 但求无憾 以梦为马 不负韶华">
+      <meta itemprop="image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hellojet">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">[转载]自然语言处理如何入门？————周明博士
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-30 14:43:05 / 修改时间：14:55:50" itemprop="dateCreated datePublished" datetime="2018-11-30T14:43:05+08:00">2018-11-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作者：微软亚洲研究院<br>链接：<a href="https://www.zhihu.com/question/19895141/answer/149475410" target="_blank" rel="noopener">https://www.zhihu.com/question/19895141/answer/149475410</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p><strong>自然语言处理</strong>（简称NLP），是研究计算机处理人类语言的一门技术，包括：<br><strong>1.句法语义分析</strong>：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。</p>
+<p><strong>2.信息抽取</strong>：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技术。</p>
+<p><strong>3.文本挖掘（或者文本数据挖掘）</strong>：包括文本聚类、分类、信息抽取、摘要、情感分析以及对挖掘的信息和知识的可视化、交互式的表达界面。目前主流的技术都是基于统计机器学习的。</p>
+<p><strong>4.机器翻译</strong>：把输入的源语言文本通过自动翻译获得另外一种语言的文本。根据输入媒介不同，可以细分为文本翻译、语音翻译、手语翻译、图形翻译等。机器翻译从最早的基于规则的方法到二十年前的基于统计的方法，再到今天的基于神经网络（编码-解码）的方法，逐渐形成了一套比较严谨的方法体系。</p>
+<p><strong>5.信息检索</strong>：对大规模的文档进行索引。可简单对文档中的词汇，赋之以不同的权重来建立索引，也可利用1，2，3的技术来建立更加深层的索引。在查询的时候，对输入的查询表达式比如一个检索词或者一个句子进行分析，然后在索引里面查找匹配的候选文档，再根据一个排序机制把候选文档排序，最后输出排序得分最高的文档。</p>
+<p><strong>6.问答系统</strong>： 对一个自然语言表达的问题，由问答系统给出一个精准的答案。需要对自然语言查询语句进行某种程度的语义分析，包括实体链接、关系识别，形成逻辑表达式，然后到知识库中查找可能的候选答案并通过一个排序机制找出最佳的答案。</p>
+<p><strong>7.对话系统</strong>：系统通过一系列的对话，跟用户进行聊天、回答、完成某一项任务。涉及到用户意图理解、通用聊天引擎、问答引擎、对话管理等技术。此外，为了体现上下文相关，要具备多轮对话能力。同时，为了体现个性化，要开发用户画像以及基于用户画像的个性化回复。</p>
+<p>随着深度学习在图像识别、语音识别领域的大放异彩，人们对深度学习在NLP的价值也寄予厚望。再加上AlphaGo的成功，人工智能的研究和应用变得炙手可热。自然语言处理作为人工智能领域的认知智能，成为目前大家关注的焦点。很多研究生都在进入自然语言领域，寄望未来在人工智能方向大展身手。但是，大家常常遇到一些问题。俗话说，万事开头难。如果第一件事情成功了，学生就能建立信心，找到窍门，今后越做越好。否则，也可能就灰心丧气，甚至离开这个领域。这里针对给出我个人的建议，希望我的这些粗浅观点能够引起大家更深层次的讨论。</p>
+<p><strong>建议1：如何在NLP领域快速学会第一个技能？</strong></p>
+<p>我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。</p>
+<p><strong>建议2：如何选择第一个好题目？</strong></p>
+<p>工程型研究生，选题很多都是老师给定的。需要采取比较实用的方法，扎扎实实地动手实现。可能不需要多少理论创新，但是需要较强的实现能力和综合创新能力。而学术型研究生需要取得一流的研究成果，因此选题需要有一定的创新。我这里给出如下的几点建议。</p>
+<ul>
+<li>先找到自己喜欢的研究领域。你找到一本最近的ACL会议论文集, 从中找到一个你比较喜欢的领域。在选题的时候，多注意选择蓝海的领域。这是因为蓝海的领域，相对比较新，容易出成果。</li>
+<li>充分调研这个领域目前的发展状况。包括如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系；数据方面，有没有一个大家公认的标准训练集和测试集；研究团队，是否有著名团队和人士参加。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。</li>
+<li>在确认进入一个领域之后，按照建议一所述，需要找到本领域的开源项目或者工具，仔细研究一遍现有的主要流派和方法，先入门。</li>
+<li>反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。每次实验之后，必须要进行分析存在的错误，找出原因。</li>
+<li>对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。</li>
+<li>与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，则去写一篇文章，否则，应该换一个新的选题。</li>
+</ul>
+<p><strong>建议3：如何写出第一篇论文？</strong></p>
+<ul>
+<li>接上一个问题，如果想法不错，且被实验所证明，就可开始写第一篇论文了。</li>
+<li>确定论文的题目。在定题目的时候，一般不要“…系统”、“…研究与实践”，要避免太长的题目，因为不好体现要点。题目要具体，有深度，突出算法。</li>
+<li>写论文摘要。要突出本文针对什么重要问题，提出了什么方法，跟已有工作相比，具有什么优势。实验结果表明，达到了什么水准，解决了什么问题。</li>
+<li>写引言。首先讲出本项工作的背景，这个问题的定义，它具有什么重要性。然后介绍对这个问题，现有的方法是什么，有什么优点。但是（注意但是）现有的方法仍然有很多缺陷或者挑战。比如（注意比如），有什么问题。本文针对这个问题，受什么方法（谁的工作）之启发，提出了什么新的方法并做了如下几个方面的研究。然后对每个方面分门别类加以叙述，最后说明实验的结论。再说本文有几条贡献，一般写三条足矣。然后说说文章的章节组织，以及本文的重点。有的时候东西太多，篇幅有限，只能介绍最重要的部分，不需要面面俱到。</li>
+<li>相关工作。对相关工作做一个梳理，按照流派划分，对主要的最多三个流派做一个简单介绍。介绍其原理，然后说明其局限性。</li>
+<li>然后可设立两个章节介绍自己的工作。第一个章节是算法描述。包括问题定义，数学符号，算法描述。文章的主要公式基本都在这里。有时候要给出简明的推导过程。如果借鉴了别人的理论和算法，要给出清晰的引文信息。在此基础上，由于一般是基于机器学习或者深度学习的方法，要介绍你的模型训练方法和解码方法。第二章就是实验环节。一般要给出实验的目的，要检验什么，实验的方法，数据从哪里来，多大规模。最好数据是用公开评测数据，便于别人重复你的工作。然后对每个实验给出所需的技术参数，并报告实验结果。同时为了与已有工作比较，需要引用已有工作的结果，必要的时候需要重现重要的工作并报告结果。用实验数据说话，说明你比人家的方法要好。要对实验结果好好分析你的工作与别人的工作的不同及各自利弊，并说明其原因。对于目前尚不太好的地方，要分析问题之所在，并将其列为未来的工作。</li>
+<li>结论。对本文的贡献再一次总结。既要从理论、方法上加以总结和提炼，也要说明在实验上的贡献和结论。所做的结论，要让读者感到信服，同时指出未来的研究方向。</li>
+<li>参考文献。给出所有重要相关工作的论文。记住，漏掉了一篇重要的参考文献（或者牛人的工作），基本上就没有被录取的希望了。</li>
+<li>写完第一稿，然后就是再改三遍。</li>
+<li>把文章交给同一个项目组的人士，请他们从算法新颖度、创新性和实验规模和结论方面，以挑剔的眼光，审核你的文章。自己针对薄弱环节，进一步改进，重点加强算法深度和工作创新性。</li>
+<li>然后请不同项目组的人士审阅。如果他们看不明白，说明文章的可读性不够。你需要修改篇章结构、进行文字润色，增加文章可读性。</li>
+<li>如投ACL等国际会议，最好再请英文专业或者母语人士提炼文字。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/29/2018-11/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/03/2018-12/论文阅读：Neural Cross-Lingual Entity Linking/" rel="prev" title="论文阅读：Neural Cross-Lingual Entity Linking">
+                论文阅读：Neural Cross-Lingual Entity Linking <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg" alt="李洁厅">
+            
+              <p class="site-author-name" itemprop="name">李洁厅</p>
+              <p class="site-description motion-element" itemprop="description">余生很长 但求无憾 以梦为马 不负韶华</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hellojet" title="GitHub &rarr; https://github.com/hellojet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:lijieting@zju.edu.cn" title="E-Mail &rarr; mailto:lijieting@zju.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李洁厅</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script color="0,0,0" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'mIlivazwHxS9PQTVE8AQ4vaX-gzGzoHsz',
+        appKey: 'hxwBrtBNgKNH54JCXQU82i9Y',
+        placeholder: '有什么想说的吗？',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
