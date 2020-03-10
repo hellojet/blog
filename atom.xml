@@ -71,6 +71,116 @@
   </entry>
   
   <entry>
+    <title>Attention笔记</title>
+    <link href="http://yoursite.com/2019/03/05/2019-03/Attention%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/03/05/2019-03/Attention笔记/</id>
+    <published>2019-03-05T02:49:08.000Z</published>
+    <updated>2020-03-10T07:23:01.189Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Attention笔记（从机翻角度）"><a href="#Attention笔记（从机翻角度）" class="headerlink" title="Attention笔记（从机翻角度）"></a>Attention笔记（从机翻角度）</h1><p>[TOC]</p><h2 id="神经翻译系统"><a href="#神经翻译系统" class="headerlink" title="神经翻译系统"></a>神经翻译系统</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151838.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151846.png" alt=""></p><h2 id="在seq2seq模型中加入attention"><a href="#在seq2seq模型中加入attention" class="headerlink" title="在seq2seq模型中加入attention"></a>在seq2seq模型中加入attention</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151855.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151904.png" alt=""></p><h2 id="全局attention-vs-局部attention"><a href="#全局attention-vs-局部attention" class="headerlink" title="全局attention vs 局部attention"></a>全局attention vs 局部attention</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151918.png" alt=""></p><h2 id="更多思路"><a href="#更多思路" class="headerlink" title="更多思路"></a>更多思路</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/attention/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151928.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Attention笔记（从机翻角度）&quot;&gt;&lt;a href=&quot;#Attention笔记（从机翻角度）&quot; class=&quot;headerlink&quot; title=&quot;Attention笔记（从机翻角度）&quot;&gt;&lt;/a&gt;Attention笔记（从机翻角度）&lt;/h1&gt;&lt;p&gt;[TOC]&lt;
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GRU和LSTM笔记</title>
+    <link href="http://yoursite.com/2019/02/09/2019-02/GRU%E5%92%8CLSTM%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/02/09/2019-02/GRU和LSTM笔记/</id>
+    <published>2019-02-09T02:49:08.000Z</published>
+    <updated>2020-03-10T07:16:04.838Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="GRU和LSTM笔记"><a href="#GRU和LSTM笔记" class="headerlink" title="GRU和LSTM笔记"></a>GRU和LSTM笔记</h1><p>[TOC]</p><h2 id="RNN族机器翻译"><a href="#RNN族机器翻译" class="headerlink" title="RNN族机器翻译"></a>RNN族机器翻译</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151041.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151107.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151124.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151132.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151146.png" alt=""></p><h2 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151200.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151210.png" alt=""></p><h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151220.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/lstm/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310151228.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;GRU和LSTM笔记&quot;&gt;&lt;a href=&quot;#GRU和LSTM笔记&quot; class=&quot;headerlink&quot; title=&quot;GRU和LSTM笔记&quot;&gt;&lt;/a&gt;GRU和LSTM笔记&lt;/h1&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;RNN族机器翻译&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RNN笔记</title>
+    <link href="http://yoursite.com/2019/02/02/2019-02/RNN%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/02/02/2019-02/RNN笔记/</id>
+    <published>2019-02-02T02:49:08.000Z</published>
+    <updated>2020-03-10T07:09:19.392Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="RNN笔记"><a href="#RNN笔记" class="headerlink" title="RNN笔记"></a>RNN笔记</h1><p>[TOC]</p><h2 id="传统语言模型的弊端"><a href="#传统语言模型的弊端" class="headerlink" title="传统语言模型的弊端"></a>传统语言模型的弊端</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150401.png" alt=""></p><h2 id="RNN出现啦！"><a href="#RNN出现啦！" class="headerlink" title="RNN出现啦！"></a>RNN出现啦！</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150426.png" alt=""></p><h2 id="RNN公式"><a href="#RNN公式" class="headerlink" title="RNN公式"></a>RNN公式</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150434.png" alt=""></p><h2 id="如何训练RNN"><a href="#如何训练RNN" class="headerlink" title="如何训练RNN"></a>如何训练RNN</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150442.png" alt=""></p><h2 id="梯度消失和梯度爆炸"><a href="#梯度消失和梯度爆炸" class="headerlink" title="梯度消失和梯度爆炸"></a>梯度消失和梯度爆炸</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150451.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150458.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150506.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/rnn/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150514.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;RNN笔记&quot;&gt;&lt;a href=&quot;#RNN笔记&quot; class=&quot;headerlink&quot; title=&quot;RNN笔记&quot;&gt;&lt;/a&gt;RNN笔记&lt;/h1&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;传统语言模型的弊端&quot;&gt;&lt;a href=&quot;#传统语言模型的弊端&quot; class=&quot;h
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>依存句法分析笔记</title>
+    <link href="http://yoursite.com/2019/01/11/2019-01/%E4%BE%9D%E5%AD%98%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/01/11/2019-01/依存句法分析笔记/</id>
+    <published>2019-01-11T02:49:08.000Z</published>
+    <updated>2020-03-10T07:02:48.463Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="依存句法分析笔记"><a href="#依存句法分析笔记" class="headerlink" title="依存句法分析笔记"></a>依存句法分析笔记</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310145912.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310145921.png" alt=""></p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310145929.png" alt=""></p><h2 id="transition-based-dependency-parsing"><a href="#transition-based-dependency-parsing" class="headerlink" title="transition-based dependency parsing"></a>transition-based dependency parsing</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310145940.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310145953.png" alt=""></p><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/dependency/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310150001.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;依存句法分析笔记&quot;&gt;&lt;a href=&quot;#依存句法分析笔记&quot; class=&quot;headerlink&quot; title=&quot;依存句法分析笔记&quot;&gt;&lt;/a&gt;依存句法分析笔记&lt;/h1&gt;&lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; titl
+      
+    
+    </summary>
+    
+      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
+    
+    
+      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>论文阅读：Enriching Taxonomies With Functional Domain Knowledge</title>
     <link href="http://yoursite.com/2019/01/07/2019-01/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AEnriching%20Taxonomies%20With%20Functional%20Domain%20Knowledge/"/>
     <id>http://yoursite.com/2019/01/07/2019-01/论文阅读：Enriching Taxonomies With Functional Domain Knowledge/</id>
@@ -339,9 +449,9 @@
     
       <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
     
-      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
       <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
     
   </entry>
   
@@ -395,9 +505,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
       <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
     
   </entry>
   
@@ -451,9 +561,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
       <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
     
   </entry>
   
@@ -475,54 +585,6 @@
     
     </summary>
     
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/11/29/2018-11/hello-world/"/>
-    <id>http://yoursite.com/2018/11/29/2018-11/hello-world/</id>
-    <published>2018-11-29T04:23:55.000Z</published>
-    <updated>2018-11-29T04:23:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Word2vec笔记</title>
-    <link href="http://yoursite.com/2018/11/29/2018-12/Word2vec%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/11/29/2018-12/Word2vec笔记/</id>
-    <published>2018-11-29T02:49:08.000Z</published>
-    <updated>2020-03-10T06:44:30.570Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Word2vec笔记"><a href="#Word2vec笔记" class="headerlink" title="Word2vec笔记"></a>Word2vec笔记</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144051.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144107.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144114.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144123.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144137.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144148.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144159.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144210.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310144218.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Word2vec笔记&quot;&gt;&lt;a href=&quot;#Word2vec笔记&quot; class=&quot;headerlink&quot; title=&quot;Word2vec笔记&quot;&gt;&lt;/a&gt;Word2vec笔记&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://hellojet-blog-125188
-      
-    
-    </summary>
-    
-      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
-    
-    
-      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
