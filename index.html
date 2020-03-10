@@ -384,7 +384,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李洁厅">
@@ -404,7 +404,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/" class="post-title-link" itemprop="http://yoursite.com/index.html">NAACL医疗有关文献瞎jier阅读</a>
+                <a href="/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/" class="post-title-link" itemprop="http://yoursite.com/index.html">elasticsearch使用过程中的一些整理</a>
               
             
           </h2>
@@ -429,24 +429,12 @@
                 
               
 
-              <time title="创建时间：2019-11-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-27T00:00:00+08:00">2019-11-27</time>
+              <time title="创建时间：2019-11-28 14:11:47 / 修改时间：17:04:30" itemprop="dateCreated datePublished" datetime="2019-11-28T14:11:47+08:00">2019-11-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-11-28 10:52:49" itemprop="dateModified" datetime="2019-11-28T10:52:49+08:00">2019-11-28</time>
               
             
           </span>
@@ -463,7 +451,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/nlp/" itemprop="url" rel="index"><span itemprop="name">nlp</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/elasticsearch/" itemprop="url" rel="index"><span itemprop="name">elasticsearch</span></a></span>
 
                 
                 
@@ -478,8 +466,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/" itemprop="commentCount"></span>
+                <a href="/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -509,12 +497,24 @@
       
         
           
-          NAACL2019医疗有关文献瞎jier阅读Publicly Available Clinical BERT Embeddings之前有一篇文章是讲生物医疗方面的bert的叫BioBERT，这篇文章的作者训练了新的医疗bert叫做clinicalBERT。数据集是MIMIC-III v1.4两百万的医疗note。作者训练了两个BERT的变体，一个是基于所有note的clinical BERT，一个叫做Discharge Summary BERT，使用出院总结，应对使用出院总结的下游任务（可能在英文中这类任务比较多？）。然后下游任务用了i2b2NER任务（比较经典的一个任务），和MedNLI（1
+          使用的es版本是6.4.0，其他版本不保证同款问题同款解决方案
+查看es版本
+1curl -XGET &apos;localhost:9200&apos;
+重启es
+粗暴的方式：
+直接杀掉进程，然后进入bin目录执行以下命令进行启动。
+1.\elasticsearch -d
+如果出现报错信息：
+1java.lang.RuntimeException: can not run elasticsearch as root
+ 表示无法使用root账户启动es，加启动参数的方法也不行，需要切换到其他账户：
+1su elsearch # elsearch是账户名
+优雅的方式（未成功）：
+1systemc
           ...
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/#more" rel="contents">
+              <a class="btn" href="/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -574,7 +574,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/2019-08/BERT预训练总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李洁厅">
@@ -594,7 +594,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/08/07/2019-08/BERT预训练总结/" class="post-title-link" itemprop="http://yoursite.com/index.html">BERT预训练总结</a>
+                <a href="/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/" class="post-title-link" itemprop="http://yoursite.com/index.html">NAACL2019医疗有关文献阅读</a>
               
             
           </h2>
@@ -619,12 +619,24 @@
                 
               
 
-              <time title="创建时间：2019-08-07 16:46:22 / 修改时间：16:46:54" itemprop="dateCreated datePublished" datetime="2019-08-07T16:46:22+08:00">2019-08-07</time>
+              <time title="创建时间：2019-11-27 00:00:00" itemprop="dateCreated datePublished" datetime="2019-11-27T00:00:00+08:00">2019-11-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-11-28 14:13:19" itemprop="dateModified" datetime="2019-11-28T14:13:19+08:00">2019-11-28</time>
               
             
           </span>
@@ -641,7 +653,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/bert/" itemprop="url" rel="index"><span itemprop="name">bert</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/nlp/" itemprop="url" rel="index"><span itemprop="name">nlp</span></a></span>
 
                 
                 
@@ -656,8 +668,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/07/2019-08/BERT预训练总结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/08/07/2019-08/BERT预训练总结/" itemprop="commentCount"></span>
+                <a href="/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -687,12 +699,12 @@
       
         
           
-          
-          
+          Publicly Available Clinical BERT Embeddings之前有一篇文章是讲生物医疗方面的bert的叫BioBERT，这篇文章的作者训练了新的医疗bert叫做clinicalBERT。数据集是MIMIC-III v1.4两百万的医疗note。作者训练了两个BERT的变体，一个是基于所有note的clinical BERT，一个叫做Discharge Summary BERT，使用出院总结，应对使用出院总结的下游任务（可能在英文中这类任务比较多？）。然后下游任务用了i2b2NER任务（比较经典的一个任务），和MedNLI（18年提出的一个任务）。效果和BioBERT不
+          ...
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2019/08/07/2019-08/BERT预训练总结/#more" rel="contents">
+              <a class="btn" href="/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -2384,9 +2396,7 @@ tensorflow主要思想将数值计算表示图来进行：始终记得任何Tens
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2458,7 +2468,7 @@ tensorflow主要思想将数值计算表示图来进行：始终记得任何Tens
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

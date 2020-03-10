@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-28T02:52:49.442Z</updated>
+  <updated>2019-11-28T09:04:30.535Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,46 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>NAACL医疗有关文献瞎jier阅读</title>
-    <link href="http://yoursite.com/2019/11/27/2019-11/NAACL%E5%8C%BB%E7%96%97%E6%9C%89%E5%85%B3%E6%96%87%E7%8C%AE%E7%9E%8Ejier%E9%98%85%E8%AF%BB/"/>
-    <id>http://yoursite.com/2019/11/27/2019-11/NAACL医疗有关文献瞎jier阅读/</id>
-    <published>2019-11-26T16:00:00.000Z</published>
-    <updated>2019-11-28T02:52:49.442Z</updated>
+    <title>elasticsearch使用过程中的一些整理</title>
+    <link href="http://yoursite.com/2019/11/28/2019-11/elasticsearch%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/</id>
+    <published>2019-11-28T06:11:47.000Z</published>
+    <updated>2019-11-28T09:04:30.535Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="NAACL2019医疗有关文献瞎jier阅读"><a href="#NAACL2019医疗有关文献瞎jier阅读" class="headerlink" title="NAACL2019医疗有关文献瞎jier阅读"></a>NAACL2019医疗有关文献瞎jier阅读</h2><h3 id="Publicly-Available-Clinical-BERT-Embeddings"><a href="#Publicly-Available-Clinical-BERT-Embeddings" class="headerlink" title="Publicly Available Clinical BERT Embeddings"></a>Publicly Available Clinical BERT Embeddings</h3><p>之前有一篇文章是讲生物医疗方面的bert的叫BioBERT，这篇文章的作者训练了新的医疗bert叫做<a href="github.com/EmilyAlsentzer/clinicalBERT">clinicalBERT</a>。数据集是MIMIC-III v1.4两百万的医疗note。作者训练了两个BERT的变体，一个是基于所有note的clinical BERT，一个叫做Discharge Summary BERT，使用出院总结，应对使用出院总结的下游任务（可能在英文中这类任务比较多？）。然后下游任务用了i2b2NER任务（比较经典的一个任务），和MedNLI（18年提出的一个任务）。效果和BioBERT不相上下。</p><h3 id="Medical-Entity-Linking-using-Triplet-Network"><a href="#Medical-Entity-Linking-using-Triplet-Network" class="headerlink" title="Medical Entity Linking using Triplet Network"></a>Medical Entity Linking using Triplet Network</h3><p>正好要做EL的内容。EL一般分成候选实体生成和排序两个阶段。</p><p>文章中生成部分来自C1和C2两个集合，C1是通过计算KB中的实体向量与Mention向量的相似度，根据一个阈值取top k1得到，实体向量是他的同义词向量相加。Mention向量是mention中所有词的向量和。C2是通过mention和候选实体之间的jaccard重合度（换了个相似度度量？），根据阈值取top k2得到。</p><p>排序部分用了triplet网络，编码部分是共享权重的，过embedding之后经conv。然后用距离函数来计算mention和正负实体之间距离，损失函数来最大化两个距离之差：<br>$$<br>L = max(d_p - d_{n_i} + \alpha, 0)<br>$$<br>实验部分用了从wikipedia和pubmed PMC-Corpus上训练的200维词向量。用fastText解决OOV问题。最好的模型效果是subword（字词模型）+abb（缩略词扩展）+Triplet CNN。</p><p>用CNN和fastText模型速度应该会挺快的，针对EL这种需要大量计算的问题来说，效率也很重要。这里实体向量的构建用的是同名，应该可以加上更多的，比如关系之类的来丰富实体语义。</p><h3 id="Attention-Neural-Model-for-Temporal-Relation-Extraction"><a href="#Attention-Neural-Model-for-Temporal-Relation-Extraction" class="headerlink" title="Attention Neural Model for Temporal Relation Extraction"></a>Attention Neural Model for Temporal Relation Extraction</h3><p>对我而言，了解到一个新的概念Temporal Relation Extraction，这个概念来自17年的一篇论文<a href="https://www.aclweb.org/anthology/E17-2118.pdf" target="_blank" rel="noopener">Neural temporal relation extraction</a>.在研究药物不良反应，疾病进展和临床结果等中，时间关系抽取式建立时间线最可行的方式，将每个医疗事件event与发生的时间time联系起来。比如</p><blockquote><p>Patient was diagnosed with a rectal cancer in May of 2010</p></blockquote><p>病人时在May of 2010这个时间包含被诊断为直肠癌这个事件。</p><p>除了time和event之间存在可能的关系，event和event之间也会存在关系，比如在手术期出现心跳加速。所以现在是一个多分类任务，有三种关系1. time contain event或者event contain event、2. event contain-1 time或者event contain-1 event、3.none表示不存在关系。</p><p>论文用到的数据集是THYME（医疗事件的时间）语料库，包含200名患者的临床记录。包含两类实体：time和event，time包括事件日期和事件戳。</p>]]></content>
+    <content type="html"><![CDATA[<p>使用的es版本是<strong>6.4.0</strong>，其他版本不保证同款问题同款解决方案</p><p><strong>查看es版本</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &apos;localhost:9200&apos;</span><br></pre></td></tr></table></figure><p><strong>重启es</strong></p><p>粗暴的方式：</p><p>直接杀掉进程，然后进入bin目录执行以下命令进行启动。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\elasticsearch -d</span><br></pre></td></tr></table></figure><p>如果出现报错信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.RuntimeException: can not run elasticsearch as root</span><br></pre></td></tr></table></figure><p> 表示无法使用root账户启动es，加启动参数的方法也不行，需要切换到其他账户：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su elsearch # elsearch是账户名</span><br></pre></td></tr></table></figure><p>优雅的方式（未成功）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart elasticsearch.service</span><br></pre></td></tr></table></figure><p>显示：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to restart elasticsearch.service: Unit not found.</span><br></pre></td></tr></table></figure><h2 id="ik插件"><a href="#ik插件" class="headerlink" title="ik插件"></a><strong>ik插件</strong></h2><p><strong>安装ik时出现</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.net.SocketPermission * connect,resolve</span><br></pre></td></tr></table></figure><p>解决方案，在install后加上-b</p><p><strong>运行ik的quick example出现</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;analyzer [ik_max_word] not found for field [content]&quot;&#125;,&quot;status&quot;:400&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;NAACL2019医疗有关文献瞎jier阅读&quot;&gt;&lt;a href=&quot;#NAACL2019医疗有关文献瞎jier阅读&quot; class=&quot;headerlink&quot; title=&quot;NAACL2019医疗有关文献瞎jier阅读&quot;&gt;&lt;/a&gt;NAACL2019医疗有关文献瞎jier
+        &lt;p&gt;使用的es版本是&lt;strong&gt;6.4.0&lt;/strong&gt;，其他版本不保证同款问题同款解决方案&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查看es版本&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=
+      
+    
+    </summary>
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/categories/elasticsearch/"/>
+    
+    
+      <category term="elasticsearch" scheme="http://yoursite.com/tags/elasticsearch/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NAACL2019医疗有关文献阅读</title>
+    <link href="http://yoursite.com/2019/11/27/2019-11/NAACL2019%E5%8C%BB%E7%96%97%E6%9C%89%E5%85%B3%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/"/>
+    <id>http://yoursite.com/2019/11/27/2019-11/NAACL2019医疗有关文献阅读/</id>
+    <published>2019-11-26T16:00:00.000Z</published>
+    <updated>2019-11-28T06:13:19.839Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Publicly-Available-Clinical-BERT-Embeddings"><a href="#Publicly-Available-Clinical-BERT-Embeddings" class="headerlink" title="Publicly Available Clinical BERT Embeddings"></a>Publicly Available Clinical BERT Embeddings</h3><p>之前有一篇文章是讲生物医疗方面的bert的叫BioBERT，这篇文章的作者训练了新的医疗bert叫做<a href="github.com/EmilyAlsentzer/clinicalBERT">clinicalBERT</a>。数据集是MIMIC-III v1.4两百万的医疗note。作者训练了两个BERT的变体，一个是基于所有note的clinical BERT，一个叫做Discharge Summary BERT，使用出院总结，应对使用出院总结的下游任务（可能在英文中这类任务比较多？）。然后下游任务用了i2b2NER任务（比较经典的一个任务），和MedNLI（18年提出的一个任务）。效果和BioBERT不相上下。</p><h3 id="Medical-Entity-Linking-using-Triplet-Network"><a href="#Medical-Entity-Linking-using-Triplet-Network" class="headerlink" title="Medical Entity Linking using Triplet Network"></a>Medical Entity Linking using Triplet Network</h3><p>正好要做EL的内容。EL一般分成候选实体生成和排序两个阶段。</p><p>文章中生成部分来自C1和C2两个集合，C1是通过计算KB中的实体向量与Mention向量的相似度，根据一个阈值取top k1得到，实体向量是他的同义词向量相加。Mention向量是mention中所有词的向量和。C2是通过mention和候选实体之间的jaccard重合度（换了个相似度度量？），根据阈值取top k2得到。</p><p>排序部分用了triplet网络，编码部分是共享权重的，过embedding之后经conv。然后用距离函数来计算mention和正负实体之间距离，损失函数来最大化两个距离之差：<br>$$<br>L = max(d_p - d_{n_i} + \alpha, 0)<br>$$<br>实验部分用了从wikipedia和pubmed PMC-Corpus上训练的200维词向量。用fastText解决OOV问题。最好的模型效果是subword（字词模型）+abb（缩略词扩展）+Triplet CNN。</p><p>用CNN和fastText模型速度应该会挺快的，针对EL这种需要大量计算的问题来说，效率也很重要。这里实体向量的构建用的是同名，应该可以加上更多的，比如关系之类的来丰富实体语义。</p><h3 id="Attention-Neural-Model-for-Temporal-Relation-Extraction"><a href="#Attention-Neural-Model-for-Temporal-Relation-Extraction" class="headerlink" title="Attention Neural Model for Temporal Relation Extraction"></a>Attention Neural Model for Temporal Relation Extraction</h3><p>对我而言，了解到一个新的概念Temporal Relation Extraction，这个概念来自17年的一篇论文<a href="https://www.aclweb.org/anthology/E17-2118.pdf" target="_blank" rel="noopener">Neural temporal relation extraction</a>.在研究药物不良反应，疾病进展和临床结果等中，时间关系抽取式建立时间线最可行的方式，将每个医疗事件event与发生的时间time联系起来。比如</p><blockquote><p>Patient was diagnosed with a rectal cancer in May of 2010</p></blockquote><p>病人时在May of 2010这个时间包含被诊断为直肠癌这个事件。</p><p>除了time和event之间存在可能的关系，event和event之间也会存在关系，比如在手术期出现心跳加速。所以现在是一个多分类任务，有三种关系1. time contain event或者event contain event、2. event contain-1 time或者event contain-1 event、3.none表示不存在关系。</p><p>论文用到的数据集是THYME（医疗事件的时间）语料库，包含200名患者的临床记录。包含两类实体：time和event，time包括事件日期和事件戳。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Publicly-Available-Clinical-BERT-Embeddings&quot;&gt;&lt;a href=&quot;#Publicly-Available-Clinical-BERT-Embeddings&quot; class=&quot;headerlink&quot; title=&quot;Public
       
     
     </summary>
@@ -40,26 +67,6 @@
       <category term="nlp" scheme="http://yoursite.com/tags/nlp/"/>
     
       <category term="医疗" scheme="http://yoursite.com/tags/%E5%8C%BB%E7%96%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BERT预训练总结</title>
-    <link href="http://yoursite.com/2019/08/07/2019-08/BERT%E9%A2%84%E8%AE%AD%E7%BB%83%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2019/08/07/2019-08/BERT预训练总结/</id>
-    <published>2019-08-07T08:46:22.000Z</published>
-    <updated>2019-08-07T08:46:54.479Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="bert" scheme="http://yoursite.com/categories/bert/"/>
-    
-    
-      <category term="bert" scheme="http://yoursite.com/tags/bert/"/>
-    
-      <category term="pretraining" scheme="http://yoursite.com/tags/pretraining/"/>
     
   </entry>
   
@@ -218,9 +225,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
       <category term="词嵌入" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%B5%8C%E5%85%A5/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
@@ -247,9 +254,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="句子嵌入" scheme="http://yoursite.com/tags/%E5%8F%A5%E5%AD%90%E5%B5%8C%E5%85%A5/"/>
-    
       <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="句子嵌入" scheme="http://yoursite.com/tags/%E5%8F%A5%E5%AD%90%E5%B5%8C%E5%85%A5/"/>
     
   </entry>
   
