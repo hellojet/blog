@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-28T09:04:30.535Z</updated>
+  <updated>2020-03-25T06:35:30.578Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,81 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>xgboost笔记</title>
+    <link href="http://yoursite.com/2020/03/25/2020-03/Xgboost%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/03/25/2020-03/Xgboost笔记/</id>
+    <published>2020-03-25T03:49:08.000Z</published>
+    <updated>2020-03-25T06:35:30.578Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="xgboost笔记"><a href="#xgboost笔记" class="headerlink" title="xgboost笔记"></a>xgboost笔记</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142857.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142901.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142905.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;xgboost笔记&quot;&gt;&lt;a href=&quot;#xgboost笔记&quot; class=&quot;headerlink&quot; title=&quot;xgboost笔记&quot;&gt;&lt;/a&gt;xgboost笔记&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://hellojet-blog-1251889946
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+    
+      <category term="machine learning" scheme="http://yoursite.com/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GBDT笔记</title>
+    <link href="http://yoursite.com/2020/03/25/2020-03/GBDT%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/03/25/2020-03/GBDT笔记/</id>
+    <published>2020-03-25T02:49:08.000Z</published>
+    <updated>2020-03-25T06:33:45.355Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="GBDT笔记"><a href="#GBDT笔记" class="headerlink" title="GBDT笔记"></a>GBDT笔记</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142812.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142822.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142836.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142845.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/gbdt/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325142852.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;GBDT笔记&quot;&gt;&lt;a href=&quot;#GBDT笔记&quot; class=&quot;headerlink&quot; title=&quot;GBDT笔记&quot;&gt;&lt;/a&gt;GBDT笔记&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://hellojet-blog-1251889946.cos.ap-shan
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+    
+      <category term="machine learning" scheme="http://yoursite.com/tags/machine-learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVM硬间隔笔记</title>
+    <link href="http://yoursite.com/2020/03/25/2020-03/SVM%E7%A1%AC%E9%97%B4%E9%9A%94%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/03/25/2020-03/SVM硬间隔笔记/</id>
+    <published>2020-03-25T01:49:08.000Z</published>
+    <updated>2020-03-25T06:45:27.667Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SVM硬间隔笔记"><a href="#SVM硬间隔笔记" class="headerlink" title="SVM硬间隔笔记"></a>SVM硬间隔笔记</h1><h2 id="svm硬间隔"><a href="#svm硬间隔" class="headerlink" title="svm硬间隔"></a>svm硬间隔</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/svm/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325144018.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/svm/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325144022.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/svm/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325144033.jpg" alt=""></p><h2 id="什么是对偶问题？"><a href="#什么是对偶问题？" class="headerlink" title="什么是对偶问题？"></a>什么是对偶问题？</h2><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/svm/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325144026.jpg" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/201904/svm/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200325144030.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SVM硬间隔笔记&quot;&gt;&lt;a href=&quot;#SVM硬间隔笔记&quot; class=&quot;headerlink&quot; title=&quot;SVM硬间隔笔记&quot;&gt;&lt;/a&gt;SVM硬间隔笔记&lt;/h1&gt;&lt;h2 id=&quot;svm硬间隔&quot;&gt;&lt;a href=&quot;#svm硬间隔&quot; class=&quot;headerli
+      
+    
+    </summary>
+    
+      <category term="machine learning" scheme="http://yoursite.com/categories/machine-learning/"/>
+    
+    
+      <category term="machine learning" scheme="http://yoursite.com/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>elasticsearch使用过程中的一些整理</title>
@@ -508,85 +583,6 @@
       <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
     
       <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《CS224n: Natural Language Processing with Deep Learning》Assignments1: 理论推导部分</title>
-    <link href="http://yoursite.com/2018/12/05/2018-12/%E3%80%8ACS224n-Natural-Language-Processing-with-Deep-Learning%E3%80%8BAssignments1-%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC%E9%83%A8%E5%88%86/"/>
-    <id>http://yoursite.com/2018/12/05/2018-12/《CS224n-Natural-Language-Processing-with-Deep-Learning》Assignments1-理论推导部分/</id>
-    <published>2018-12-05T02:49:08.000Z</published>
-    <updated>2018-12-05T08:12:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Assignment-1"><a href="#Assignment-1" class="headerlink" title="Assignment #1"></a>Assignment #1</h1><h2 id="1-Softmax"><a href="#1-Softmax" class="headerlink" title="1 Softmax"></a>1 Softmax</h2><h3 id="a"><a href="#a" class="headerlink" title="(a)"></a>(a)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996643888.png" alt="1543996643888"></p><h2 id="2-Neural-Network-Basics"><a href="#2-Neural-Network-Basics" class="headerlink" title="2 Neural Network Basics"></a>2 Neural Network Basics</h2><h3 id="a-1"><a href="#a-1" class="headerlink" title="(a)"></a>(a)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996660008.png" alt="1543996660008"></p><h3 id="b"><a href="#b" class="headerlink" title="(b)"></a>(b)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996682477.png" alt="1543996682477"></p><h3 id="c"><a href="#c" class="headerlink" title="(c)"></a>(c)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996692851.png" alt="1543996692851"></p><h3 id="d"><a href="#d" class="headerlink" title="(d)"></a>(d)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996699758.png" alt="1543996699758"></p><h2 id="3-word2vec"><a href="#3-word2vec" class="headerlink" title="3 word2vec"></a>3 word2vec</h2><h3 id="a-2"><a href="#a-2" class="headerlink" title="(a)"></a>(a)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996771099.png" alt="1543996771099"></p><h3 id="b-1"><a href="#b-1" class="headerlink" title="(b)"></a>(b)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996782774.png" alt="1543996782774"></p><h3 id="c-1"><a href="#c-1" class="headerlink" title="(c)"></a>(c)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996789539.png" alt="1543996789539"></p><h3 id="d-1"><a href="#d-1" class="headerlink" title="(d)"></a>(d)</h3><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/1543996801191.png" alt="1543996801191"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Assignment-1&quot;&gt;&lt;a href=&quot;#Assignment-1&quot; class=&quot;headerlink&quot; title=&quot;Assignment #1&quot;&gt;&lt;/a&gt;Assignment #1&lt;/h1&gt;&lt;h2 id=&quot;1-Softmax&quot;&gt;&lt;a href=&quot;#1-
-      
-    
-    </summary>
-    
-      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
-    
-    
-      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文阅读：Neural Cross-Lingual Entity Linking</title>
-    <link href="http://yoursite.com/2018/12/03/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9ANeural%20Cross-Lingual%20Entity%20Linking/"/>
-    <id>http://yoursite.com/2018/12/03/2018-12/论文阅读：Neural Cross-Lingual Entity Linking/</id>
-    <published>2018-12-03T03:21:05.000Z</published>
-    <updated>2018-12-03T04:29:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p> Sil A , Kundu G , Florian R , et al. Neural Cross-Lingual Entity Linking[J]. 2017.</p><p>Avirup Sil : Research Scientist &amp; NLP Chair at IBM Research AI</p><p>这篇论文在CoNLL（YAGO）和TAC2010上的结果非常好，在CoNLL上与deeptype不相上下，在TAC2010上结果稍差。</p><h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><p><strong>本文的introduction主要讨论了细粒度的相似度的问题并给出解决方案</strong>：</p><p>对于实体链接的一些不明确情况，需要计算mention的上下文和候选实体的标题页之间的细粒度的相似性。</p><p>考虑以下例子:</p><p>e1: Alexander Douglas Smith is an American football quar- terback for the Kansas City Chiefs of the National Football League (NFL). </p><p>e2: Edwin Alexander “Alex” Smith is an American football tight end who was drafted by the Tampa Bay Buccaneers in the third round of the 2005 NFL Draft.</p><p>e3: Alexander Smith was a Scottish-American professional golfer who played in the late 19th and early 20th century. </p><p>q: Last year, while not one of the NFL’s very best quarter- backs, Alex Smith did lead the team to a strong 12-4 season.</p><p>e3中的Alexander Smith是一名golfer，显然与q中的Alexander Smith不同，这个比较好区分；但是对于e1和e2中的Alexander Smith，都提到了American football players，甚至提到了关键词：NEL。这个就比较难区分了。需要进行细粒度的相似度计算。</p><p>本文提出训练最先进的(SOTA)相似模型，用于计算mention的上下文和维基百科的消歧候选页面之间的相似度，以期正确地解决上述那些含糊的情况。出于这个目的，<strong>作者抽取了不同粒度水平的信息(针对entity coreference chain和surrounding mentions)</strong>，使用了以下方法：a combination of convolutional neural networks (CNN), LSTMs (Hochreiter and Schmidhuber 1997), Lexical Composition and Decomposition (Wang, Mi, and Ittycheriah 2016), Multi-Perspective Context Matching (MPCM) (Wang et al. 2016), and Neural Tensor Networks (Socher et al. 2013a; 2013c) 来编码这些信息并进行实体链接。</p><p>TAC社区对<strong>跨语言EL</strong>也非常感兴趣（Tsai and Roth 2016; Sil and Florian 2016）：如在西班牙语或汉语等外语文献中的mention，人们需要在英语维基百科中找到相应的链接。限制条件：we have extremely limited (or possibly even no) linguis- tic resources and no machine translation technology。</p><p>作者提到了该领域之前的一个工作：Tsai and Roth 2016提出了一种使用多语言嵌入的cross-lingual wikifier。然而，他们的模型需要针对每种新语言进行重新训练，因此并不完全适合TAC任务。</p><p><strong>作者提出了一种zero shot learning technique</strong>(Palatucci et al. 2009: Socher et al. 2013b) for their neural EL model：一旦使用english训练，就可以应用于跨语言的EL，而无需再训练。</p><h1 id="3-算法框架"><a href="#3-算法框架" class="headerlink" title="3. 算法框架"></a>3. 算法框架</h1><h2 id="1-Fast-Match-Search生成候选实体"><a href="#1-Fast-Match-Search生成候选实体" class="headerlink" title="1. Fast Match Search生成候选实体"></a>1. Fast Match Search生成候选实体</h2><p>快速匹配搜索的目标是生成候选实体。过程其实很简单：提取链接锚文本映射到其目标维基百科标题的信息。为了对mention生成对应的候选实体，作者只需要检索上面提取到的anchor-title就可以，<strong>候选实体集合被认为是锚文本m最频繁链接的实体集</strong>。比如泰坦尼克最频繁链接到的实体是：电影和船，那么下次碰到泰坦尼克时，他的候选实体就是泰坦尼克（电影）和泰坦尼克（船)。</p><p>另外，作者从相关目标语言的wikipedia页面中提取anchor-title信息，然后得到非英语链接回英语wiki的候选实体信息。</p><h2 id="2-词嵌入"><a href="#2-词嵌入" class="headerlink" title="2. 词嵌入"></a>2. 词嵌入</h2><p>分为<strong>单语言的词嵌入</strong>和<strong>跨语言的词嵌入</strong>。</p><ul><li><p>单语言的词嵌入：</p><pre><code>the widely used CBOW word2vec model (Mikolov et al. 2013)</code></pre></li><li><p>多语言的词嵌入：</p><ul><li><p>Canonical Correlation Analysis 典型相关分析 (CCA)</p><p>这种技术基于Faruqui and Dyer 2014， 首先在不同语言的文本上执行SVD，然后在平行语料中对齐的单词向量对上执行CCA。</p></li><li><p>MultiCCA</p><p>(Ammar et al. 2016) ：基于CCA，使用线性算子将每种语言（除了英语）的预训练单语言词嵌入投射到预训练英语词嵌入。</p></li><li><p>Weighted Least Squares 加权最小平方 (LS)</p><p>(Mikolov, Le, and Sutskever 2013)：其他语言的词嵌入直接投射到英语上，使用多变量回归得到的映射。</p></li></ul></li><li><p>wikipedia页面嵌入</p></li></ul><p>对wikipedia的整个页面（pages or called links）进行嵌入</p><p>第一步，<strong>计算维基百科页面中所有词的加权平均值</strong>。使用每个单词的idf作为他向量的权重，来减少频繁词的影响。计算公式如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543489755502.png" alt="1543489755502"></p><p>其中 <img src="http://chart.googleapis.com/chart?cht=tx&chl= e_w" style="border:none;"> 是词向量，<img src="http://chart.googleapis.com/chart?cht=tx&chl= idf_w" style="border:none;"> 是单词w的逆文档频率IDF。</p><p>第二步：在上面得到的词嵌入上训练一个全连接<em>tanh</em>激活层，目的是将mention上下文和Wikipedia页面放入相似空间中。</p><h2 id="3-对上下文建模"><a href="#3-对上下文建模" class="headerlink" title="3. 对上下文建模"></a>3. 对上下文建模</h2><p>对文档D中的mention m的表示进行编码。编码后的表示（representation）将会与wiki页面向量进行比较（通过余弦相似度），比较结果放入更高层的网络。</p><p>notice：文档D对m的消歧不都有用，作者选择m附近的的句子来表示m。</p><p>编码m的过程：</p><p>作者先执行一个共指消解系统(Luo et al. 2004) ，然后建立m<strong>基于句子上下文的表示</strong>，以及关于mention出现的窗口内的单词的<strong>细粒度的上下文编码</strong>。</p><ul><li>对句子进行建模<ol><li>收集包含mention或者实体共指链的所有句子</li><li>结合这些句子形成包含mention所有实例的句子序列</li><li>使用CNN从这些变长句子上产生固定大小的向量<ol><li>先将每个单词嵌入d维向量空间，使用前面说的嵌入技术</li><li>然后使用CNN将这些单词映射为一个固定长度的向量</li></ol></li><li>应用<em>tanh</em>非线性层，并用mean-pooling将结果进行聚合</li><li>对Wikipedia页面的第一段也应用CNN来进行编码，编码结果视为该实体页面的编码。（与使用CNN编码整个Wikipedia页面不同）</li></ol></li><li>细粒度上下文建模</li></ul><p><strong>上面那种句子建模会忽视某些相关模式</strong>（introduction中举的那个例子就是），没有利用好mention附近的words，这些words是mention意义的强烈指示。作者将窗口大小为n（n=4）的单词作为mention的上下文：</p><p>在这些窗口上使用LSTMs：正向对左边窗口进行，反向对右边窗口进行(Cheng, Dong, and Lapata 2016)；使用mean-pooling作为融合策略。这些压缩后的表示将会被平均，然后使用神经张量网络进行结合，使用如下公式：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543563100460.png" alt="1543563100460"></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543563130211.png" alt="1543563130211"></p><p>l和r分别是左右上下文的总体向量，W是k切片的张量，f是非线性激活函数（这里是sigmoid）。NTN的输出是一个向量。</p><h2 id="4-跨语言神经实体链接神经模型架构"><a href="#4-跨语言神经实体链接神经模型架构" class="headerlink" title="4. 跨语言神经实体链接神经模型架构"></a>4. 跨语言神经实体链接神经模型架构</h2><p>目标：perform “zero shot learning” (Socher et al. 2013b; Palatucci et al. 2009) for cross-lingual EL</p><p>方法：在英语数据上训练一个模型，使用这个模型来对其他语言进行解码，假设有英语和目标语言的跨语言词嵌入。</p><p>模型：mention上下文和候选实体wiki页面的几种相似度作为输入，放入一个前向神经层H，权重<img src="http://chart.googleapis.com/chart?cht=tx&chl= W_h" style="border:none;">，偏置<img src="http://chart.googleapis.com/chart?cht=tx&chl= b_h" style="border:none;">，和一个sigmoid非线性激活函数。H的输出h通过公式来计算：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543564299277.png" alt="1543564299277"></p><p>二分类器P(C|m,D,l)表示C=1（正确链接），C=0（不正确链接）的概率：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543564386728.png" alt="1543564386728"></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543559723954.png" alt="1543559723954"></p><p><strong>1. 特征提取层</strong></p><p>这层对相似度进行编码</p><ul><li><strong>相似性特征（比较上下文表示）</strong><ul><li>”句子上下文-wiki页面“ 的相似度</li><li>“句子山下文-wiki第一段” 的相似度</li><li>“细粒度上下文-wiki页面” 的相似度</li><li>语言内部特征：LIEL系统(Sil and Florian 2016)里描述的loca features</li></ul></li></ul><p><strong>2. 多角度装箱层</strong></p><p>用多个高斯径向基函数作为输入，进行平滑装箱到向量中（灵感来自(Liu et al. 2016)）。上面的相似度特征输入到该层，将这些特征映射到高维向量。与(Liu et al. 2016)不同的是可以自动学习输入数值重要的部分。</p><ul><li><p><strong>语义相似和不相似</strong></p><ul><li>词汇分解和组合（LDC）</li></ul></li></ul><ul><li>多角度上下文匹配（MPCM）</li></ul><p><strong>3. 训练和解码</strong></p><p>二分类训练集的设置：使用fast match strategy生成mention对应的正确链接和不正确链接实体页面。</p><p>训练过程使用随机梯度下降</p><p>解码就是比较候选实体链接正确的概率。</p><h1 id="4-实验"><a href="#4-实验" class="headerlink" title="4. 实验"></a>4. 实验</h1><h2 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h2><ul><li>English (CoNLL &amp; TAC): <ul><li>The CoNLL dataset (Hoffart et al. 2011) </li><li>TAC 2010 source</li></ul></li><li>Cross-Lingual (TAC)：<ul><li>TAC 2015 Tri-Lingual Entity Linking datasets</li></ul></li></ul><p>For the CoNLL experiments, in addition to the Wikipedia anchor-title index, we also use a alias-entity map- ping previously used by (Pershina, He, and Grishman 2015; Globerson et al. 2016; Yamada et al. 2016). We also use the mappings provided by (Hoffart et al. 2011) obtained by ex- tending the “means” tables of YAGO (Hoffart et al. 2013).</p><h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>英语EL：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543565503898.png" alt="1543565503898"></p><p>跨语言EL：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/typora_images/1543565543687.png" alt="1543565543687"></p><h1 id="5-作者工作评价"><a href="#5-作者工作评价" class="headerlink" title="5. 作者工作评价"></a>5. 作者工作评价</h1><p>其他研究在单语言或跨语言的表现上都实现了SOTA，但不是都（而本文的结果是都好）。</p><p>作者提出的模型可以仅在英语上训练，就不需要其他训练就可以应用于其他语言，只需要有跨语言的词嵌入。</p><p>作者有效利用了相似性模型（LDC，MPCM），和神经张量网络，来捕捉mention和wiki页面的相似与不相似。</p><p>zero-shot learning在跨语言EM上的应用，对低资源的语言很有用。</p><h1 id="6-自己对该论文的评价"><a href="#6-自己对该论文的评价" class="headerlink" title="6. 自己对该论文的评价"></a>6. 自己对该论文的评价</h1><h2 id="算法创新点"><a href="#算法创新点" class="headerlink" title="算法创新点"></a>算法创新点</h2><ol><li>在候选实体的生成过程中，仅靠mention的字符串匹配的效率是很低的。（这个之前在实验中已经得到验证，TAC KBP的mention通过EL索引查找wiki中的候选实体的召回率只有50%上下）本文提出的快速匹配利用wiki页面中的锚文本数据，具有可信性和高召回率。</li><li>细粒度的相似度的提出：作者不但利用包含mention的句子和wiki页面的相似度，还加入了细粒度的相似度，这几种相似度作为神经网络的输入，避免了句子中不相关单词对mention消歧的影响。</li><li>将zero-shot learning应用到跨语言实体链接中，有效的解决了TAC竞赛给出的语言资料少的缺点，对比较少人用的语言链接到英语wiki也具有现实意义。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-阅读文献来源&quot;&gt;&lt;a href=&quot;#1-阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;1. 阅读文献来源&quot;&gt;&lt;/a&gt;1. 阅读文献来源&lt;/h1&gt;&lt;p&gt; Sil A , Kundu G , Florian R , et al. Neural
-      
-    
-    </summary>
-    
-      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
-    
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-      <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
-    
-      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[转载]自然语言处理如何入门？————周明博士</title>
-    <link href="http://yoursite.com/2018/11/30/2018-11/%E8%BD%AC%E8%BD%BD-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8%EF%BC%9F%E2%80%94%E2%80%94%E5%91%A8%E6%98%8E%E5%8D%9A%E5%A3%AB/"/>
-    <id>http://yoursite.com/2018/11/30/2018-11/转载-自然语言处理如何入门？——周明博士/</id>
-    <published>2018-11-30T06:43:05.000Z</published>
-    <updated>2018-11-30T06:55:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>作者：微软亚洲研究院<br>链接：<a href="https://www.zhihu.com/question/19895141/answer/149475410" target="_blank" rel="noopener">https://www.zhihu.com/question/19895141/answer/149475410</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p><p><strong>自然语言处理</strong>（简称NLP），是研究计算机处理人类语言的一门技术，包括：<br><strong>1.句法语义分析</strong>：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。</p><p><strong>2.信息抽取</strong>：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技术。</p><p><strong>3.文本挖掘（或者文本数据挖掘）</strong>：包括文本聚类、分类、信息抽取、摘要、情感分析以及对挖掘的信息和知识的可视化、交互式的表达界面。目前主流的技术都是基于统计机器学习的。</p><p><strong>4.机器翻译</strong>：把输入的源语言文本通过自动翻译获得另外一种语言的文本。根据输入媒介不同，可以细分为文本翻译、语音翻译、手语翻译、图形翻译等。机器翻译从最早的基于规则的方法到二十年前的基于统计的方法，再到今天的基于神经网络（编码-解码）的方法，逐渐形成了一套比较严谨的方法体系。</p><p><strong>5.信息检索</strong>：对大规模的文档进行索引。可简单对文档中的词汇，赋之以不同的权重来建立索引，也可利用1，2，3的技术来建立更加深层的索引。在查询的时候，对输入的查询表达式比如一个检索词或者一个句子进行分析，然后在索引里面查找匹配的候选文档，再根据一个排序机制把候选文档排序，最后输出排序得分最高的文档。</p><p><strong>6.问答系统</strong>： 对一个自然语言表达的问题，由问答系统给出一个精准的答案。需要对自然语言查询语句进行某种程度的语义分析，包括实体链接、关系识别，形成逻辑表达式，然后到知识库中查找可能的候选答案并通过一个排序机制找出最佳的答案。</p><p><strong>7.对话系统</strong>：系统通过一系列的对话，跟用户进行聊天、回答、完成某一项任务。涉及到用户意图理解、通用聊天引擎、问答引擎、对话管理等技术。此外，为了体现上下文相关，要具备多轮对话能力。同时，为了体现个性化，要开发用户画像以及基于用户画像的个性化回复。</p><p>随着深度学习在图像识别、语音识别领域的大放异彩，人们对深度学习在NLP的价值也寄予厚望。再加上AlphaGo的成功，人工智能的研究和应用变得炙手可热。自然语言处理作为人工智能领域的认知智能，成为目前大家关注的焦点。很多研究生都在进入自然语言领域，寄望未来在人工智能方向大展身手。但是，大家常常遇到一些问题。俗话说，万事开头难。如果第一件事情成功了，学生就能建立信心，找到窍门，今后越做越好。否则，也可能就灰心丧气，甚至离开这个领域。这里针对给出我个人的建议，希望我的这些粗浅观点能够引起大家更深层次的讨论。</p><p><strong>建议1：如何在NLP领域快速学会第一个技能？</strong></p><p>我的建议是：找到一个开源项目，比如机器翻译或者深度学习的项目。理解开源项目的任务，编译通过该项目发布的示范程序，得到与项目示范程序一致的结果。然后再深入理解开源项目示范程序的算法。自己编程实现一下这个示范程序的算法。再按照项目提供的标准测试集测试自己实现的程序。如果输出的结果与项目中出现的结果不一致，就要仔细查验自己的程序，反复修改，直到结果与示范程序基本一致。如果还是不行，就大胆给项目的作者写信请教。在此基础上，再看看自己能否进一步完善算法或者实现，取得比示范程序更好的结果。</p><p><strong>建议2：如何选择第一个好题目？</strong></p><p>工程型研究生，选题很多都是老师给定的。需要采取比较实用的方法，扎扎实实地动手实现。可能不需要多少理论创新，但是需要较强的实现能力和综合创新能力。而学术型研究生需要取得一流的研究成果，因此选题需要有一定的创新。我这里给出如下的几点建议。</p><ul><li>先找到自己喜欢的研究领域。你找到一本最近的ACL会议论文集, 从中找到一个你比较喜欢的领域。在选题的时候，多注意选择蓝海的领域。这是因为蓝海的领域，相对比较新，容易出成果。</li><li>充分调研这个领域目前的发展状况。包括如下几个方面的调研：方法方面，是否有一套比较清晰的数学体系和机器学习体系；数据方面，有没有一个大家公认的标准训练集和测试集；研究团队，是否有著名团队和人士参加。如果以上几个方面的调研结论不是太清晰，作为初学者可能不要轻易进入。</li><li>在确认进入一个领域之后，按照建议一所述，需要找到本领域的开源项目或者工具，仔细研究一遍现有的主要流派和方法，先入门。</li><li>反复阅读本领域最新发表的文章，多阅读本领域牛人发表的文章。在深入了解已有工作的基础上，探讨还有没有一些地方可以推翻、改进、综合、迁移。注意做实验的时候，不要贪多，每次实验只需要验证一个想法。每次实验之后，必须要进行分析存在的错误，找出原因。</li><li>对成功的实验，进一步探讨如何改进算法。注意实验数据必须是业界公认的数据。</li><li>与已有的算法进行比较，体会能够得出比较一般性的结论。如果有，则去写一篇文章，否则，应该换一个新的选题。</li></ul><p><strong>建议3：如何写出第一篇论文？</strong></p><ul><li>接上一个问题，如果想法不错，且被实验所证明，就可开始写第一篇论文了。</li><li>确定论文的题目。在定题目的时候，一般不要“…系统”、“…研究与实践”，要避免太长的题目，因为不好体现要点。题目要具体，有深度，突出算法。</li><li>写论文摘要。要突出本文针对什么重要问题，提出了什么方法，跟已有工作相比，具有什么优势。实验结果表明，达到了什么水准，解决了什么问题。</li><li>写引言。首先讲出本项工作的背景，这个问题的定义，它具有什么重要性。然后介绍对这个问题，现有的方法是什么，有什么优点。但是（注意但是）现有的方法仍然有很多缺陷或者挑战。比如（注意比如），有什么问题。本文针对这个问题，受什么方法（谁的工作）之启发，提出了什么新的方法并做了如下几个方面的研究。然后对每个方面分门别类加以叙述，最后说明实验的结论。再说本文有几条贡献，一般写三条足矣。然后说说文章的章节组织，以及本文的重点。有的时候东西太多，篇幅有限，只能介绍最重要的部分，不需要面面俱到。</li><li>相关工作。对相关工作做一个梳理，按照流派划分，对主要的最多三个流派做一个简单介绍。介绍其原理，然后说明其局限性。</li><li>然后可设立两个章节介绍自己的工作。第一个章节是算法描述。包括问题定义，数学符号，算法描述。文章的主要公式基本都在这里。有时候要给出简明的推导过程。如果借鉴了别人的理论和算法，要给出清晰的引文信息。在此基础上，由于一般是基于机器学习或者深度学习的方法，要介绍你的模型训练方法和解码方法。第二章就是实验环节。一般要给出实验的目的，要检验什么，实验的方法，数据从哪里来，多大规模。最好数据是用公开评测数据，便于别人重复你的工作。然后对每个实验给出所需的技术参数，并报告实验结果。同时为了与已有工作比较，需要引用已有工作的结果，必要的时候需要重现重要的工作并报告结果。用实验数据说话，说明你比人家的方法要好。要对实验结果好好分析你的工作与别人的工作的不同及各自利弊，并说明其原因。对于目前尚不太好的地方，要分析问题之所在，并将其列为未来的工作。</li><li>结论。对本文的贡献再一次总结。既要从理论、方法上加以总结和提炼，也要说明在实验上的贡献和结论。所做的结论，要让读者感到信服，同时指出未来的研究方向。</li><li>参考文献。给出所有重要相关工作的论文。记住，漏掉了一篇重要的参考文献（或者牛人的工作），基本上就没有被录取的希望了。</li><li>写完第一稿，然后就是再改三遍。</li><li>把文章交给同一个项目组的人士，请他们从算法新颖度、创新性和实验规模和结论方面，以挑剔的眼光，审核你的文章。自己针对薄弱环节，进一步改进，重点加强算法深度和工作创新性。</li><li>然后请不同项目组的人士审阅。如果他们看不明白，说明文章的可读性不够。你需要修改篇章结构、进行文字润色，增加文章可读性。</li><li>如投ACL等国际会议，最好再请英文专业或者母语人士提炼文字。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;作者：微软亚洲研究院&lt;br&gt;链接：&lt;a href=&quot;https://www.zhihu.com/question/19895141/answer/149475410&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.zhihu.com/
-      
-    
-    </summary>
-    
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
