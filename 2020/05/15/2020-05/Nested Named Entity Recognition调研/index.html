@@ -104,17 +104,18 @@
 
 
 
-  <meta name="description" content="余生很长 但求无憾 以梦为马 不负韶华">
-<meta name="keywords" content="blog | natural language process | knowledge graph">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hellojet">
-<meta property="og:url" content="http://yoursite.com/categories/elasticsearch/index.html">
+  <meta name="description" content="方法nested ner第一次被Kim et al. (2003)提出  Alex et al. (2007)：双层crf模型，第一层crf用来挖掘细粒度的实体，并对结果进行embedding和词向量一起放入第二层crf，挖掘粗粒度实体  Finkel and Manning (2009)：基于语法树，适合重叠非交叉实体  Lu and Roth (2015)：超图是复杂网络里的概念，一条边连接多">
+<meta name="keywords" content="自然语言处理,命名实体识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nested Named Entity Recognition调研">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/2020-05/Nested Named Entity Recognition调研/index.html">
 <meta property="og:site_name" content="hellojet">
-<meta property="og:description" content="余生很长 但求无憾 以梦为马 不负韶华">
+<meta property="og:description" content="方法nested ner第一次被Kim et al. (2003)提出  Alex et al. (2007)：双层crf模型，第一层crf用来挖掘细粒度的实体，并对结果进行embedding和词向量一起放入第二层crf，挖掘粗粒度实体  Finkel and Manning (2009)：基于语法树，适合重叠非交叉实体  Lu and Roth (2015)：超图是复杂网络里的概念，一条边连接多">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-05-15T12:10:05.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hellojet">
-<meta name="twitter:description" content="余生很长 但求无憾 以梦为马 不负韶华">
+<meta name="twitter:title" content="Nested Named Entity Recognition调研">
+<meta name="twitter:description" content="方法nested ner第一次被Kim et al. (2003)提出  Alex et al. (2007)：双层crf模型，第一层crf用来挖掘细粒度的实体，并对结果进行embedding和词向量一起放入第二层crf，挖掘粗粒度实体  Finkel and Manning (2009)：基于语法树，适合重叠非交叉实体  Lu and Roth (2015)：超图是复杂网络里的概念，一条边连接多">
 
 
 
@@ -123,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/elasticsearch/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/15/2020-05/Nested Named Entity Recognition调研/">
 
 
 
@@ -133,7 +134,7 @@
   };
 </script>
 
-  <title>分类: elasticsearch | hellojet</title>
+  <title>Nested Named Entity Recognition调研 | hellojet</title>
   
 
 
@@ -181,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -269,7 +270,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -363,83 +364,250 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>elasticsearch<small>分类</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/15/2020-05/Nested Named Entity Recognition调研/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李洁厅">
+      <meta itemprop="description" content="余生很长 但求无憾 以梦为马 不负韶华">
+      <meta itemprop="image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hellojet">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/11/28/2019-11/elasticsearch使用过程中的一些整理/" itemprop="url">
-              
-                <span itemprop="name">elasticsearch使用过程中的一些整理</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Nested Named Entity Recognition调研
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-28T14:11:47+08:00" content="2019-11-28">
-          11-28
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-15 09:13:41" itemprop="dateCreated datePublished" datetime="2020-05-15T09:13:41+08:00">2020-05-15</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/自然语言处理/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/15/2020-05/Nested Named Entity Recognition调研/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/05/15/2020-05/Nested Named Entity Recognition调研/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>nested ner第一次被Kim et al. (2003)提出</p>
+<ul>
+<li><p>Alex et al. (2007)：双层crf模型，第一层crf用来挖掘细粒度的实体，并对结果进行embedding和词向量一起放入第二层crf，挖掘粗粒度实体</p>
+</li>
+<li><p>Finkel and Manning (2009)：基于语法树，适合重叠非交叉实体</p>
+</li>
+<li><p>Lu and Roth (2015)：超图是复杂网络里的概念，一条边连接多个节点；用基于超图的标签，从词级标签中学习嵌套信息（需要进一步理解）；Katiyar and Cardie (2018)也用到了超图，做的是超图表示学习</p>
+</li>
+<li><p>Xu et al. (2017)：借鉴变长编码方法来做，将上下文利用变长编码编码成定长向量，然后识别中心词是否是命名实体。一句话的变长编码应该是可以保证唯一且会随着句子中的词而改变的。</p>
+</li>
+<li><p>Lin et al. (2019a)：Sequence-to-Nuggets: Nested Entity Mention Detection via Anchor-Region Networks</p>
+<p><a href="https://zhuanlan.zhihu.com/p/69356826" target="_blank" rel="noopener">笔记</a></p>
+<p>基于一个基本假设：每个实体有一个不能被共享的head word，比如教育部门部长，部长是教育部门部长（PER）的head word，部门是教育部门（ORG）的head word。</p>
+<p>所以本文的方法是先找head word/anchor word并判断类型，再找这个word的region，即基于该词找实体头和实体尾的位置。</p>
+<p>所以对于慢性肾病和肾病的head word是慢性和肾病还是都是肾病？以及这种标注信息怎么获得？</p>
+</li>
+<li><p>Luan et al. (2019)：A General Framework for Information Extraction using Dynamic Span Graphs</p>
+<p><a href="https://blog.csdn.net/byn12345/article/details/105670780" target="_blank" rel="noopener">笔记</a></p>
+<p>通过枚举所有的span解决重叠实体问题，span之间通过关系或者共指消解来共享信息，不仅限于bilstm的权重共享，这种共享被称作动态的span graph</p>
+</li>
+<li><p>Fisher and Vlachos (2019)：Merge and label: A novel neural network architecture for nested NER.</p>
+<p>先找最细粒度的entity，再看这些entity能不能和其他的或entity组成更长的entity，这种merge被建模成连续值决策，帮助之后的label任务。</p>
+</li>
+<li><p>Shibuya and Hovy (2019)：Nested named entity recognition via second-best sequence learning and decoding</p>
+<p>设计了一种新的解码方式（解码之路大有可为！）</p>
+<p>先解码第一层，然后在第一层解码出的实体上通过找2nd best path解码第二层，依次迭代。直到实体长度为等于1.</p>
+<p>这篇文章中的方法使用bert与否对GENIA数据集没有提升帮助。</p>
+</li>
+<li><p>Strakov´a et al. (2019)：Neural Architectures for Nested NER through Linearization</p>
+<p>用seq2seq的方法，逐个生成每个token的一个或者多个标签。</p>
+</li>
+<li><p>A Unified MRC Framework for Named Entity Recognition</p>
+<p>用mrc（阅读理解）来做nested ner；文中着重强调了query的建立需要引入关于实体的解释，保证query的多样性；对于nested实体，需要先找到头尾（指针标注），然后对头尾进行匹配（二分类）。</p>
+</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+            <a href="/tags/命名实体识别/" rel="tag"># 命名实体识别</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/2020-05/通过cnSchema设计自己的知识图谱/" rel="next" title="通过cnSchema设计自己的知识图谱">
+                <i class="fa fa-chevron-left"></i> 通过cnSchema设计自己的知识图谱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -460,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -624,6 +801,22 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">1.</span> <span class="nav-text">方法</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -790,6 +983,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
 
   
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-09T12:14:59.305Z</updated>
+  <updated>2020-05-15T12:10:05.510Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nested Named Entity Recognition调研</title>
+    <link href="http://yoursite.com/2020/05/15/2020-05/Nested%20Named%20Entity%20Recognition%E8%B0%83%E7%A0%94/"/>
+    <id>http://yoursite.com/2020/05/15/2020-05/Nested Named Entity Recognition调研/</id>
+    <published>2020-05-15T01:13:41.000Z</published>
+    <updated>2020-05-15T12:10:05.510Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>nested ner第一次被Kim et al. (2003)提出</p><ul><li><p>Alex et al. (2007)：双层crf模型，第一层crf用来挖掘细粒度的实体，并对结果进行embedding和词向量一起放入第二层crf，挖掘粗粒度实体</p></li><li><p>Finkel and Manning (2009)：基于语法树，适合重叠非交叉实体</p></li><li><p>Lu and Roth (2015)：超图是复杂网络里的概念，一条边连接多个节点；用基于超图的标签，从词级标签中学习嵌套信息（需要进一步理解）；Katiyar and Cardie (2018)也用到了超图，做的是超图表示学习</p></li><li><p>Xu et al. (2017)：借鉴变长编码方法来做，将上下文利用变长编码编码成定长向量，然后识别中心词是否是命名实体。一句话的变长编码应该是可以保证唯一且会随着句子中的词而改变的。</p></li><li><p>Lin et al. (2019a)：Sequence-to-Nuggets: Nested Entity Mention Detection via Anchor-Region Networks</p><p><a href="https://zhuanlan.zhihu.com/p/69356826" target="_blank" rel="noopener">笔记</a></p><p>基于一个基本假设：每个实体有一个不能被共享的head word，比如教育部门部长，部长是教育部门部长（PER）的head word，部门是教育部门（ORG）的head word。</p><p>所以本文的方法是先找head word/anchor word并判断类型，再找这个word的region，即基于该词找实体头和实体尾的位置。</p><p>所以对于慢性肾病和肾病的head word是慢性和肾病还是都是肾病？以及这种标注信息怎么获得？</p></li><li><p>Luan et al. (2019)：A General Framework for Information Extraction using Dynamic Span Graphs</p><p><a href="https://blog.csdn.net/byn12345/article/details/105670780" target="_blank" rel="noopener">笔记</a></p><p>通过枚举所有的span解决重叠实体问题，span之间通过关系或者共指消解来共享信息，不仅限于bilstm的权重共享，这种共享被称作动态的span graph</p></li><li><p>Fisher and Vlachos (2019)：Merge and label: A novel neural network architecture for nested NER.</p><p>先找最细粒度的entity，再看这些entity能不能和其他的或entity组成更长的entity，这种merge被建模成连续值决策，帮助之后的label任务。</p></li><li><p>Shibuya and Hovy (2019)：Nested named entity recognition via second-best sequence learning and decoding</p><p>设计了一种新的解码方式（解码之路大有可为！）</p><p>先解码第一层，然后在第一层解码出的实体上通过找2nd best path解码第二层，依次迭代。直到实体长度为等于1.</p><p>这篇文章中的方法使用bert与否对GENIA数据集没有提升帮助。</p></li><li><p>Strakov´a et al. (2019)：Neural Architectures for Nested NER through Linearization</p><p>用seq2seq的方法，逐个生成每个token的一个或者多个标签。</p></li><li><p>A Unified MRC Framework for Named Entity Recognition</p><p>用mrc（阅读理解）来做nested ner；文中着重强调了query的建立需要引入关于实体的解释，保证query的多样性；对于nested实体，需要先找到头尾（指针标注），然后对头尾进行匹配（二分类）。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;方法&quot;&gt;&lt;a href=&quot;#方法&quot; class=&quot;headerlink&quot; title=&quot;方法&quot;&gt;&lt;/a&gt;方法&lt;/h2&gt;&lt;p&gt;nested ner第一次被Kim et al. (2003)提出&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Alex et al. (2007)：双
+      
+    
+    </summary>
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
+    
+      <category term="命名实体识别" scheme="http://yoursite.com/tags/%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>通过cnSchema设计自己的知识图谱</title>
@@ -464,9 +493,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
       <category term="词嵌入" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%B5%8C%E5%85%A5/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
@@ -493,9 +522,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="句子嵌入" scheme="http://yoursite.com/tags/%E5%8F%A5%E5%AD%90%E5%B5%8C%E5%85%A5/"/>
-    
       <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="句子嵌入" scheme="http://yoursite.com/tags/%E5%8F%A5%E5%AD%90%E5%B5%8C%E5%85%A5/"/>
     
   </entry>
   
@@ -554,33 +583,6 @@
       <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
     
       <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GloVe笔记</title>
-    <link href="http://yoursite.com/2018/12/07/2018-12/GloVe%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/12/07/2018-12/GloVe笔记/</id>
-    <published>2018-12-07T02:49:08.000Z</published>
-    <updated>2020-03-10T06:38:34.846Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Glove笔记"><a href="#Glove笔记" class="headerlink" title="Glove笔记"></a>Glove笔记</h1><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310143601.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310143615.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310143626.png" alt=""></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200310143637.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Glove笔记&quot;&gt;&lt;a href=&quot;#Glove笔记&quot; class=&quot;headerlink&quot; title=&quot;Glove笔记&quot;&gt;&lt;/a&gt;Glove笔记&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://hellojet-blog-1251889946.cos.ap-
-      
-    
-    </summary>
-    
-      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
-    
-    
-      <category term="CS224n" scheme="http://yoursite.com/tags/CS224n/"/>
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
   </entry>
   
