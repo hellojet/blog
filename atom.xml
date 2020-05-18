@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-15T12:10:05.510Z</updated>
+  <updated>2020-05-18T06:53:29.715Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>混合高斯参数估计简单代码实现</title>
+    <link href="http://yoursite.com/2020/05/18/2020-05/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E7%AE%80%E5%8D%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2020/05/18/2020-05/混合高斯参数估计简单代码实现/</id>
+    <published>2020-05-18T06:49:43.000Z</published>
+    <updated>2020-05-18T06:53:29.715Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>十个身高数据，来自男生和女生，目标是估计男生和女生身高的高斯分布参数以及男生和女生的数量分布。</p><p>数据来自：<a href="http://blog.sina.com.cn/s/blog_55d99cc20102xb5y.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_55d99cc20102xb5y.html</a></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="comment"># 初始化</span></span><br><span class="line">miu1, sigma1, miu2, sigma2, alpha1 = <span class="number">176</span>, <span class="number">7.86271087</span>, <span class="number">178</span>, <span class="number">7.86271087</span>, <span class="number">0.5</span></span><br><span class="line">alpha2 = <span class="number">1</span>-alpha1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 观测数据</span></span><br><span class="line">heights = [<span class="number">176</span>, <span class="number">178</span>, <span class="number">180</span>, <span class="number">182</span>, <span class="number">181</span>, <span class="number">179</span>, <span class="number">165</span>, <span class="number">166</span>, <span class="number">164</span>, <span class="number">163</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># NORMDIST</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">norm_dist_func_false</span><span class="params">(x, _mean, _std)</span>:</span></span><br><span class="line">exponent = (x - _mean)**<span class="number">2.0</span> / (<span class="number">2.0</span> * _std**<span class="number">2.0</span>)</span><br><span class="line"><span class="keyword">return</span> np.exp(-exponent) / (np.sqrt(<span class="number">2.0</span> * np.pi) * _std)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 迭代</span></span><br><span class="line">c = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">    gama1 = [<span class="number">0</span>] * len(heights)</span><br><span class="line">    gama2 = [<span class="number">0</span>] * len(heights)</span><br><span class="line">    new_miu1, new_sigma1, new_miu2, new_sigma2, new_alpha1, new_alpha2 = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(heights)):</span><br><span class="line">        gama1[i] = alpha1 * norm_dist_func_false(heights[i], miu2, sigma2) / (alpha1 * norm_dist_func_false(heights[i], miu2, sigma2) + alpha2 * norm_dist_func_false(heights[i], miu1, sigma1))</span><br><span class="line">        gama2[i] = <span class="number">1</span> - gama1[i]</span><br><span class="line">        new_miu1 += heights[i] * gama2[i]</span><br><span class="line">        new_sigma1 += gama2[i] * (heights[i] - miu1) * (heights[i] - miu1)</span><br><span class="line">        new_miu2 += heights[i] * gama1[i]</span><br><span class="line">        new_sigma2 += gama1[i] * (heights[i] - miu2) * (heights[i] - miu2)</span><br><span class="line">    N1 = np.sum(gama1)</span><br><span class="line">    N2 = np.sum(gama2)</span><br><span class="line">    new_miu1 /= N2</span><br><span class="line">    new_sigma1 = np.sqrt(new_sigma1 / N2)</span><br><span class="line">    new_miu2 /= N1</span><br><span class="line">    new_sigma2 = np.sqrt(new_sigma2 / N1)</span><br><span class="line">    new_alpha1 = N1 / len(heights)</span><br><span class="line">    new_alpha2 = N2 / len(heights)</span><br><span class="line">    miu1, sigma1, miu2, sigma2, alpha1, alpha2 = new_miu1, new_sigma1, new_miu2, new_sigma2, new_alpha1, new_alpha2</span><br><span class="line">    print(<span class="string">'&#123;&#125;\t&#123;&#125;\t&#123;&#125;\t&#123;&#125;\t&#123;&#125;'</span>.format(miu1, sigma1, miu2, sigma2, alpha1))</span><br><span class="line">    <span class="keyword">if</span> c &gt;= <span class="number">29</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        c += <span class="number">1</span></span><br></pre></td></tr></table></figure><p>三十次迭代之后的结果已经收敛：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/blog/clipboard_20200518025233.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据&quot;&gt;&lt;a href=&quot;#数据&quot; class=&quot;headerlink&quot; title=&quot;数据&quot;&gt;&lt;/a&gt;数据&lt;/h2&gt;&lt;p&gt;十个身高数据，来自男生和女生，目标是估计男生和女生身高的高斯分布参数以及男生和女生的数量分布。&lt;/p&gt;
+&lt;p&gt;数据来自：&lt;a href=&quot;h
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="混合高斯模型" scheme="http://yoursite.com/tags/%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Nested Named Entity Recognition调研</title>
@@ -493,9 +521,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="词嵌入" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%B5%8C%E5%85%A5/"/>
-    
       <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="词嵌入" scheme="http://yoursite.com/tags/%E8%AF%8D%E5%B5%8C%E5%85%A5/"/>
     
   </entry>
   
@@ -522,9 +550,9 @@
     
       <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
     
-      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
       <category term="句子嵌入" scheme="http://yoursite.com/tags/%E5%8F%A5%E5%AD%90%E5%B5%8C%E5%85%A5/"/>
+    
+      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
     
   </entry>
   
@@ -552,37 +580,6 @@
       <category term="cs224n" scheme="http://yoursite.com/tags/cs224n/"/>
     
       <category term="TensorFlow" scheme="http://yoursite.com/tags/TensorFlow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation</title>
-    <link href="http://yoursite.com/2018/12/11/2018-12/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%EF%BC%9AJoint%20Learning%20of%20the%20Embedding%20of%20Words%20and%20Entities%20for%20Named%20Entity%20Disambiguation/"/>
-    <id>http://yoursite.com/2018/12/11/2018-12/论文阅读：Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation/</id>
-    <published>2018-12-11T13:03:28.000Z</published>
-    <updated>2018-12-11T13:20:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="1-阅读文献来源"><a href="#1-阅读文献来源" class="headerlink" title="1. 阅读文献来源"></a>1. 阅读文献来源</h1><p>Yamada I, Shindo H, Takeda H, et al. Joint Learning of the Embedding of Words and Entities for Named Entity Disambiguation[J]. 2016:250-259.</p><h1 id="2-论文解决的科学问题及研究动机"><a href="#2-论文解决的科学问题及研究动机" class="headerlink" title="2. 论文解决的科学问题及研究动机"></a>2. 论文解决的科学问题及研究动机</h1><p>在NED（Named Entity Disambiguation）中的主要困难是实体指称词意义的模糊性。</p><p>早期研究集中于建模上下文语境，比如上下文与候选实体的百科页面的相似度(Bunescu and Pasca, 2006;Mihalcea and Csomai, 2007)。很多先进的方法通过使用更复杂的全局方法，所有指称词基于全局相关度进行同时消歧。</p><p>词向量逐渐流行(Mikolov et al., 2013a;Mikolov et al., 2013b; Pennington et al., 2014)。这种方法涉及到从大量非结构文本中学习单词的连续向量表达。当相似单词被放在低维向量空间中相邻的位置上时，这些向量可以捕捉单词之间的语义相似度.</p><h1 id="3-所提算法创新的工作"><a href="#3-所提算法创新的工作" class="headerlink" title="3. 所提算法创新的工作"></a>3. 所提算法创新的工作</h1><p><strong>传统skip-gram模型：</strong></p><p>Skip-gram模型的训练目标是给定目标单词的情况下找到有助于预测上下文词汇的单词表达。</p><p>形式化：给定T个单词的序列：<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image002.gif" alt="img">。这个模型旨在最大化下面的目标函数：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image004.jpg" alt="img"></p><p>其中c是上下文窗口的大小，</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image006-1544533695373.gif" alt="img"></p><p>代表目标实体</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image008.gif" alt="img"></p><p>代表其上下文单词。</p><p>条件概率</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image010.gif" alt="img"></p><p>通过下面的softmax函数计算：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image012.jpg" alt="img"></p><p>其中W是词汇表中所有单词的集合，</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image014.gif" alt="img"></p><p>和</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image016.gif" alt="img"></p><p>代表单词</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image018.gif" alt="img"></p><p>在矩阵V和U中向量。<br>通过调整V来使得目标函数最大化，即给定目标实体上下文出现概率最大。这样本文就得到了一个代表T个单词的向量表达V。</p><p><strong>对skip-gram模型进行扩展：</strong></p><p>本文扩展矩阵V和U除了单词向量之外还包括实体向量，得到</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image020.gif" alt="img"></p><p>和</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image022.gif" alt="img"></p><p><strong>知识库图模型KB Graph Model：</strong></p><p>本文在KB中使用一个内部连接结构，使得模型学习到实体对之间的相关度。Wikipedia Link-based Measure（WLM）是一个基于连接结构测量实体相关度的方法。计算两个实体相关度的方法如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image024.jpg" alt="img"></p><p>其中E是KB中所有实体的集合，Ce是与实体e有连接的实体集合。直观上，WLM认为具有相似连接的实体是相关的。虽然WLM简单，但是比很多算法要好。</p><p>启发自WLM，知识库图模型将具有相似连接的实体放在向量空间中相近的位置，通过下面的目标函数来形式化这个过程：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image026.jpg" alt="img"></p><p>本文使用softmax函数来计算上述公式中的条件概率：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image028.jpg" alt="img"></p><p>对于给定的实体e，本文训练模型来预测连接Ce。因此，Ce在skip-gram模型中和上下文单词起到相似的作用。</p><p><strong>Anchor Context Model（锚文本模型）：</strong></p><p>如果本文仅考虑在skip-gram模型中加入KB图模型，实体和单词的向量不会相互作用，这些向量会被放在向量空间中不同的子空间中。为了解决这个问题，本文提出Anchor Context Model将相似的实体和单词放在向量空间中相近的位置。</p><p>思想：利用KB锚和上下文来训练模型。Wikipedia中有很多内部锚，利用这些，本文能从KB中直接获取到实体及其上下文单词的出现。</p><p>本文训练模型通过目标锚来预测一个实体指向的上下文单词。目标函数如下：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image030.jpg" alt="img"></p><p>其中A代表KB中的锚集合，其中每一个包含一对实体指称<br><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image032.gif" alt="img"><br>和它的上下文单词Q的集合。Q包含前c个单词和后c个单词。|A|表示KB中内部锚的数量。</p><p>条件概率通过softmax函数计算：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image034.jpg" alt="img"></p><p>使用提出的模型，本文通过将单词和具有相似上下文单词的实体放在向量空间中相邻的地方，来分配单词和实体的向量表达。</p><p><strong>结合</strong></p><p>通过3中提出的三种模型及它们的目标函数，本文将它们线性结合在一起，得到最终的目标函数：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image036.jpg" alt="img"></p><p>模型的训练意向最大化上述的函数，结果得到矩阵V被用于向量化单词和实体。</p><p>算法的一个问题是，在训练模型时，包含在softmax函数中的正则化项的计算是非常昂贵的，因为涉及到所有单词W或实体E的总和。为了解决这个问题，本文使用负采样（NEG）来将原始的目标函数转化为计算可行的目标函数。</p><p>NEG通过下面的目标函数定义：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image038.jpg" alt="img"></p><p>其中<br><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image040.jpg" alt="img"><br>是一个sigmoid函数，g是负样本的数量。本文替换公式（1）中的条件概率通过上面这个目标函数。因此，公式（1）的目标函数转化成了一个简单的二分类目标函数，来对从噪声分布Pneg(w)中提取的words（上文中翻译成单词，这里还是用words防止错误解读）进行辨别。同样的本文也可以对公式（4）和公式（6）进行同样的替换。</p><p>NEG将噪声分布Pneg(w)作为一个自由参数。</p><p>本文使用Wikipedia来训练所有的模型。通过在Wikipedia页面上迭代几次来进行同时优化得到最大的目标函数。本文使用随机梯度下降（SGD）进行优化。</p><h1 id="4-算法框架"><a href="#4-算法框架" class="headerlink" title="4. 算法框架"></a>4. 算法框架</h1><p><strong>使用词向量进行NED：</strong></p><p>任务：给定文档d中的实体指称词集合</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image042.gif" alt="img"></p><p>KB中的实体集合</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image044.gif" alt="img"></p><p>将指称词指向对应的实体。<br>本文将NED任务分成两个部分：候选集生成和指称消歧。</p><p><strong>指称消歧</strong></p><p>给定一个文档d和指称词m以及它的候选实体集合{ e1, e2,…, ek}，任务是从集合中选择最相关实体对m进行消歧。</p><p>提升效果的关键是有效建模上下文，本文提出两个模型，使用提出的词向量模型对上下文进行建模。本文使用监督学习将两个模型和标准NED特征结合起来。</p><p><strong>1）建模文本上下文：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image046.jpg" alt="img"></p><p>其中</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image048.gif" alt="img"></p><p>是指称词m的上下文集合，</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image050.gif" alt="img"></p><p>代表单词w的词向量。本文使用文档d中的所有名词作为上下文（&lt;<a href="https://opennlp.apache.org/）。" target="_blank" rel="noopener">https://opennlp.apache.org/）。</a><br>然后本文计算候选实体和文本上下文的相似度，通过</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image052.gif" alt="img"></p><p>和</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif" alt="img"></p><p>余弦相似度。</p><p><strong>2）建模相关度</strong></p><p>一个简单的两步方法：第一步，在非歧指称词上使用相关度得分训练机器学习模型；第二步，在预测到的实体分配上使用相关度得分重新训练模型。</p><p>评价相关度：先计算上下文实体（非歧义的实体）的词向量，计算上下文实体向量和目标实体e向量的相似度。为了获得上下文实体的词向量，本文平均他们的词向量：</p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image056.jpg" alt="img"></p><p>其中<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image058.gif" alt="img">表示上下文实体集合。<br>为了评价相关度得分，本文重新使用上下文实体<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image060.gif" alt="img">和实体<img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image054.gif" alt="img">之间的余弦相似度。</p><p><strong>3）学会排序</strong></p><p>本文采用监督机器学习方法来排序给定指称词m和文档d之后的候选实体集，目的是为了将标准NED特征和上下文信息结合起来。</p><p>梯度提升回归树（GBRT）（<a href="http://scikit-learn.org/stable/）：包含一组回归树，给定实例预测相关度得分。代价函数为logistic" target="_blank" rel="noopener">http://scikit-learn.org/stable/）：包含一组回归树，给定实例预测相关度得分。代价函数为logistic</a> loss。主要参数有迭代次数，学习速率和决策树的最大深度。</p><h1 id="5-实验"><a href="#5-实验" class="headerlink" title="5. 实验"></a>5. 实验</h1><p><strong>训练词向量的数据：</strong><a href="https://dumps.wikimedia.org/" target="_blank" rel="noopener">https://dumps.wikimedia.org/</a></p><p><strong>1）测试实体词向量的质量：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image062.jpg" alt="img"></p><p><strong>2）命名实体消歧</strong></p><p><strong>数据集：CoNLL（Hoffart et al. 2011）、TAC 2010（Ji et al. 2010）。</strong></p><p><strong>对比算法：Hoffart et al.、He et al.、Chisholm and Hachey、Pershina et al.</strong></p><p><strong>本文算法的结果：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image064.jpg" alt="img"></p><p><strong>表3是对比实验结果：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image066.jpg" alt="img"></p><p><strong>表4是本文算法不同特征学习的结果：</strong></p><p><img src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/clip_image068.jpg" alt="img"></p><p><strong>在加入基于本文的词向量模型的上下文特征时，效果大大的提升了。</strong></p><p><strong>错误分析：观察到在CoNLL测试集上，大约48.6%的错误率是由于metonymy mentions造成的。当一个流行的错误实体，匹配到指称词，本文的NED算法经常出错，这是由于本文的算法利用KB中的实体流行性数据。</strong></p><h1 id="6-工作评价"><a href="#6-工作评价" class="headerlink" title="6. 工作评价"></a>6. 工作评价</h1><p>本文提出了一种词嵌入方法，将文字和实体联合映射到相同的连续向量空间中。本文的方法使本文能够有效地对文本和全局的文本进行建模。此外，在这些背景下，本文的NED方法优于最先进的NED方法。</p><p><strong>在未来的工作中，本文打算通过利用关系知识来改进本文的模型，例如在知识图中（例如Freebase的关系。本文也想使本文的嵌入应用到其他的应用领域。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;1-阅读文献来源&quot;&gt;&lt;a href=&quot;#1-阅读文献来源&quot; class=&quot;headerlink&quot; title=&quot;1. 阅读文献来源&quot;&gt;&lt;/a&gt;1. 阅读文献来源&lt;/h1&gt;&lt;p&gt;Yamada I, Shindo H, Takeda H, et al. Joint L
-      
-    
-    </summary>
-    
-      <category term="nlp" scheme="http://yoursite.com/categories/nlp/"/>
-    
-    
-      <category term="自然语言处理" scheme="http://yoursite.com/tags/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/"/>
-    
-      <category term="论文阅读" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
-    
-      <category term="知识图谱" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/"/>
-    
-      <category term="实体链接" scheme="http://yoursite.com/tags/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/"/>
     
   </entry>
   
