@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Knowledge Graph Embedding SummaryK-Berthttps://zhuanlan.zhihu.com/p/103661878 在下游任务中融入三元组领域知识，为了方式过多的三元组是原始的句子偏离原意 本文引入了soft-postition和visible matrix来限制知识的负面影响，将领域知识注入模型而不需要重新预训练  三元组接在对应的entity后面，给予顺">
+<meta name="keywords" content="KGE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Knowledge Graph Embedding Summary">
+<meta property="og:url" content="http://yoursite.com/2020/06/19/2020-06/Knowledge Graph Embedding Summary/index.html">
+<meta property="og:site_name" content="hellojet">
+<meta property="og:description" content="Knowledge Graph Embedding SummaryK-Berthttps://zhuanlan.zhihu.com/p/103661878 在下游任务中融入三元组领域知识，为了方式过多的三元组是原始的句子偏离原意 本文引入了soft-postition和visible matrix来限制知识的负面影响，将领域知识注入模型而不需要重新预训练  三元组接在对应的entity后面，给予顺">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-19T08:28:25.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Knowledge Graph Embedding Summary">
+<meta name="twitter:description" content="Knowledge Graph Embedding SummaryK-Berthttps://zhuanlan.zhihu.com/p/103661878 在下游任务中融入三元组领域知识，为了方式过多的三元组是原始的句子偏离原意 本文引入了soft-postition和visible matrix来限制知识的负面影响，将领域知识注入模型而不需要重新预训练  三元组接在对应的entity后面，给予顺">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hellojet" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/19/2020-06/Knowledge Graph Embedding Summary/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Knowledge Graph Embedding Summary | hellojet</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion .logo-line-before i { left: initial; }
+    .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hellojet</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/2020-06/Knowledge Graph Embedding Summary/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="李洁厅">
+      <meta itemprop="description" content="余生很长 但求无憾 以梦为马 不负韶华">
+      <meta itemprop="image" content="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hellojet">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Knowledge Graph Embedding Summary
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-19 16:10:49" itemprop="dateCreated datePublished" datetime="2020-06-19T16:10:49+08:00">2020-06-19</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/知识图谱/" itemprop="url" rel="index"><span itemprop="name">知识图谱</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/19/2020-06/Knowledge Graph Embedding Summary/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/06/19/2020-06/Knowledge Graph Embedding Summary/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Knowledge-Graph-Embedding-Summary"><a href="#Knowledge-Graph-Embedding-Summary" class="headerlink" title="Knowledge Graph Embedding Summary"></a>Knowledge Graph Embedding Summary</h1><h2 id="K-Bert"><a href="#K-Bert" class="headerlink" title="K-Bert"></a>K-Bert</h2><p><a href="https://zhuanlan.zhihu.com/p/103661878" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/103661878</a></p>
+<p>在下游任务中融入三元组领域知识，为了方式过多的三元组是原始的句子偏离原意</p>
+<p>本文引入了soft-postition和visible matrix来限制知识的负面影响，将领域知识注入模型而不需要重新预训练</p>
+<ol>
+<li>三元组接在对应的entity后面，给予顺序的position token；</li>
+</ol>
+<p>因为bert是词袋模型，本身没有顺序，所以可以通过position token来控制哪些文本离实体近，哪些文本离实体远 </p>
+<ol start="2">
+<li>接下来就是attention mask了，在自回归模型中通过attention mask来控制可看到的视野</li>
+</ol>
+<p>而这里也是一样，当碰到实体时，实体的信息来自于原始句子以及三元组信息</p>
+<p>当碰到非实体时，信息来自于原始信息</p>
+<p>当碰到三元组时，信息仅仅来自于三元组</p>
+<h2 id="side-information-from-EGES-Enhanced-Graph-Embedding-with-Side-information"><a href="#side-information-from-EGES-Enhanced-Graph-Embedding-with-Side-information" class="headerlink" title="side-information from EGES(Enhanced Graph Embedding with Side information)"></a>side-information from EGES(Enhanced Graph Embedding with Side information)</h2><p><a href="https://zhuanlan.zhihu.com/p/69069878" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/69069878</a></p>
+<p>GES：</p>
+<p>对每个item，让他的属性信息进行embedding，然后均值表示该item的embedding</p>
+<p>之后就是deepwalk 随机游走+word2vec的过程</p>
+<p>EGES：</p>
+<p>不同属性施加不同权重，权重由训练得到，每个商品是有自己的一套权重</p>
+<p>然后还采用了加权的skip gram模型，</p>
+<h2 id="TransE-and-extensions"><a href="#TransE-and-extensions" class="headerlink" title="TransE and extensions"></a>TransE and extensions</h2><h3 id="TransE"><a href="#TransE" class="headerlink" title="TransE"></a>TransE</h3><p>男人-女人=国王-王后，transE来自于词向量中的这种语言规律</p>
+<p>h + r ≈ t</p>
+<p>打分函数设计：h+r-t的一二范式</p>
+<p>无法处理1toN，Nto1,NtoN关系，比如A的B是C、D、E…，虽然CDE不是同一个实体，但是却有相似的向量表示。</p>
+<p>训练过程：</p>
+<ol>
+<li><p>初始化</p>
+</li>
+<li><p>minibatch，负采样（三元组中某一实体随机替换掉）</p>
+</li>
+<li><p>梯度下降</p>
+</li>
+</ol>
+<h3 id="TransH"><a href="#TransH" class="headerlink" title="TransH"></a>TransH</h3><p>将r作为超平面上的向量，每个r在自己的超平面，h和t需要通过w_r映射到r所在的超平面；因此在每个关系下，一个实体有不同角色</p>
+<p>h = h - w_r^T <em> h </em> w_r<br>t = t - w_r^T <em> t </em> w_r</p>
+<p>打分函数是映射后的二阶距离</p>
+<h3 id="TransR"><a href="#TransR" class="headerlink" title="TransR"></a>TransR</h3><p>与TransH相似，r具有自己的空间</p>
+<p>h = W_r <em> h<br>t = W_r </em> t</p>
+<h3 id="TransD"><a href="#TransD" class="headerlink" title="TransD"></a>TransD</h3><p>简化TransR</p>
+<p>W_r^1 = w_r <em> w_h^T + I<br>W_r^2 = w_r </em> w_t^T + I</p>
+<p>h = W_r^1 <em> h<br>t = W_r^2 </em> t</p>
+<p>减少参数量</p>
+<h3 id="TranSparse"><a href="#TranSparse" class="headerlink" title="TranSparse"></a>TranSparse</h3><p>另一种简化TransR的方法</p>
+<p>h = M_r <em> \theta_r </em> h 稀疏映射</p>
+<p>theta代表投影矩阵的稀疏程度</p>
+<h3 id="TransM"><a href="#TransM" class="headerlink" title="TransM"></a>TransM</h3><p>在打分函数前乘一个权重theta_r，对于一对多多对一多对多关系，分配较小的权重，允许在这些关系下，t和h+r可以离得较远</p>
+<h3 id="ManifoldE"><a href="#ManifoldE" class="headerlink" title="ManifoldE"></a>ManifoldE</h3><p>换了一种应对多对多的方式：</p>
+<p>|h+r-t|_2^2 ≈ theta_r^2</p>
+<p>h+r-t允许出现在一个半径为theta_r的误差圆上</p>
+<h3 id="TransF"><a href="#TransF" class="headerlink" title="TransF"></a>TransF</h3><p>只需要t和h+r的方向相同</p>
+<p>打分函数：(h+r) ^ T <em> t + (t-r) ^ T </em> h</p>
+<h3 id="TransA"><a href="#TransA" class="headerlink" title="TransA"></a>TransA</h3><p>M_r：对称非负矩阵，距离矩阵</p>
+<p>打分函数：马氏距离 -(|h+r-t|)^T <em> M_r </em> (|h+r-t|)</p>
+<p>学习M_r可以处理复杂关系（不懂）</p>
+<h2 id="Gaussian-Embeddings"><a href="#Gaussian-Embeddings" class="headerlink" title="Gaussian Embeddings"></a>Gaussian Embeddings</h2><p>TransE等将实体和关系作为空间中的一个确定的点，而Gaussian Embeddings将他们作为一个不确定的随机变量</p>
+<h3 id="KG2E"><a href="#KG2E" class="headerlink" title="KG2E"></a>KG2E</h3><p>h t r服从多元高斯分布</p>
+<p>打分函数：</p>
+<p>t-h和r服从两个高斯分布，可以导出两种距离：KL散度和概率内积</p>
+<h3 id="TransG"><a href="#TransG" class="headerlink" title="TransG"></a>TransG</h3><p>一个关系有多个语义，因此关系服从混合高斯分布 \Sigma(π_r^i * μ_r^i)，i代表第i种语义</p>
+<p>打分函数是多中关系语义距离的混合</p>
+<h2 id="RESCAL-and-extensions"><a href="#RESCAL-and-extensions" class="headerlink" title="RESCAL and extensions"></a>RESCAL and extensions</h2><h3 id="RESCAL"><a href="#RESCAL" class="headerlink" title="RESCAL"></a>RESCAL</h3><p>实体：向量；关系：矩阵</p>
+<p>打分函数：h^T <em> M_r </em> t (双线性函数？)</p>
+<p>捕捉h和t两两维度之间的交互</p>
+<p>好像相当于h和t进行拼接，过一层参数为M_r的隐层，得到打分函数的值</p>
+<p>也有将M_r分解来减少参数量的</p>
+<h3 id="TATEC"><a href="#TATEC" class="headerlink" title="TATEC"></a>TATEC</h3><p>除了RESCAL中的三者交互打分函数，还有两两之间的交互</p>
+<p>h^T <em> r、 t^T </em> r、h^T <em> D </em> t (D是所有关系共享参数的对角矩阵)</p>
+<h3 id="DistMult"><a href="#DistMult" class="headerlink" title="DistMult"></a>DistMult</h3><p>简化RESCAL，将M_r限制为对角矩阵</p>
+<p>打分函数：h^T <em> diag(r) </em> t</p>
+<p>只捕捉h和t在相同维度的交互，只能处理对称关系，不适用于一般性的KG</p>
+<h3 id="Holographic-Embeddings（HolE）"><a href="#Holographic-Embeddings（HolE）" class="headerlink" title="Holographic Embeddings（HolE）"></a>Holographic Embeddings（HolE）</h3><p>将RESCAL和DistMult进行结合</p>
+<p>h和t之间进行循环相关操作（h的维度k和t的维度k到k+d之间进行交互）；对两两交互进行压缩</p>
+<p>打分函数：r^T * (h 循环相关操作 t)</p>
+<p>可以跟RESCAL一样建模非对称关系</p>
+<h3 id="Complex-Embeddings-ComplEx"><a href="#Complex-Embeddings-ComplEx" class="headerlink" title="Complex Embeddings (ComplEx)"></a>Complex Embeddings (ComplEx)</h3><p>实体和向量在复数空间</p>
+<p>HolE是ComplEx的一种关于共轭对称的特殊情况（小朋友你是否有很多？？？）</p>
+<h3 id="ANALOGY"><a href="#ANALOGY" class="headerlink" title="ANALOGY"></a>ANALOGY</h3><p>建模实体和关系的相似属性，比如阿尔弗莱德·希区柯克之于《惊魂记》就像詹姆斯·卡梅隆之于《阿凡达》</p>
+<p>打分函数也采用RESCAL所采用的双线性函数</p>
+<p>为了学习上面说的相似结构，需要M_r的线性映射是具有标准型（转置相乘交换相等）和交换性</p>
+<p>DistMult、HolE、ComplEx可以被归纳为ANALOGY的特例（？？？）</p>
+<h2 id="Matching-using-neural-network-architectures"><a href="#Matching-using-neural-network-architectures" class="headerlink" title="Matching using neural network architectures"></a>Matching using neural network architectures</h2><p>用神经网络来进行语义匹配</p>
+<h3 id="Semantic-Matching-Energy（SME）"><a href="#Semantic-Matching-Energy（SME）" class="headerlink" title="Semantic Matching Energy（SME）"></a>Semantic Matching Energy（SME）</h3><p>打分函数：g_u(h,r)^T * g_v(t,r)</p>
+<p>g_u和g_v有两个版本：</p>
+<p>线性： M_u^1 <em> h + M_u^2 </em> r + b_u</p>
+<p>双线性： ( M_u^1 <em> h ) 点乘 （M_u^2 </em> r） + b_u</p>
+<h3 id="Neural-Tensor-Network-NTN"><a href="#Neural-Tensor-Network-NTN" class="headerlink" title="Neural Tensor Network (NTN)"></a>Neural Tensor Network (NTN)</h3><p>h和t经过embedding layer，与M_r结合，经过一个非线性隐层，最后经过一个与关系相关的打分输出层</p>
+<p>r^T <em> tanh(h^T </em> M_r <em> t + M_r^1 </em> h + M_r^2 * t + b_r)</p>
+<h3 id="Multi-Layer-Perceptron-MLP"><a href="#Multi-Layer-Perceptron-MLP" class="headerlink" title="Multi-Layer Perceptron (MLP)"></a>Multi-Layer Perceptron (MLP)</h3><p>多层感知机</p>
+<p>w^T <em> tanh(M^1 </em> h + M^2 <em> r + M^3 </em> t)</p>
+<p>不同关系之间共享权重</p>
+<h3 id="Neural-Association-Model-NAM"><a href="#Neural-Association-Model-NAM" class="headerlink" title="Neural Association Model (NAM)"></a>Neural Association Model (NAM)</h3><p>h和r拼接，输入L层线性整流层，结果z再与t进行打分t^T * z</p>
+<h2 id="Side-Information-Incorporating"><a href="#Side-Information-Incorporating" class="headerlink" title="Side Information Incorporating"></a>Side Information Incorporating</h2><p>有一些额外的信息可以提高embedding task，比如实体类型、关系路径、上下文描述、逻辑规则；这里讨论如何整合这些信息</p>
+<h3 id="semantically-smooth-embedding-SSE"><a href="#semantically-smooth-embedding-SSE" class="headerlink" title="semantically smooth embedding(SSE)"></a>semantically smooth embedding(SSE)</h3><p>相同类型的实体在embedding空间中相近</p>
+<p>SSE采用两种流性学习方法：</p>
+<ol>
+<li>拉普拉斯特征映射</li>
+</ol>
+<p>1/2 <em> || e_i - e_j||_2^2 </em> w_{ij}^1</p>
+<p>如果两个实体类型相同，则w_{ij}^1=1，否则等于0；当实体类型相同的时候，最小化上述公式</p>
+<ol start="2">
+<li>局部线性嵌入</li>
+</ol>
+<p>||e_i - \Sigma w_{ij}^2 * e+j||_2^2</p>
+<p>相同类别的邻居实体的线性组合来表示e_i</p>
+<p>上述两个作为正则项来约束embedding task</p>
+<p>SSE无法处理分层的语义类别</p>
+<h3 id="type-embodied-knowledge-representation-learning-TKRL"><a href="#type-embodied-knowledge-representation-learning-TKRL" class="headerlink" title="type-embodied knowledge representation learning (TKRL)"></a>type-embodied knowledge representation learning (TKRL)</h3><p>可以处理分层标签体系和多标签</p>
+<p>平移距离模型+特定类型实体映射</p>
+<p>先将h和t通过特定类型映射矩阵进行映射，然后把r作为两个实体间的平移</p>
+<p>打分函数：-||M_{rh} <em> h + r - M_{rt} </em> t||_1</p>
+<p>为了处理多标签的情况，M_{rh}可以表示为所有类型矩阵的加权平均</p>
+<p>为了处理分层标签的情况，M_{c_i}表示成所有子类的映射矩阵的加权平均或者点乘</p>
+<p>因为每个类别有自己的特定映射矩阵，会有较好的空间复杂度（类别不多应该没问题）</p>
+<p>生成负样本可以通过关系的两端实体类别限制来生成</p>
+<h3 id="path-based-TransE-PTransE"><a href="#path-based-TransE-PTransE" class="headerlink" title="path-based TransE (PTransE)"></a>path-based TransE (PTransE)</h3><p>实体之间可能存在多跳关系r_1-&gt;…-&gt;r_l;这种关系路径具有丰富的语义信息，可以帮助KG completion</p>
+<p>关系路径可以直接作为特征输入路径排序算法来预测实体间的隐藏关系</p>
+<p>融入关系路径的关键是如何把这种信息在相同的向量空间中表现出来</p>
+<p>一种简单的方式是表示成路径上所有关系表示的组合：组合策略</p>
+<p>经典的组合方式有1. addition相加 2. multiplication 点乘 3. RNN</p>
+<p>PTransE用了这三种组合方式</p>
+<p>损失函数：1/Z <em> \Sigma R(p|h,t) </em> l(p, r)</p>
+<p>R是给定h和t，出现p路径的可靠性，Z是归一项，l表示p和r之间一阶距离越小越好，也用到了ranking loss</p>
+<h3 id="NTN-model-with-textual-information"><a href="#NTN-model-with-textual-information" class="headerlink" title="NTN model with textual information"></a>NTN model with textual information</h3><p>大部分KG中实体具有精确的描述，除了KG中的描述，还可以扩展到文章中的上下文信息</p>
+<p>NTN从辅助语料库中先训练词向量，然后平均作为实体的初始化嵌入</p>
+<p>因为文本信息与KG中的fact分离，所以无法进行交互</p>
+<h3 id="Wang-et-al-’s-joint-model"><a href="#Wang-et-al-’s-joint-model" class="headerlink" title="Wang et al.’s joint model"></a>Wang et al.’s joint model</h3><p>将KG embedding与辅助文本语料库进行对齐，共同进行词嵌入和KG嵌入，此时词向量、实体关系向量在同一空间中</p>
+<p>joint model有三个部分：</p>
+<ol>
+<li><p>knowledge model：embed entities and relations in the KG；TransE的变种</p>
+</li>
+<li><p>text model：embed words in the text corpus；Skip-gram的变种</p>
+</li>
+<li><p>alignment model：guarantees the embeddings of entities/relations and words lie in the same space</p>
+</li>
+</ol>
+<p>对齐有不同的方式：</p>
+<ol>
+<li><p>根据wiki百科中的锚文本进行对齐</p>
+</li>
+<li><p>根据实体描述进行对齐</p>
+</li>
+</ol>
+<p>损失函数：上面三个model的损失之和</p>
+<h3 id="description-embodied-knowledge-representation-learning-DKRL"><a href="#description-embodied-knowledge-representation-learning-DKRL" class="headerlink" title="description-embodied knowledge representation learning (DKRL)"></a>description-embodied knowledge representation learning (DKRL)</h3><p>TransE + entity descriptions</p>
+<p>每个实体有两个向量，基于结构的向量和基于描述的向量</p>
+<p>基于描述的向量由包含的词向量组成，词向量来自CBOW或者CNN encoder。</p>
+<p>打分函数由四部分组成||h_s/d+r-t_s/d||_1</p>
+<h3 id="a-text-enhanced-KG-embedding-model-TEKE"><a href="#a-text-enhanced-KG-embedding-model-TEKE" class="headerlink" title="a text-enhanced KG embedding model(TEKE)"></a>a text-enhanced KG embedding model(TEKE)</h3><p>实体和词的共现网络：对于每个实体，TEKE将文本信息作为实体的在共现网络中的邻居</p>
+<p>实体的文本嵌入定义为词向量的加权平均</p>
+<p>对于每一对(h,r,t)中的关系r, 上下文定义为h和t的上下文的交集</p>
+<p>h = An(h) + h；前面的n(h)是上下文向量，A是权重矩阵，后面的h是bias</p>
+<p>然后将这种表示放到TransE等中学习</p>
+<p>对上下文加权组成实体向量然后进行KG结构化学习，最终更新的是上下文的词向量和权重矩阵，与EGES思想类似</p>
+<h3 id="Logical-Rules"><a href="#Logical-Rules" class="headerlink" title="Logical Rules"></a>Logical Rules</h3><p>逻辑规则，比如x的妻子是y，可以推出x和y是伴侣；这种逻辑规则广泛用于知识获取与推理；也有一些方法是自动从知识图谱中获取逻辑规则的</p>
+<ol>
+<li><p>利用逻辑规则细化模型，逻辑规则作为约束，KGE作为线性规划问题</p>
+</li>
+<li><p>KALE：两个有逻辑规则的事实的打分函数往上做一个逻辑连接再次进行打分</p>
+</li>
+</ol>
+<h3 id="Entity-Attributes"><a href="#Entity-Attributes" class="headerlink" title="Entity Attributes"></a>Entity Attributes</h3><p>KGE中说的关系包括二元关系和属性关系，大部分KGE不区分这两者</p>
+<p>那么有个问题，属性的取值范围是很大的，而关系的取值范围相对较小，如果一起处理，就会变成一个很大的实体关系空间</p>
+<p>关系单独编码在张量中，而属性放在单独的实体-属性矩阵中；矩阵和张量一起进行实体、关系、属性的学习</p>
+<h2 id="Application-of-KGE"><a href="#Application-of-KGE" class="headerlink" title="Application of KGE"></a>Application of KGE</h2><h3 id="Weston-et-al-TransE-with-a-text-based-extractor"><a href="#Weston-et-al-TransE-with-a-text-based-extractor" class="headerlink" title="Weston et al. TransE with a text-based extractor"></a>Weston et al. TransE with a text-based extractor</h3><p>关系分类</p>
+<p>训练阶段：从语料库中学习一个基于文本的提取器以及一个TransE模型对齐到语料库</p>
+<p>基于文本的提取器对关系和mention进行相似度打分，分数用于预测关系</p>
+<p>同时TransE模型来预测新挖掘到的（h,r,t）在KG中的合理性</p>
+<p>测试阶段：给定两个实体h和t，以及所有可能的关系，先用基于文本的提取器进行预测</p>
+<p>预测结果进行打分，该打分包括相似度打分和KG合理性打分</p>
+<h3 id="Riedel-et-al-relation-extraction-by-jointly-embedding-plain-text-and-KGs"><a href="#Riedel-et-al-relation-extraction-by-jointly-embedding-plain-text-and-KGs" class="headerlink" title="Riedel et al. relation extraction by jointly embedding plain text and KGs"></a>Riedel et al. relation extraction by jointly embedding plain text and KGs</h3><p>关系分类</p>
+<p>文本和KG在同一个矩阵中，矩阵行代表一对实体，列代表KG关系或者textual mention</p>
+<p>对于训练实体对，在矩阵中找到对应的向量（KG关系或者textual mention），如果是KG关系，相当于远程监督，如果是contextual mention相当于是多示例学习？</p>
+<p>对于测试实体对，只有textual mention可获得，然后去预测对应的KG关系</p>
+<h3 id="Question-Answering"><a href="#Question-Answering" class="headerlink" title="Question Answering"></a>Question Answering</h3><p>KG上的QA：给定一个自然语言描述的问题，任务目标是从KG中的三元组中获取答案</p>
+<p>Bordes et al. ：</p>
+<p>KG事实与自然语言一起学习向量表示，让其靠近</p>
+<p>S(q,a)为问题与答案之间的相似度</p>
+<h3 id="Collaborative-knowledge-base-embedding-for-recommender-systems"><a href="#Collaborative-knowledge-base-embedding-for-recommender-systems" class="headerlink" title="Collaborative knowledge base embedding for recommender systems"></a>Collaborative knowledge base embedding for recommender systems</h3><p>推荐系统</p>
+<p>在用户-商品交互信息较少的时候，协同过滤无法发挥作用，因此将交互与辅助信息结合有助于提升推荐质量</p>
+<p>利用KG中的异构信息来提高协同过滤的质量</p>
+<p>利用存储在KG中的三种类型信息：结构知识（三元组）、文本知识（商品摘要）和视觉知识（海报图像），来推导项目的语义表示</p>
+<p>使用了TransR学习商品的嵌入，对于文本知识和视觉知识分别使用自编码器来提取文本表示和可视化表示</p>
+<p>e（商品） = s(三元组) + t（文本） + v（视觉） + offset vector</p>
+<p>用户对商品的偏好可以建模成用户和商品的内积</p>
+<p>然后用一个pairwise ranking来学习这些嵌入表示</p>
+<p>测试阶段：给定一个目标用户，商品推荐顺序就是内积的大小表示</p>
+<h2 id="Knowledge-Graph-Embedding-A-Survey-of-Approaches-and-Applications"><a href="#Knowledge-Graph-Embedding-A-Survey-of-Approaches-and-Applications" class="headerlink" title="Knowledge Graph Embedding: A Survey of Approaches and Applications"></a>Knowledge Graph Embedding: A Survey of Approaches and Applications</h2><h3 id="三个步骤"><a href="#三个步骤" class="headerlink" title="三个步骤"></a>三个步骤</h3><p>KGE包含三个步骤：</p>
+<ol>
+<li>表示实体和关系 </li>
+</ol>
+<p>实体通常被表示成向量，关系被表示成向量操作，以向量、矩阵、张量、多元高斯分布、混合高斯等等形式展现</p>
+<ol start="2">
+<li>定义打分函数</li>
+</ol>
+<p>度量(h,r,t)事实的合理性，KG中有的事实打分比那些没有被发现的事实打分更高。</p>
+<ol start="3">
+<li>学习实体和关系表示</li>
+</ol>
+<p>一个优化问题，最大化所有观察到的事实的合理性</p>
+<h3 id="两种类型"><a href="#两种类型" class="headerlink" title="两种类型"></a>两种类型</h3><p>KGE分成两种：</p>
+<ol>
+<li>平移距离模型</li>
+</ol>
+<p>使用基于距离的打分函数，把两个实体经过关系的转化后的距离作为一个事实的合理性。</p>
+<p>典型的有：</p>
+<p>（1）TransE及其变种</p>
+<p>（2）Gaussian Embeddings</p>
+<ol start="2">
+<li>语义匹配模型</li>
+</ol>
+<p>基于相似度的打分函数；实体和关系在向量空间中的潜在语义进行匹配</p>
+<p>典型的有:</p>
+<p>（1）RESCAL及其变种</p>
+<p>（2）神经网络语义匹配</p>
+<h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><p>一、开放世界假设下的模型训练：KG值包括对的事实和未被观察的事实，未被观察的事实可能是错的，也可能是遗漏的</p>
+<ul>
+<li>损失函数：</li>
+</ul>
+<ol>
+<li><p>逻辑损失log(1+exp(-y*f)) 适合语义匹配模型（Trouillon et al.）</p>
+</li>
+<li><p>pairwise ranking loss: max(0, gama-f_positive+f_negative) 适合平移距离模型（Trouillon et al.）</p>
+<ul>
+<li>初始化：</li>
+</ul>
+</li>
+<li><p>从均匀分布或高斯分布随机初始化</p>
+</li>
+<li><p>一些复杂的模型的初始化采用TransE等简单模型的结果</p>
+</li>
+<li><p>采用名字或者描述的平均词向量</p>
+<ul>
+<li>负样本构建：</li>
+</ul>
+</li>
+<li><p>从正样本中替换h或者t，替换方式是随机均匀采样；也有替换关系的</p>
+</li>
+<li><p>可能出现假阴性：(AlfredHitchcock，性别，男性)可能是(詹姆斯·卡梅伦，性别，男性)替换头部的一个错误的反面例子</p>
+</li>
+</ol>
+<p>减少假阴性：替换头或者尾时赋予不同的概率，比如一对多的头替换概率较大，多对一的尾替换概率较大。<br>（分别算头和尾的平均数量，再算个简单概率tph/(tph+hpt)、hpt/(tph+hpt)）</p>
+<ol start="3">
+<li><p>只替换具有相同关系的实体，比如性别男替换成性别女，而不会替换成性别阿凡达</p>
+</li>
+<li><p>Trouillon et al.发现每个正样本生成50个负样本可以在精确率和训练时间之间有个较好的trade-off</p>
+</li>
+</ol>
+<p>二、封闭世界假设下的模型训练：遗漏的事实都是假的</p>
+<ul>
+<li><p>损失函数：</p>
+<p>平方损失 （y-f)^2 y取值为1或者0；未观察到的事实都是假的，y设为0</p>
+<p>逻辑损失</p>
+<p>绝对损失</p>
+<p>在平方损失下，变成了一个张量因式分解问题。</p>
+<p>封闭世界假设遗漏了很多真实事实，而且大部分KG是不完整的；两篇论文证明了开放世界假设下的模型训练出效果比封闭世界假设更好</p>
+</li>
+</ul>
+<h3 id="模型对比"><a href="#模型对比" class="headerlink" title="模型对比"></a>模型对比</h3><ol>
+<li>复杂度</li>
+</ol>
+<p>将实体和关系表示成向量更高效（TransE、TransH、DistMult、ComplEx)</p>
+<p>将关系表示成矩阵TransR、SE、RESCAL）或张量（NTN）有更高的复杂度</p>
+<p>基于神经网络的模型在时间上有更高的时间复杂度</p>
+<ol start="2">
+<li>下游任务：链接预测</li>
+</ol>
+<p>一些看起来更有表现力的模型并不一定有更好的性能，原因可能是更有表现力的模型有更多的参数需要训练，并且中小型数据上容易过拟合</p>
+<h3 id="下游任务"><a href="#下游任务" class="headerlink" title="下游任务"></a>下游任务</h3><p>分成两类</p>
+<ol>
+<li><p>in-KG applications</p>
+<ul>
+<li><p>链接预测</p>
+</li>
+<li><p>三元组分类</p>
+</li>
+<li><p>实体分类</p>
+</li>
+<li><p>实体统一：对KG中相同的实体进行统一</p>
+</li>
+</ul>
+</li>
+<li><p>out-of-KG applications</p>
+<ul>
+<li>关系抽取</li>
+</ul>
+<p>从实体已经被抽取出来的文本中找到关系；KG被用于关系抽取最多的就是远程监督来回标数据</p>
+</li>
+</ol>
+<ul>
+<li><p>问答</p>
+</li>
+<li><p>推荐系统</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/KGE/" rel="tag"># KGE</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/18/2020-05/混合高斯参数估计简单代码实现/" rel="next" title="混合高斯参数估计简单代码实现">
+                <i class="fa fa-chevron-left"></i> 混合高斯参数估计简单代码实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://hellojet-blog-1251889946.cos.ap-shanghai.myqcloud.com/avatar.jpg" alt="李洁厅">
+            
+              <p class="site-author-name" itemprop="name">李洁厅</p>
+              <p class="site-description motion-element" itemprop="description">余生很长 但求无憾 以梦为马 不负韶华</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hellojet" title="GitHub &rarr; https://github.com/hellojet" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:lijieting@zju.edu.cn" title="E-Mail &rarr; mailto:lijieting@zju.edu.cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Knowledge-Graph-Embedding-Summary"><span class="nav-number">1.</span> <span class="nav-text">Knowledge Graph Embedding Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Bert"><span class="nav-number">1.1.</span> <span class="nav-text">K-Bert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#side-information-from-EGES-Enhanced-Graph-Embedding-with-Side-information"><span class="nav-number">1.2.</span> <span class="nav-text">side-information from EGES(Enhanced Graph Embedding with Side information)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TransE-and-extensions"><span class="nav-number">1.3.</span> <span class="nav-text">TransE and extensions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TransE"><span class="nav-number">1.3.1.</span> <span class="nav-text">TransE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransH"><span class="nav-number">1.3.2.</span> <span class="nav-text">TransH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransR"><span class="nav-number">1.3.3.</span> <span class="nav-text">TransR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransD"><span class="nav-number">1.3.4.</span> <span class="nav-text">TransD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TranSparse"><span class="nav-number">1.3.5.</span> <span class="nav-text">TranSparse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransM"><span class="nav-number">1.3.6.</span> <span class="nav-text">TransM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ManifoldE"><span class="nav-number">1.3.7.</span> <span class="nav-text">ManifoldE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransF"><span class="nav-number">1.3.8.</span> <span class="nav-text">TransF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransA"><span class="nav-number">1.3.9.</span> <span class="nav-text">TransA</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-Embeddings"><span class="nav-number">1.4.</span> <span class="nav-text">Gaussian Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#KG2E"><span class="nav-number">1.4.1.</span> <span class="nav-text">KG2E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TransG"><span class="nav-number">1.4.2.</span> <span class="nav-text">TransG</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESCAL-and-extensions"><span class="nav-number">1.5.</span> <span class="nav-text">RESCAL and extensions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESCAL"><span class="nav-number">1.5.1.</span> <span class="nav-text">RESCAL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TATEC"><span class="nav-number">1.5.2.</span> <span class="nav-text">TATEC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DistMult"><span class="nav-number">1.5.3.</span> <span class="nav-text">DistMult</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Holographic-Embeddings（HolE）"><span class="nav-number">1.5.4.</span> <span class="nav-text">Holographic Embeddings（HolE）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complex-Embeddings-ComplEx"><span class="nav-number">1.5.5.</span> <span class="nav-text">Complex Embeddings (ComplEx)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ANALOGY"><span class="nav-number">1.5.6.</span> <span class="nav-text">ANALOGY</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matching-using-neural-network-architectures"><span class="nav-number">1.6.</span> <span class="nav-text">Matching using neural network architectures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Semantic-Matching-Energy（SME）"><span class="nav-number">1.6.1.</span> <span class="nav-text">Semantic Matching Energy（SME）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Tensor-Network-NTN"><span class="nav-number">1.6.2.</span> <span class="nav-text">Neural Tensor Network (NTN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Layer-Perceptron-MLP"><span class="nav-number">1.6.3.</span> <span class="nav-text">Multi-Layer Perceptron (MLP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Association-Model-NAM"><span class="nav-number">1.6.4.</span> <span class="nav-text">Neural Association Model (NAM)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Side-Information-Incorporating"><span class="nav-number">1.7.</span> <span class="nav-text">Side Information Incorporating</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#semantically-smooth-embedding-SSE"><span class="nav-number">1.7.1.</span> <span class="nav-text">semantically smooth embedding(SSE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type-embodied-knowledge-representation-learning-TKRL"><span class="nav-number">1.7.2.</span> <span class="nav-text">type-embodied knowledge representation learning (TKRL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#path-based-TransE-PTransE"><span class="nav-number">1.7.3.</span> <span class="nav-text">path-based TransE (PTransE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NTN-model-with-textual-information"><span class="nav-number">1.7.4.</span> <span class="nav-text">NTN model with textual information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Wang-et-al-’s-joint-model"><span class="nav-number">1.7.5.</span> <span class="nav-text">Wang et al.’s joint model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description-embodied-knowledge-representation-learning-DKRL"><span class="nav-number">1.7.6.</span> <span class="nav-text">description-embodied knowledge representation learning (DKRL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-text-enhanced-KG-embedding-model-TEKE"><span class="nav-number">1.7.7.</span> <span class="nav-text">a text-enhanced KG embedding model(TEKE)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Logical-Rules"><span class="nav-number">1.7.8.</span> <span class="nav-text">Logical Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Entity-Attributes"><span class="nav-number">1.7.9.</span> <span class="nav-text">Entity Attributes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-of-KGE"><span class="nav-number">1.8.</span> <span class="nav-text">Application of KGE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Weston-et-al-TransE-with-a-text-based-extractor"><span class="nav-number">1.8.1.</span> <span class="nav-text">Weston et al. TransE with a text-based extractor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Riedel-et-al-relation-extraction-by-jointly-embedding-plain-text-and-KGs"><span class="nav-number">1.8.2.</span> <span class="nav-text">Riedel et al. relation extraction by jointly embedding plain text and KGs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Question-Answering"><span class="nav-number">1.8.3.</span> <span class="nav-text">Question Answering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collaborative-knowledge-base-embedding-for-recommender-systems"><span class="nav-number">1.8.4.</span> <span class="nav-text">Collaborative knowledge base embedding for recommender systems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Knowledge-Graph-Embedding-A-Survey-of-Approaches-and-Applications"><span class="nav-number">1.9.</span> <span class="nav-text">Knowledge Graph Embedding: A Survey of Approaches and Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三个步骤"><span class="nav-number">1.9.1.</span> <span class="nav-text">三个步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种类型"><span class="nav-number">1.9.2.</span> <span class="nav-text">两种类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型训练"><span class="nav-number">1.9.3.</span> <span class="nav-text">模型训练</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型对比"><span class="nav-number">1.9.4.</span> <span class="nav-text">模型对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下游任务"><span class="nav-number">1.9.5.</span> <span class="nav-text">下游任务</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">李洁厅</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+      
+  
+  <script color="0,0,0" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script>
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'mIlivazwHxS9PQTVE8AQ4vaX-gzGzoHsz',
+        appKey: 'hxwBrtBNgKNH54JCXQU82i9Y',
+        placeholder: '有什么想说的吗？',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
